@@ -1,0 +1,31 @@
+name: Feature Request
+description: Suggest a new feature for TailorTex
+labels: ["type:feature"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What would you like?
+      description: A clear description of the feature.
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why is this useful?
+      description: How does this help users tailor resumes better?
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: principles
+    attributes:
+      label: Does this feature preserve TailorTex principles?
+      options:
+        - label: Local-first (no mandatory cloud or accounts)
+          required: true
+        - label: Evidence-based (no fabrication of claims)
+          required: true
+        - label: Privacy-respecting (no silent data transmission)
+          required: true

@@ -1,0 +1,8 @@
+{
+  "id": "ats-modern",
+  "name": "ATS Modern",
+  "description": "Single-column ATS-friendly resume template.",
+  "supports": ["resume"],
+  "max_pages_recommended": 1,
+  "engine": ["tectonic", "pdflatex", "xelatex"]
+}

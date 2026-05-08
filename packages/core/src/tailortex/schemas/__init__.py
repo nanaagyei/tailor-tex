@@ -1,0 +1,65 @@
+"""TailorTex data schemas."""
+
+from tailortex.schemas.job import JDSource, ParsedJobDescription, RoleSignals
+from tailortex.schemas.profile import (
+    Award,
+    Bullet,
+    CanonicalProfile,
+    Certification,
+    Education,
+    EvidenceLedgerEntry,
+    Experience,
+    Link,
+    Owner,
+    Project,
+    Publication,
+    Skill,
+    Source,
+    SourceRef,
+    Summary,
+)
+from tailortex.schemas.resume import (
+    DoNotInsert,
+    GeneratedBullet,
+    KeywordStrategy,
+    ResumePlan,
+    SectionPlan,
+    TailoringOptions,
+)
+from tailortex.schemas.validation import (
+    ClaimResult,
+    ValidationReport,
+    ValidationSummary,
+    Warning,
+)
+
+__all__ = [
+    "Award",
+    "Bullet",
+    "CanonicalProfile",
+    "Certification",
+    "ClaimResult",
+    "DoNotInsert",
+    "Education",
+    "EvidenceLedgerEntry",
+    "Experience",
+    "GeneratedBullet",
+    "JDSource",
+    "KeywordStrategy",
+    "Link",
+    "Owner",
+    "ParsedJobDescription",
+    "Project",
+    "Publication",
+    "ResumePlan",
+    "RoleSignals",
+    "SectionPlan",
+    "Skill",
+    "Source",
+    "SourceRef",
+    "Summary",
+    "TailoringOptions",
+    "ValidationReport",
+    "ValidationSummary",
+    "Warning",
+]

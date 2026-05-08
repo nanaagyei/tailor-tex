@@ -1,0 +1,43 @@
+Morgan Castillo
+morgan.castillo@proton.me | (512) 847-1928
+Austin, TX
+https://github.com/mcastillo-dev | https://linkedin.com/in/mcastillo
+
+Summary
+Software engineer with 4 years of experience building backend services, testing infrastructure, and developer tooling. Focused on Python, Go, and cloud-native architectures.
+
+Experience
+
+Software Engineer | Meridian Systems
+Austin, TX
+Mar 2023 - Present
+- Designed and maintained CI/CD pipelines using GitHub Actions, reducing deploy time by 40%
+- Built REST API endpoints in Python (FastAPI) serving 2M+ requests/day
+- Implemented structured logging and tracing with OpenTelemetry across 12 microservices
+
+QA Engineer | Tidewater Analytics
+Remote
+Jun 2021 - Feb 2023
+- Developed automated test suites using Pytest and Selenium, covering 85% of critical user paths
+- Reduced production bug escape rate by 30% through integration testing improvements
+
+Projects
+
+LogPipe
+https://github.com/mcastillo-dev/logpipe
+Open-source log aggregation CLI tool for local development
+- Built a Go CLI tool that aggregates logs from multiple Docker containers into a unified stream
+
+Education
+
+University of Texas at Austin
+B.S. in Computer Science
+Aug 2017 - May 2021
+GPA: 3.7
+
+Skills
+Languages: Python, Go, JavaScript
+Frameworks: FastAPI, Flask, React
+Tools: Docker, GitHub Actions, PostgreSQL
+Testing: Pytest, Selenium
+Concepts: REST APIs, CI/CD, microservices, observability

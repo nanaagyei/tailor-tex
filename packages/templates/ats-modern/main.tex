@@ -1,0 +1,149 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+%----------FONT OPTIONS----------
+% \usepackage[default]{sourcesanspro}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+\begin{center}
+\textbf{\Huge \scshape Jim Tang} \\ \vspace{1pt}
+\small (555) 555-5555  $|$ \href{mailto:you@example.com}{\underline{you@example.com}} $|$ 
+\href{https://github.com/yourhandle}{\underline{https://your-linkedin-or-site.com}}
+\end{center}
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: JavaScript, Java, TypeScript, HTML, CSS} \\
+     \textbf{Frameworks}{: React, Angular, Node.js, Express.js} \\
+     \textbf{Developer Tools}{: Git, VSCode, Agile, StackOverflow} \\
+    }}
+ \end{itemize}
+
+%-----------EXPERIENCE-----------
+\section{Professional Experience}
+\resumeSubHeadingListStart    
+
+  \resumeSubheading
+    {Software Engineer}{August 2020 -- Present}
+    {American Express}{New York City, NY}
+    \resumeItemListStart
+      \resumeItem{Spearheaded Shop Small's flagship site rewrite to Angular 10 from Angular.js by integrating Angular 10 with the existing back-end, resulting in a 50\% reduction in bundle size and a significant increase in render speed.}
+      \resumeItem{Developed numerous React components and user friendly UI's in a greenfield web application (Digital Experience Portal) which enable end users to efficiently create and edit highly customizable and reusable web components for marketing AmEx-sponsored digital events.}
+      \resumeItem{Elevated the scalability of Shop Small's web application by autonomizing a workflow for new users to create and customize their first campaign, saving administrators hundreds of hours of manual configuration time and eliminating turnaround time for new users.}
+      \resumeItem{Collaborated with the OnBrand team to translate designs from Zeplin to Angular.js to make UI and content updates to the Small Business Saturday site, keeping the site up to date with the latest information and media.}
+      \resumeItem{Stack: React, Angular, JavaScript, Redux, Node.js, Express.js, MongoDB, Jest }
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Software Engineer Intern}{June 2019 -- August 2019}
+    {American Express}{New York City, NY}
+    \resumeItemListStart
+      \resumeItem{Built a new Edit Parameters screen for the Shop Small Studio web application where developer team members can now add, edit, or remove parameters through a user-friendly UI, eliminating the need for tedious annual code changes and reducing developer overhead by an estimated 300 hours per year.}
+      \resumeItem{Defined a new mongoose schema for storing said parameters and coded new RESTful API calls using Node.js, enabling admin users to create, read, update, and delete parameter data from the database.}
+      \resumeItem{Coded search filters and validations into all tables and forms within Shop Small Studio to enable users to query for specific table entries and to ensure faultless data entry into the MongoDB database.}
+      \resumeItem{Adapted to AmEx's agile development style by creating Jira stories during sprint planning, demoing completed features and functionalities in bi-weekly retrospectives, and providing progress updates in daily standups.}
+      \resumeItem{Stack: React, JavaScript, Redux, Node.js, Express.js, MongoDB}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Web Development Intern}{June 2017 -- August 2017}
+    {MJJT Consultants}{New York City, NY}
+    \resumeItemListStart
+      \resumeItem{Collaborated closely with clients and a small development team to develop custom websites to fulfill client needs.}
+      \resumeItem{Performed QA and bugfixes on the team’s custom web application designed for BlueGeneration’s internal use to customize and edit their digital clothing catalog, ensuring a seamless user experience.}
+      \resumeItem{Stack: JavaScript, HTML, CSS}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Selected Projects}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{MySongList} $|$ \emph{Angular 10, Node.js, Express.js, PostgreSQL, Heroku, Spotify Web API}}{December 2020}
+    \resumeItemListStart
+      \resumeItem{Built and deployed a music review website where users can register, login, rate new/popular music, see song ratings, and read other users' ratings and written reviews through a user-friendly UI.}
+      \resumeItem{Utilized PostgreSQL to store song names, user credentials, user ratings, song ratings, and user reviews.}
+      \resumeItem{Coded a REST API with Node.js to get, add, modify, and delete data from the database using SQL queries.}
+      \resumeItem{Leveraged Spotify's public API to pull live song data, album data, and playlists into the database.}
+      \resumeItem{Deployed with Heroku: https://my-song-list.herokuapp.com (Username: test, Password: test123)}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Rock Paper Scissors} $|$ \emph{JavaScript, Node.js, Socket.io, HTML, CSS}}{June 2018}
+    \resumeItemListStart
+      \resumeItem{Created a real-time two-player rock paper scissors game initialized by clicking a shared link.}
+      \resumeItem{Implemented a live chat-box and score tracker using socket.io.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Rutgers University}{September 2016 -- May 2020}
+    {Bachelor of Science in Computer Science}{New Brunswick, NJ}
+\resumeSubHeadingListEnd
+
+\end{document}
