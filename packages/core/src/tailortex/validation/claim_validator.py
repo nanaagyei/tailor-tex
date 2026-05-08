@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from typing import Literal
 
 from tailortex.schemas.profile import CanonicalProfile
 from tailortex.schemas.resume import GeneratedBullet
@@ -46,6 +47,7 @@ def validate_claims(
     needs_confirm = sum(1 for r in claim_results if r.status == "needs_confirmation")
     rejected = sum(1 for r in claim_results if r.status == "rejected")
 
+    status: Literal["passed", "passed_with_warnings", "failed"]
     if rejected > 0:
         status = "failed"
     elif needs_confirm > 0:

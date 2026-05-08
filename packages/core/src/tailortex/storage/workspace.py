@@ -14,7 +14,7 @@ import json
 import os
 import tempfile
 from pathlib import Path
-from typing import TypeVar
+from typing import Any, TypeVar, cast
 
 from pydantic import BaseModel
 
@@ -157,18 +157,19 @@ class Workspace:
     # Application operations (stores resume plans, bullets, reports)
     # ------------------------------------------------------------------
 
-    def save_application(self, app_id: str, data: dict) -> Path:
+    def save_application(self, app_id: str, data: dict[str, Any]) -> Path:
         """Save an application bundle as JSON."""
         path = self._safe_path(self.applications_dir, f"{app_id}.json")
         content = json.dumps(data, indent=2, default=str)
         self._atomic_write(path, content)
         return path
 
-    def load_application(self, app_id: str) -> dict:
+    def load_application(self, app_id: str) -> dict[str, Any]:
         path = self._safe_path(self.applications_dir, f"{app_id}.json")
         if not path.exists():
             raise WorkspaceError(f"Application not found: {app_id}")
-        return json.loads(path.read_text(encoding="utf-8"))
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        return cast(dict[str, Any], payload)
 
     def list_applications(self) -> list[str]:
         return self._list_items(self.applications_dir)
@@ -180,12 +181,13 @@ class Workspace:
     # Config operations
     # ------------------------------------------------------------------
 
-    def load_config(self) -> dict:
+    def load_config(self) -> dict[str, Any]:
         if not self.config_path.exists():
             return {"version": "1.0.0"}
-        return json.loads(self.config_path.read_text(encoding="utf-8"))
+        payload = json.loads(self.config_path.read_text(encoding="utf-8"))
+        return cast(dict[str, Any], payload)
 
-    def save_config(self, config: dict) -> None:
+    def save_config(self, config: dict[str, Any]) -> None:
         self._atomic_write(self.config_path, json.dumps(config, indent=2))
 
     # ------------------------------------------------------------------

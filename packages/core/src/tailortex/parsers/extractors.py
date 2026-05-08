@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Any, cast
 
 
 @dataclass
@@ -62,9 +63,10 @@ def _extract_pdf(path: Path) -> ExtractionResult:
     diagnostics: list[str] = []
     pages: list[str] = []
 
-    doc = pymupdf.open(str(path))
-    for i, page in enumerate(doc):
-        text = page.get_text()
+    doc = pymupdf.open(str(path))  # type: ignore[no-untyped-call]
+    for i, page in enumerate(cast(Any, doc)):
+        page_obj: Any = page
+        text = page_obj.get_text()
         if not text.strip():
             diagnostics.append(f"Page {i + 1} has no extractable text (may be image-based).")
         pages.append(text)

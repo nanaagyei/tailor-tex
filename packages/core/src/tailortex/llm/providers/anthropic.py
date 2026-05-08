@@ -37,7 +37,7 @@ class AnthropicProvider(LLMProvider):
         max_tokens: int = 4096,
     ) -> LLMResponse | LLMError:
         try:
-            import httpx
+            import httpx  # type: ignore[import-not-found]
         except ImportError:
             return LLMError(
                 error="httpx is required for Anthropic provider. Install with: pip install httpx",

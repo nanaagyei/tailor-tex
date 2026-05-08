@@ -43,7 +43,7 @@ class OpenAICompatibleProvider(LLMProvider):
         max_tokens: int = 4096,
     ) -> LLMResponse | LLMError:
         try:
-            import httpx
+            import httpx  # type: ignore[import-not-found]
         except ImportError:
             return LLMError(
                 error=(

@@ -92,8 +92,8 @@ def _compute_keyword_strategy(
     """Determine keyword coverage — which skills are covered, missing, or blocked."""
     # Collect all skills from the profile
     profile_skills_lower = set()
-    for skill in profile.skills:
-        profile_skills_lower.add(skill.name.lower())
+    for profile_skill in profile.skills:
+        profile_skills_lower.add(profile_skill.name.lower())
     for exp in profile.experiences:
         for bullet in exp.bullets:
             for s in bullet.skills:
@@ -107,15 +107,17 @@ def _compute_keyword_strategy(
     not_covered: list[str] = []
     do_not_insert: list[DoNotInsert] = []
 
-    for skill in all_jd_skills:
-        if skill.lower() in profile_skills_lower:
-            covered.append(skill)
+    for jd_skill in all_jd_skills:
+        if jd_skill.lower() in profile_skills_lower:
+            covered.append(jd_skill)
         else:
-            not_covered.append(skill)
+            not_covered.append(jd_skill)
             do_not_insert.append(
                 DoNotInsert(
-                    keyword=skill,
-                    reason=f"No approved evidence for '{skill}' in canonical profile.",
+                    keyword=jd_skill,
+                    reason=(
+                        f"No approved evidence for '{jd_skill}' in canonical profile."
+                    ),
                 )
             )
 
