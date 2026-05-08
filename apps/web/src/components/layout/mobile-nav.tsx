@@ -1,10 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
-  FileText,
   Upload,
   User,
   Briefcase,
@@ -33,9 +33,13 @@ export function MobileNav() {
   return (
     <div className="md:hidden flex items-center justify-between border-b border-border px-4 py-3 bg-card/50">
       <div className="flex items-center gap-2.5">
-        <div className="flex size-7 items-center justify-center rounded-lg bg-emerald/10">
-          <FileText className="size-3.5 text-emerald" />
-        </div>
+        <Image
+          src="/logo.png"
+          alt="TailorTex logo"
+          width={30}
+          height={30}
+          className="size-7 rounded-lg"
+        />
         <span className="font-semibold tracking-tight text-sm">TailorTex</span>
       </div>
 
@@ -46,9 +50,13 @@ export function MobileNav() {
         <SheetContent side="left" className="w-72 p-0">
           <SheetTitle className="sr-only">Navigation</SheetTitle>
           <div className="flex items-center gap-2.5 px-5 py-5 border-b border-border">
-            <div className="flex size-8 items-center justify-center rounded-lg bg-emerald/10">
-              <FileText className="size-4 text-emerald" />
-            </div>
+            <Image
+              src="/logo.png"
+              alt="TailorTex logo"
+              width={34}
+              height={34}
+              className="size-8 rounded-lg"
+            />
             <div className="flex flex-col">
               <span className="font-semibold tracking-tight text-sm">TailorTex</span>
               <span className="text-[10px] text-muted-foreground">Local-first</span>

@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Upload,
   Play,
   Settings,
   Shield,
-  FileText,
   ArrowRight,
   CheckCircle2,
   XCircle,
@@ -83,9 +83,14 @@ export default function WelcomePage() {
         <div className="flex flex-col gap-8 lg:py-6">
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <div className="flex size-10 items-center justify-center rounded-xl bg-emerald/10 ring-1 ring-emerald/20">
-                <FileText className="size-5 text-emerald" />
-              </div>
+              <Image
+                src="/logo.png"
+                alt="TailorTex logo"
+                width={44}
+                height={44}
+                priority
+                className="size-11 rounded-xl"
+              />
               <div>
                 <h1 className="text-2xl font-semibold tracking-tight md:text-3xl">
                   TailorTex

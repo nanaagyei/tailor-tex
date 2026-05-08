@@ -17,6 +17,16 @@ export const metadata: Metadata = {
   title: "TailorTex",
   description:
     "Local-first resume tailoring workbench. Convert your career profile and job descriptions into truthful, ATS-readable LaTeX resumes.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    shortcut: ["/favicon.ico"],
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

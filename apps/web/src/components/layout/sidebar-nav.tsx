@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  FileText,
   Upload,
   User,
   Briefcase,
@@ -29,9 +29,14 @@ export function SidebarNav() {
   return (
     <aside className="hidden md:flex md:w-56 lg:w-64 flex-col border-r border-border bg-card/50">
       <div className="flex items-center gap-2.5 px-5 py-5">
-        <div className="flex size-8 items-center justify-center rounded-lg bg-emerald/10">
-          <FileText className="size-4 text-emerald" />
-        </div>
+        <Image
+          src="/logo.png"
+          alt="TailorTex logo"
+          width={36}
+          height={36}
+          priority
+          className="size-9 rounded-lg"
+        />
         <div className="flex flex-col">
           <span className="font-semibold tracking-tight text-foreground text-sm">
             TailorTex
