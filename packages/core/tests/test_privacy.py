@@ -1,7 +1,5 @@
 """Tests for redaction and disclosure tracking."""
 
-import pytest
-
 from tailortex.privacy.disclosure import DisclosureTracker
 from tailortex.privacy.redaction import RedactionMap, build_redaction_map, redact_profile_text
 
@@ -97,18 +95,14 @@ class TestBuildRedactionMap:
 class TestRedactProfileText:
     def test_returns_tuple(self):
         text = "Jane Doe works at Acme"
-        redacted, rmap = redact_profile_text(
-            text, full_name="Jane Doe", companies=["Acme"]
-        )
+        redacted, rmap = redact_profile_text(text, full_name="Jane Doe", companies=["Acme"])
         assert "Jane Doe" not in redacted
         assert "Acme" not in redacted
         assert isinstance(rmap, RedactionMap)
 
     def test_rehydrate_from_returned_map(self):
         text = "Jane Doe at Acme"
-        redacted, rmap = redact_profile_text(
-            text, full_name="Jane Doe", companies=["Acme"]
-        )
+        redacted, rmap = redact_profile_text(text, full_name="Jane Doe", companies=["Acme"])
         restored = rmap.rehydrate(redacted)
         assert restored == text
 

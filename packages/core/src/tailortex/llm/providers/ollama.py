@@ -46,8 +46,7 @@ class OllamaProvider(LLMProvider):
 
         if output_schema:
             prompt = (
-                "You must respond with valid JSON only. No markdown, no explanation.\n\n"
-                + prompt
+                "You must respond with valid JSON only. No markdown, no explanation.\n\n" + prompt
             )
 
         body: dict[str, Any] = {

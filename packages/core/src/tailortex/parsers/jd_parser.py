@@ -35,16 +35,72 @@ _INJECTION_PATTERNS = [
 
 # Common skills/technologies for extraction
 _TECH_KEYWORDS = {
-    "python", "java", "javascript", "typescript", "go", "golang", "rust", "c++", "c#",
-    "ruby", "php", "swift", "kotlin", "scala", "r", "sql", "nosql",
-    "react", "angular", "vue", "svelte", "next.js", "nextjs", "nuxt",
-    "node.js", "nodejs", "express", "fastapi", "flask", "django", "spring",
-    "aws", "azure", "gcp", "google cloud", "docker", "kubernetes", "k8s",
-    "terraform", "ansible", "jenkins", "ci/cd", "github actions", "gitlab ci",
-    "postgresql", "postgres", "mysql", "mongodb", "redis", "elasticsearch",
-    "kafka", "rabbitmq", "graphql", "rest", "rest apis", "grpc",
-    "machine learning", "deep learning", "tensorflow", "pytorch", "pandas",
-    "linux", "git", "agile", "scrum", "jira",
+    "python",
+    "java",
+    "javascript",
+    "typescript",
+    "go",
+    "golang",
+    "rust",
+    "c++",
+    "c#",
+    "ruby",
+    "php",
+    "swift",
+    "kotlin",
+    "scala",
+    "r",
+    "sql",
+    "nosql",
+    "react",
+    "angular",
+    "vue",
+    "svelte",
+    "next.js",
+    "nextjs",
+    "nuxt",
+    "node.js",
+    "nodejs",
+    "express",
+    "fastapi",
+    "flask",
+    "django",
+    "spring",
+    "aws",
+    "azure",
+    "gcp",
+    "google cloud",
+    "docker",
+    "kubernetes",
+    "k8s",
+    "terraform",
+    "ansible",
+    "jenkins",
+    "ci/cd",
+    "github actions",
+    "gitlab ci",
+    "postgresql",
+    "postgres",
+    "mysql",
+    "mongodb",
+    "redis",
+    "elasticsearch",
+    "kafka",
+    "rabbitmq",
+    "graphql",
+    "rest",
+    "rest apis",
+    "grpc",
+    "machine learning",
+    "deep learning",
+    "tensorflow",
+    "pytorch",
+    "pandas",
+    "linux",
+    "git",
+    "agile",
+    "scrum",
+    "jira",
 }
 
 # Skill aliases for normalization
@@ -196,7 +252,10 @@ def _classify_skills(text: str, skills: list[str]) -> tuple[list[str], list[str]
 
     # Look for "preferred" / "nice to have" / "bonus" sections
     preferred_section = re.search(
-        r"(?:preferred|nice[- ]to[- ]have|bonus|desired|plus|optional)\s*(?:qualifications?|skills?|experience)?",
+        (
+            r"(?:preferred|nice[- ]to[- ]have|bonus|desired|plus|optional)"
+            r"\s*(?:qualifications?|skills?|experience)?"
+        ),
         text,
         re.IGNORECASE,
     )
@@ -266,7 +325,7 @@ def _detect_location(text: str) -> str | None:
     patterns = [
         re.compile(r"(?:location|based in|office)[:\s]+([^\n,]+)", re.IGNORECASE),
         re.compile(r"\b(remote(?:\s*\([^)]+\))?)\b", re.IGNORECASE),
-        re.compile(r"\b(hybrid(?:\s*[-–]\s*[^\n,]+)?)\b", re.IGNORECASE),
+        re.compile(r"\b(hybrid(?:\s*[-]\s*[^\n,]+)?)\b", re.IGNORECASE),
     ]
     for pattern in patterns:
         match = pattern.search(text)
@@ -278,10 +337,25 @@ def _detect_location(text: str) -> str | None:
 def _extract_domain_keywords(text_lower: str) -> list[str]:
     """Extract domain-specific keywords."""
     domains = [
-        "backend", "frontend", "full stack", "devops", "cloud", "data",
-        "microservices", "distributed systems", "fintech", "healthcare",
-        "e-commerce", "saas", "platform", "infrastructure", "security",
-        "mobile", "embedded", "real-time", "streaming",
+        "backend",
+        "frontend",
+        "full stack",
+        "devops",
+        "cloud",
+        "data",
+        "microservices",
+        "distributed systems",
+        "fintech",
+        "healthcare",
+        "e-commerce",
+        "saas",
+        "platform",
+        "infrastructure",
+        "security",
+        "mobile",
+        "embedded",
+        "real-time",
+        "streaming",
     ]
     found = [d for d in domains if d in text_lower]
     return found

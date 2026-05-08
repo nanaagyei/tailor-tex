@@ -35,10 +35,12 @@ def validate_claims(
         claim_results.append(result)
 
         if result.status == "rejected":
-            warnings.append(Warning(
-                type="REJECTED_CLAIM",
-                message=f"Claim rejected for bullet {bullet.id}: {result.claim}",
-            ))
+            warnings.append(
+                Warning(
+                    type="REJECTED_CLAIM",
+                    message=f"Claim rejected for bullet {bullet.id}: {result.claim}",
+                )
+            )
 
     supported = sum(1 for r in claim_results if r.status == "supported")
     needs_confirm = sum(1 for r in claim_results if r.status == "needs_confirmation")
@@ -224,9 +226,12 @@ def _detect_fabricated_metrics(
     for pattern in metric_patterns:
         for match in pattern.finditer(rewritten):
             metric = match.group()
-            if metric not in original and metric.lower() not in evidence.all_metrics:
-                if not any(metric in m for m in evidence.all_metrics):
-                    fabricated.append(metric)
+            if (
+                metric not in original
+                and metric.lower() not in evidence.all_metrics
+                and not any(metric in m for m in evidence.all_metrics)
+            ):
+                fabricated.append(metric)
 
     return fabricated
 
@@ -238,10 +243,28 @@ def _detect_fabricated_tools(
 ) -> list[str]:
     """Detect tool/technology names added that aren't in evidence."""
     common_tools = {
-        "kubernetes", "k8s", "terraform", "ansible", "jenkins", "kafka",
-        "rabbitmq", "elasticsearch", "mongodb", "cassandra", "dynamodb",
-        "graphql", "grpc", "spark", "hadoop", "airflow", "mlflow",
-        "pytorch", "tensorflow", "scikit-learn", "pandas", "numpy",
+        "kubernetes",
+        "k8s",
+        "terraform",
+        "ansible",
+        "jenkins",
+        "kafka",
+        "rabbitmq",
+        "elasticsearch",
+        "mongodb",
+        "cassandra",
+        "dynamodb",
+        "graphql",
+        "grpc",
+        "spark",
+        "hadoop",
+        "airflow",
+        "mlflow",
+        "pytorch",
+        "tensorflow",
+        "scikit-learn",
+        "pandas",
+        "numpy",
     }
 
     fabricated: list[str] = []
@@ -259,16 +282,19 @@ def _detect_scope_inflation(
 ) -> bool:
     """Detect leadership/scope claims not in evidence."""
     leadership_terms = [
-        "led a team", "managed a team", "directed",
-        "oversaw", "spearheaded", "headed",
-        "team of", "reports",
+        "led a team",
+        "managed a team",
+        "directed",
+        "oversaw",
+        "spearheaded",
+        "headed",
+        "team of",
+        "reports",
     ]
 
     for term in leadership_terms:
         if term in rewritten and term not in original:
-            has_leadership_evidence = any(
-                term in bt for bt in evidence.all_bullet_text
-            )
+            has_leadership_evidence = any(term in bt for bt in evidence.all_bullet_text)
             if not has_leadership_evidence:
                 return True
 

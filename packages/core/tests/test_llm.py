@@ -71,7 +71,7 @@ class TestRuleBasedProvider:
     @pytest.mark.asyncio
     async def test_bullet_rewrite_preserves_text(self, provider):
         prompt = (
-            'You are rewriting resume bullets.\n'
+            "You are rewriting resume bullets.\n"
             '{"text": "Built a REST API in Python"}\n'
             '{"text": "Deployed services to Kubernetes"}'
         )
@@ -103,8 +103,6 @@ class TestRetryLogic:
         provider = MockProvider()
         # First call returns error with raw_text, second succeeds
         provider.add_response({"result": "fixed"})
-        result = await provider.complete_with_retry(
-            "test", output_schema={"type": "object"}
-        )
+        result = await provider.complete_with_retry("test", output_schema={"type": "object"})
         assert isinstance(result, LLMResponse)
         assert result.parsed == {"result": "fixed"}

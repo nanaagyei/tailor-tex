@@ -1,7 +1,5 @@
 """Golden tests for claim validation — fabrication must be rejected."""
 
-import pytest
-
 from tailortex.llm.providers.mock import MockProvider
 from tailortex.llm.rewriter import rewrite_bullets, rewrite_bullets_deterministic
 from tailortex.schemas.profile import (
@@ -32,7 +30,10 @@ def _make_profile() -> CanonicalProfile:
                 bullets=[
                     Bullet(
                         id="b-1",
-                        text="Built REST API endpoints using Python and FastAPI serving 5k requests/sec",
+                        text=(
+                            "Built REST API endpoints using Python and FastAPI "
+                            "serving 5k requests/sec"
+                        ),
                         skills=["Python", "FastAPI", "REST"],
                         approved=True,
                         metrics=["5k requests/sec"],
@@ -93,14 +94,18 @@ class TestGoldenFabricationRejection:
         profile = _make_profile()
         bullet = GeneratedBullet(
             id="gen-b-2",
-            text="Orchestrated containerized microservices using Docker and Kubernetes in production",
+            text=(
+                "Orchestrated containerized microservices using Docker and Kubernetes in production"
+            ),
             source_bullet_ids=["b-2"],
             validation_status="needs_confirmation",
         )
         report = validate_claims([bullet], profile)
         k8s_claim = report.claims[0]
         assert k8s_claim.status == "rejected"
-        assert "kubernetes" in k8s_claim.claim.lower() or "not in evidence" in k8s_claim.claim.lower()
+        assert (
+            "kubernetes" in k8s_claim.claim.lower() or "not in evidence" in k8s_claim.claim.lower()
+        )
 
     def test_leadership_fabrication_rejected(self):
         """JD asks for 'led a team', profile has no leadership evidence."""
@@ -147,7 +152,10 @@ class TestGoldenFabricationRejection:
         profile = _make_profile()
         bullet = GeneratedBullet(
             id="gen-b-1",
-            text="Developed high-performance REST API endpoints with Python and FastAPI handling 5k requests/sec",
+            text=(
+                "Developed high-performance REST API endpoints with Python "
+                "and FastAPI handling 5k requests/sec"
+            ),
             source_bullet_ids=["b-1"],
             validation_status="needs_confirmation",
         )
@@ -214,16 +222,18 @@ class TestDeterministicRewrite:
 
 class TestRewriteWithMockProvider:
     async def test_llm_rewrite_returns_generated_bullets(self):
-        provider = MockProvider(responses=[
-            [
-                {
-                    "source_bullet_id": "b-1",
-                    "text": "Developed a high-performance API",
-                    "jd_keywords_used": ["Python"],
-                    "validation_notes": ["Improved action verb"],
-                }
+        provider = MockProvider(
+            responses=[
+                [
+                    {
+                        "source_bullet_id": "b-1",
+                        "text": "Developed a high-performance API",
+                        "jd_keywords_used": ["Python"],
+                        "validation_notes": ["Improved action verb"],
+                    }
+                ]
             ]
-        ])
+        )
         bullets = [
             Bullet(id="b-1", text="Built an API", skills=["Python"], approved=True),
         ]
@@ -255,16 +265,18 @@ class TestRewriteWithMockProvider:
 
     async def test_missing_bullets_added_back(self):
         """If LLM only rewrites some bullets, the rest are added back."""
-        provider = MockProvider(responses=[
-            [
-                {
-                    "source_bullet_id": "b-1",
-                    "text": "Developed an API",
-                    "jd_keywords_used": [],
-                    "validation_notes": ["Verb change"],
-                }
+        provider = MockProvider(
+            responses=[
+                [
+                    {
+                        "source_bullet_id": "b-1",
+                        "text": "Developed an API",
+                        "jd_keywords_used": [],
+                        "validation_notes": ["Verb change"],
+                    }
+                ]
             ]
-        ])
+        )
         bullets = [
             Bullet(id="b-1", text="Built an API", skills=["Python"], approved=True),
             Bullet(id="b-2", text="Wrote tests", skills=["Python"], approved=True),

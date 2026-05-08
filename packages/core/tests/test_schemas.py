@@ -10,29 +10,23 @@ from tailortex.schemas import (
     CanonicalProfile,
     ClaimResult,
     DoNotInsert,
-    Education,
     EvidenceLedgerEntry,
     Experience,
     GeneratedBullet,
     JDSource,
     KeywordStrategy,
-    Link,
     Owner,
     ParsedJobDescription,
-    Project,
     ResumePlan,
     RoleSignals,
     SectionPlan,
     Skill,
-    Source,
     SourceRef,
-    Summary,
     TailoringOptions,
     ValidationReport,
     ValidationSummary,
     Warning,
 )
-
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -150,7 +144,9 @@ class TestCanonicalProfile:
         assert restored.profile_id == profile.profile_id
         assert restored.owner.full_name == "Morgan Castillo"
         assert len(restored.experiences) == 1
-        assert restored.experiences[0].bullets[0].text == data["experiences"][0]["bullets"][0]["text"]
+        assert (
+            restored.experiences[0].bullets[0].text == data["experiences"][0]["bullets"][0]["text"]
+        )
 
     def test_minimal_profile(self):
         profile = CanonicalProfile(owner=Owner(full_name="Test User"))
@@ -279,9 +275,7 @@ class TestResumePlan:
             keyword_strategy=KeywordStrategy(
                 covered=["Python", "SQL"],
                 not_covered=["AWS"],
-                do_not_insert=[
-                    DoNotInsert(keyword="Kubernetes", reason="No approved evidence.")
-                ],
+                do_not_insert=[DoNotInsert(keyword="Kubernetes", reason="No approved evidence.")],
             ),
         )
         dumped = json.loads(plan.model_dump_json())
@@ -334,8 +328,16 @@ class TestValidationReport:
                 warnings=2,
             ),
             claims=[
-                ClaimResult(claim="Built CI/CD pipelines", status="supported", evidence_ids=["ev_001"]),
-                ClaimResult(claim="Faster triage", status="needs_confirmation", evidence_ids=["ev_003"]),
+                ClaimResult(
+                    claim="Built CI/CD pipelines",
+                    status="supported",
+                    evidence_ids=["ev_001"],
+                ),
+                ClaimResult(
+                    claim="Faster triage",
+                    status="needs_confirmation",
+                    evidence_ids=["ev_003"],
+                ),
             ],
             warnings=[
                 Warning(type="missing_keyword", message="JD mentions AWS but no evidence."),

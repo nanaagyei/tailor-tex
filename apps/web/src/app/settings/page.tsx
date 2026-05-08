@@ -45,7 +45,6 @@ export default function SettingsPage() {
   const [appCount, setAppCount] = useState(0);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function load() {
@@ -71,8 +70,6 @@ export default function SettingsPage() {
         }
       } catch {
         // use defaults
-      } finally {
-        setLoading(false);
       }
     }
     load();

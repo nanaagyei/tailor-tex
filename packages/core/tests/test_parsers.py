@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from tailortex.parsers.extractors import ExtractionResult, extract_text
+from tailortex.parsers.extractors import extract_text
 from tailortex.parsers.resume_parser import parse_resume_text
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -43,7 +43,7 @@ class TestTextExtraction:
         pdf_file.write_bytes(b"%PDF-1.4 fake pdf content")
         # This will try to open as PDF and may fail at pymupdf level,
         # but the type detection should work
-        with pytest.raises(Exception):
+        with pytest.raises((RuntimeError, ValueError, ImportError)):
             extract_text(pdf_file)
 
 

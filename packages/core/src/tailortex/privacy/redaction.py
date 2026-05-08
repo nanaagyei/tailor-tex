@@ -6,7 +6,6 @@ then restores them locally after receiving the response.
 
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass, field
 
 
@@ -30,10 +29,7 @@ class RedactionMap:
         count = self._counters.get(category, 0) + 1
         self._counters[category] = count
 
-        if count == 1:
-            placeholder = category
-        else:
-            placeholder = f"{category}_{count}"
+        placeholder = category if count == 1 else f"{category}_{count}"
 
         self._forward[key] = placeholder
         self._reverse[placeholder] = key
@@ -87,13 +83,13 @@ def build_redaction_map(
     if location:
         rmap.add(location, "REDACTED_LOCATION")
 
-    for company in (companies or []):
+    for company in companies or []:
         rmap.add(company, "COMPANY")
 
-    for inst in (institutions or []):
+    for inst in institutions or []:
         rmap.add(inst, "UNIVERSITY")
 
-    for url in (urls or []):
+    for url in urls or []:
         rmap.add(url, "REDACTED_URL")
 
     return rmap

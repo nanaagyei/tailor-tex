@@ -89,7 +89,7 @@ _DATE_PATTERN = re.compile(
 
 _DATE_RANGE_PATTERN = re.compile(
     rf"({_MONTH_NAMES}\.?\s*\d{{4}}|\d{{4}}[-/]\d{{2}}|\d{{4}})"
-    rf"\s*[-–—]+\s*"
+    rf"\s*[-—]+\s*"
     rf"({_MONTH_NAMES}\.?\s*\d{{4}}|\d{{4}}[-/]\d{{2}}|\d{{4}}|[Pp]resent|[Cc]urrent|[Nn]ow)",
     re.IGNORECASE,
 )
@@ -105,15 +105,26 @@ _STANDALONE_PRESENT = re.compile(r"^(?:Present|Current|Now)\s*$", re.IGNORECASE)
 
 _EMAIL_PATTERN = re.compile(r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}")
 _PHONE_PATTERN = re.compile(r"(?:\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}")
-_URL_PATTERN = re.compile(r"https?://[^\s,;]+|(?:linkedin\.com|github\.com|[a-z]+\.[a-z]{2,})/[^\s,;]*")
+_URL_PATTERN = re.compile(
+    r"https?://[^\s,;]+|(?:linkedin\.com|github\.com|[a-z]+\.[a-z]{2,})/[^\s,;]*"
+)
 _BULLET_PATTERN = re.compile(r"^\s*[•\-\*\u2022\u25E6\u25AA\u2023\u25CF\u25CB▪►]\s*(.+)")
 # "Title | Company" or "Title  |  Company" pattern
 _PIPE_TITLE_PATTERN = re.compile(r"^(.+?)\s*\|\s*(.+)$")
 
 _MONTH_MAP = {
-    "jan": "01", "feb": "02", "mar": "03", "apr": "04",
-    "may": "05", "jun": "06", "jul": "07", "aug": "08",
-    "sep": "09", "oct": "10", "nov": "11", "dec": "12",
+    "jan": "01",
+    "feb": "02",
+    "mar": "03",
+    "apr": "04",
+    "may": "05",
+    "jun": "06",
+    "jul": "07",
+    "aug": "08",
+    "sep": "09",
+    "oct": "10",
+    "nov": "11",
+    "dec": "12",
 }
 
 
@@ -160,16 +171,15 @@ def _is_date_line(line: str) -> bool:
     """Check if a line is primarily a date range or standalone date word."""
     stripped = line.strip()
     if _DATE_RANGE_PATTERN.search(stripped):
-        remaining = _DATE_RANGE_PATTERN.sub("", stripped).strip().strip("|-–—·,")
+        remaining = _DATE_RANGE_PATTERN.sub("", stripped).strip()
+        remaining = re.sub(r"^[|\-—·,]+|[|\-—·,]+$", "", remaining)
         return len(remaining) < 10
     if _TRAILING_DATE_PATTERN.match(stripped):
         return True
     if _STANDALONE_PRESENT.match(stripped):
         return True
     # A line that's just a date like "March 2025 - Present" on its own
-    if _DATE_PATTERN.match(stripped) and len(stripped) < 30:
-        return True
-    return False
+    return bool(_DATE_PATTERN.match(stripped) and len(stripped) < 30)
 
 
 def _is_long_text(line: str) -> bool:
@@ -200,10 +210,13 @@ def _looks_like_continuation(line: str) -> bool:
     if line[0].islower():
         return True
     # Short fragment ending with period (likely end of a wrapped sentence)
-    if len(line) < 80 and line.endswith(".") and not _PIPE_TITLE_PATTERN.match(line):
-        if not _DATE_RANGE_PATTERN.search(line) and not _TRAILING_DATE_PATTERN.match(line):
-            return True
-    return False
+    return (
+        len(line) < 80
+        and line.endswith(".")
+        and not _PIPE_TITLE_PATTERN.match(line)
+        and not _DATE_RANGE_PATTERN.search(line)
+        and not _TRAILING_DATE_PATTERN.match(line)
+    )
 
 
 def _prev_ends_with_continuation_word(prev: str) -> bool:
@@ -234,11 +247,13 @@ def _join_wrapped_lines(lines: list[str]) -> list[str]:
                 continue
             # Context-based: previous line ends with a conjunction/preposition
             # and current line doesn't look like a new entry header
-            if (_prev_ends_with_continuation_word(prev)
-                    and not _is_bullet_line(line)
-                    and not _is_date_line(line)
-                    and not _STANDALONE_PRESENT.match(line.strip())
-                    and not _URL_PATTERN.match(line.strip())):
+            if (
+                _prev_ends_with_continuation_word(prev)
+                and not _is_bullet_line(line)
+                and not _is_date_line(line)
+                and not _STANDALONE_PRESENT.match(line.strip())
+                and not _URL_PATTERN.match(line.strip())
+            ):
                 joined[-1] = prev.rstrip() + " " + line.lstrip()
                 continue
 
@@ -355,13 +370,20 @@ def _parse_contact(header_lines: list[str]) -> tuple[Owner, list[ParserWarning]]
     name = ""
     for line in header_lines:
         stripped = line.strip()
-        if stripped and not _EMAIL_PATTERN.search(stripped) and not _URL_PATTERN.search(stripped):
-            if not _PHONE_PATTERN.match(stripped) and len(stripped) > 2:
-                name = stripped
-                break
+        if (
+            stripped
+            and not _EMAIL_PATTERN.search(stripped)
+            and not _URL_PATTERN.search(stripped)
+            and not _PHONE_PATTERN.match(stripped)
+            and len(stripped) > 2
+        ):
+            name = stripped
+            break
 
     if not name:
-        warnings.append(ParserWarning(section="contact", message="Could not detect candidate name."))
+        warnings.append(
+            ParserWarning(section="contact", message="Could not detect candidate name.")
+        )
 
     email_match = _EMAIL_PATTERN.search(header_text)
     email = email_match.group(0) if email_match else None
@@ -372,7 +394,13 @@ def _parse_contact(header_lines: list[str]) -> tuple[Owner, list[ParserWarning]]
     links: list[Link] = []
     for url_match in _URL_PATTERN.finditer(header_text):
         url = url_match.group(0)
-        label = "GitHub" if "github" in url.lower() else "LinkedIn" if "linkedin" in url.lower() else "Website"
+        label = (
+            "GitHub"
+            if "github" in url.lower()
+            else "LinkedIn"
+            if "linkedin" in url.lower()
+            else "Website"
+        )
         links.append(Link(label=label, url=url))
 
     location = None
@@ -480,10 +508,9 @@ def _split_into_entries(lines: list[str]) -> list[list[str]]:
                 if next_non_empty:
                     next_line = next_non_empty[0]
                     # Next line is a date → new entry
-                    if _is_date_line(next_line):
-                        should_split = True
-                    # Next line is also header-like (company + title pattern)
-                    elif _is_header_like(next_line) and not _is_bullet_line(next_line):
+                    if _is_date_line(next_line) or (
+                        _is_header_like(next_line) and not _is_bullet_line(next_line)
+                    ):
                         should_split = True
 
             if should_split:
@@ -519,11 +546,7 @@ def _parse_single_experience(entry_lines: list[str], offset: int) -> Experience 
     content_lines: list[str] = []
 
     for line in entry_lines:
-        if _is_bullet_line(line):
-            content_lines.append(line)
-        elif content_lines:
-            content_lines.append(line)
-        elif _is_long_text(line):
+        if _is_bullet_line(line) or content_lines or _is_long_text(line):
             content_lines.append(line)
         else:
             header_lines.append(line)
@@ -569,7 +592,7 @@ def _parse_single_experience(entry_lines: list[str], offset: int) -> Experience 
     for hline in header_lines:
         if _STANDALONE_PRESENT.match(hline) or _is_date_line(hline):
             continue
-        clean = _DATE_RANGE_PATTERN.sub("", hline).strip().rstrip("|–—-,")
+        clean = _DATE_RANGE_PATTERN.sub("", hline).strip().rstrip("|—-,")
         clean = re.sub(r"\s+(Present|Current|Now)\s*$", "", clean, flags=re.IGNORECASE).strip()
         if clean and len(clean) > 2:
             non_date_headers.append(clean)
@@ -578,8 +601,8 @@ def _parse_single_experience(entry_lines: list[str], offset: int) -> Experience 
     for hline in header_lines:
         pipe_m = _PIPE_TITLE_PATTERN.match(hline)
         if pipe_m:
-            left = _DATE_RANGE_PATTERN.sub("", pipe_m.group(1)).strip().rstrip("|–—-,")
-            right = _DATE_RANGE_PATTERN.sub("", pipe_m.group(2)).strip().rstrip("|–—-,")
+            left = _DATE_RANGE_PATTERN.sub("", pipe_m.group(1)).strip().rstrip("|—-,")
+            right = _DATE_RANGE_PATTERN.sub("", pipe_m.group(2)).strip().rstrip("|—-,")
             left = re.sub(r"\s+(Present|Current|Now)\s*$", "", left, flags=re.IGNORECASE).strip()
             right = re.sub(r"\s+(Present|Current|Now)\s*$", "", right, flags=re.IGNORECASE).strip()
             if left and right:
@@ -597,17 +620,14 @@ def _parse_single_experience(entry_lines: list[str], offset: int) -> Experience 
         loc_m = re.search(r",?\s*([A-Z][a-z]+(?:\s[A-Z][a-z]+)*),?\s*([A-Z]{2})\s*$", org)
         if loc_m:
             location = loc_m.group(0).strip().lstrip(",").strip()
-            org_clean = org[:loc_m.start()].strip().rstrip(",")
+            org_clean = org[: loc_m.start()].strip().rstrip(",")
             if org_clean:
                 org = org_clean
 
     # Extract bullets — both marked and unmarked
     for line in content_lines:
         bm = _BULLET_PATTERN.match(line)
-        if bm:
-            text = bm.group(1).strip()
-        else:
-            text = line.strip()
+        text = bm.group(1).strip() if bm else line.strip()
 
         if text and len(text) > 15:
             bullets.append(Bullet(id=_uid("bullet_"), text=text))
@@ -646,17 +666,28 @@ def _parse_education_section(
         if i == 0 and _SECTION_PATTERNS["education"].match(stripped.rstrip(":")):
             continue
 
-        if current_text and len(current_text) >= 2:
-            if _PIPE_TITLE_PATTERN.match(stripped) or (
-                _DATE_RANGE_PATTERN.search(stripped) and not _is_bullet_line(stripped)
-            ):
-                has_degree = any(re.search(r"\b(B\.?S|B\.?A|M\.?S|M\.?A|Ph\.?D|Bachelor|Master|Doctor)", t, re.IGNORECASE) for t in current_text)
-                if has_degree:
-                    edu = _parse_single_education(current_text)
-                    if edu:
-                        education.append(edu)
-                    current_text = [stripped]
-                    continue
+        if (
+            current_text
+            and len(current_text) >= 2
+            and (
+                _PIPE_TITLE_PATTERN.match(stripped)
+                or (_DATE_RANGE_PATTERN.search(stripped) and not _is_bullet_line(stripped))
+            )
+        ):
+            has_degree = any(
+                re.search(
+                    r"\b(B\.?S|B\.?A|M\.?S|M\.?A|Ph\.?D|Bachelor|Master|Doctor)",
+                    text,
+                    re.IGNORECASE,
+                )
+                for text in current_text
+            )
+            if has_degree:
+                edu = _parse_single_education(current_text)
+                if edu:
+                    education.append(edu)
+                current_text = [stripped]
+                continue
 
         current_text.append(stripped)
 
@@ -710,22 +741,26 @@ def _parse_single_education(text_lines: list[str]) -> Education | None:
 
     institution = "Unknown"
     for tl in text_lines:
-        clean = _DATE_RANGE_PATTERN.sub("", tl).strip().rstrip("|–—-,")
+        clean = _DATE_RANGE_PATTERN.sub("", tl).strip().rstrip("|—-,")
         if re.search(r"\b(University|College|Institute|School|Academy)\b", clean, re.IGNORECASE):
             if "|" in clean:
                 parts = clean.split("|")
                 for p in parts:
-                    if re.search(r"\b(University|College|Institute|School|Academy)\b", p, re.IGNORECASE):
+                    if re.search(
+                        r"\b(University|College|Institute|School|Academy)\b",
+                        p,
+                        re.IGNORECASE,
+                    ):
                         institution = p.strip()
                         break
             else:
                 institution = clean
             break
     if institution == "Unknown":
-        institution = _DATE_RANGE_PATTERN.sub("", text_lines[0]).strip().rstrip("|–—-,")
+        institution = _DATE_RANGE_PATTERN.sub("", text_lines[0]).strip().rstrip("|—-,")
 
     field_of_study = "Unknown"
-    field_match = re.search(r"\bin\s+([A-Z][A-Za-z\s&]+?)(?:\s*[-–,]|\s*$)", full_text)
+    field_match = re.search(r"\bin\s+([A-Z][A-Za-z\s&]+?)(?:\s*[-,]|\s*$)", full_text)
     if field_match:
         field_of_study = field_match.group(1).strip()
     elif "—" in full_text:
@@ -777,12 +812,10 @@ def _is_definite_project_header(line: str) -> bool:
     if not line or _is_bullet_line(line) or _is_long_text(line):
         return False
     # Has em-dash or en-dash separator → "ProjectName — Description"
-    if re.search(r"\s[—–]\s", line):
+    if re.search(r"\s[—]\s", line):
         return True
     # Has parenthesized content → "ProjectName (Tech1 | Tech2)"
-    if re.search(r"\([^)]+\)", line):
-        return True
-    return False
+    return bool(re.search(r"\([^)]+\)", line))
 
 
 def _parse_projects_section(
@@ -807,7 +840,7 @@ def _parse_projects_section(
     content_lines = _join_wrapped_lines(content_lines)
 
     # Remove empty lines — they don't reliably indicate entry boundaries in PDFs
-    content_lines = [l for l in content_lines if l]
+    content_lines = [line for line in content_lines if line]
 
     # Split into entries based on project headers
     entries: list[list[str]] = []
@@ -826,8 +859,13 @@ def _parse_projects_section(
             seen_content = False
             continue
 
-        if (seen_content and not is_bullet and not is_long
-                and len(line) < 120 and line[0:1].isupper()):
+        if (
+            seen_content
+            and not is_bullet
+            and not is_long
+            and len(line) < 120
+            and line[0:1].isupper()
+        ):
             # After content, a capitalized short line → possible new project
             # Check if followed by content (bullets/long text) within next 2 lines
             has_following_content = False
@@ -873,7 +911,7 @@ def _parse_single_project(text_lines: list[str]) -> Project | None:
     # Check paren_match FIRST — pipes inside parens shouldn't trigger pipe_match
     paren_match = re.match(r"^(.+?)\s*\(([^)]+)\)\s*$", name)
     pipe_match = re.match(r"^(.+?)\s*\|\s*(.+)$", name)
-    dash_match = re.match(r"^(.+?)\s*[—–]\s*(.+)$", name)
+    dash_match = re.match(r"^(.+?)\s*[—]\s*(.+)$", name)
 
     if paren_match:
         name = paren_match.group(1).strip()

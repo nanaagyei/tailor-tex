@@ -5,13 +5,12 @@ from __future__ import annotations
 import shutil
 import subprocess
 import zipfile
-from io import BytesIO
 from pathlib import Path
 
+from tailortex.rendering.latex_renderer import render_latex
 from tailortex.schemas.profile import CanonicalProfile
 from tailortex.schemas.resume import GeneratedBullet, ResumePlan
 from tailortex.schemas.validation import ValidationReport
-from tailortex.rendering.latex_renderer import render_latex
 
 
 def export_tex(
@@ -24,7 +23,11 @@ def export_tex(
 ) -> Path:
     """Export rendered LaTeX to a .tex file."""
     tex = render_latex(
-        profile, plan, generated_bullets, bold_keywords, template_dir,
+        profile,
+        plan,
+        generated_bullets,
+        bold_keywords,
+        template_dir,
     )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(tex, encoding="utf-8")
@@ -44,7 +47,11 @@ def export_overleaf_bundle(
     Contains main.tex and a README. No private metadata.
     """
     tex = render_latex(
-        profile, plan, generated_bullets, bold_keywords, template_dir,
+        profile,
+        plan,
+        generated_bullets,
+        bold_keywords,
+        template_dir,
     )
 
     readme = (

@@ -27,28 +27,6 @@ class MockProvider(LLMProvider):
     def is_local(self) -> bool:
         return True
 
-    async def complete(
-        self,
-        prompt: str,
-        output_schema: dict[str, Any] | None = None,
-        temperature: float = 0.3,
-        max_tokens: int = 4096,
-    ) -> LLMResponse | LLMError:
-        self.call_log.append(prompt)
-
-        if self._responses:
-            data = self._responses.pop(0)
-        else:
-            data = {}
-
-        raw = json.dumps(data)
-        return LLMResponse(
-            parsed=data,
-            raw_text=raw,
-            provider="mock",
-            model="mock-v1",
-        )
-
     def add_response(self, response: dict[str, Any]) -> None:
         """Queue a response for the next call."""
         self._responses.append(response)
@@ -66,10 +44,7 @@ class MockProvider(LLMProvider):
     ) -> LLMResponse | LLMError:
         self.call_log.append(prompt)
 
-        if self._responses:
-            data = self._responses.pop(0)
-        else:
-            data = {}
+        data = self._responses.pop(0) if self._responses else {}
 
         if isinstance(data, dict) and "__mock_error__" in data:
             return LLMError(

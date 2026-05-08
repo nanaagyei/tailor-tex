@@ -63,13 +63,15 @@ class RuleBasedProvider(LLMProvider):
         bullet_pattern = re.compile(r'"text"\s*:\s*"([^"]+)"')
         for match in bullet_pattern.finditer(prompt):
             text = match.group(1)
-            bullets.append({
-                "original_text": text,
-                "rewritten_text": text,
-                "validation_status": "supported",
-                "changes_made": "No changes — rule-based mode preserves original text.",
-                "needs_user_confirmation": [],
-            })
+            bullets.append(
+                {
+                    "original_text": text,
+                    "rewritten_text": text,
+                    "validation_status": "supported",
+                    "changes_made": "No changes — rule-based mode preserves original text.",
+                    "needs_user_confirmation": [],
+                }
+            )
 
         return {"bullets": bullets}
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, use } from "react";
+import { useState, useEffect, use, useCallback } from "react";
 import {
   RefreshCw,
   CheckCircle2,
@@ -116,7 +116,7 @@ export default function TailoringWorkspacePage({
     load();
   }, [id]);
 
-  async function handleTailor() {
+  const handleTailor = useCallback(async () => {
     if (!jd) return;
     setTailoring(true);
     setError(null);
@@ -136,14 +136,18 @@ export default function TailoringWorkspacePage({
     } finally {
       setTailoring(false);
     }
-  }
+  }, [jd, id, profile, rewriteMode]);
 
   // Auto-tailor on load
   useEffect(() => {
     if (jd && profile && bullets.length === 0 && !tailoring) {
-      handleTailor();
+      const timer = window.setTimeout(() => {
+        void handleTailor();
+      }, 0);
+      return () => window.clearTimeout(timer);
     }
-  }, [jd, profile]);
+    return undefined;
+  }, [jd, profile, bullets.length, tailoring, handleTailor]);
 
   if (loading) {
     return (

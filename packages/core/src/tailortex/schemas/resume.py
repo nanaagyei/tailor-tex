@@ -39,16 +39,14 @@ class GeneratedBullet(BaseModel):
     source_bullet_ids: list[str] = Field(default_factory=list)
     evidence_ids: list[str] = Field(default_factory=list)
     jd_keywords_used: list[str] = Field(default_factory=list)
-    validation_status: Literal["supported", "needs_confirmation", "rejected"] = (
-        "needs_confirmation"
-    )
+    validation_status: Literal["supported", "needs_confirmation", "rejected"] = "needs_confirmation"
     validation_notes: list[str] = Field(default_factory=list)
 
 
 class TailoringOptions(BaseModel):
-    mode: Literal[
-        "conservative", "impact_focused", "technical_depth", "research_focused"
-    ] = "conservative"
+    mode: Literal["conservative", "impact_focused", "technical_depth", "research_focused"] = (
+        "conservative"
+    )
     target_role_family: str = "software_engineering"
     max_pages: int = 1
     allow_bold_keywords: bool = True

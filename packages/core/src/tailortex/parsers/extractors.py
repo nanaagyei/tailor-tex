@@ -37,8 +37,7 @@ def extract_text(path: str | Path) -> ExtractionResult:
             suffix = ".pdf"
         else:
             raise ValueError(
-                f"Unsupported file type: {path.suffix}. "
-                "Accepted: .pdf, .docx, .md, .txt"
+                f"Unsupported file type: {path.suffix}. Accepted: .pdf, .docx, .md, .txt"
             )
 
     if suffix == ".pdf":
@@ -55,10 +54,10 @@ def _extract_pdf(path: Path) -> ExtractionResult:
     """Extract text from PDF using PyMuPDF."""
     try:
         import pymupdf
-    except ImportError:
+    except ImportError as err:
         raise ImportError(
             "PyMuPDF is required for PDF extraction. Install with: pip install pymupdf"
-        )
+        ) from err
 
     diagnostics: list[str] = []
     pages: list[str] = []
@@ -86,10 +85,10 @@ def _extract_docx(path: Path) -> ExtractionResult:
     """Extract text from DOCX using python-docx."""
     try:
         import docx
-    except ImportError:
+    except ImportError as err:
         raise ImportError(
             "python-docx is required for DOCX extraction. Install with: pip install python-docx"
-        )
+        ) from err
 
     diagnostics: list[str] = []
     doc = docx.Document(str(path))

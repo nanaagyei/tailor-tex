@@ -11,10 +11,8 @@ import re
 from dataclasses import dataclass
 from datetime import datetime
 
-from tailortex.parsers.jd_parser import normalize_skill
 from tailortex.schemas.job import ParsedJobDescription
 from tailortex.schemas.profile import CanonicalProfile, Experience, Project
-
 
 # Skill aliases for matching
 _ALIASES: dict[str, set[str]] = {
@@ -76,7 +74,9 @@ def score_experience(
     # Skill overlap
     overlap = all_jd_skills & exp_skills
     skill_score = len(overlap) / max(len(all_jd_skills), 1)
-    matched_skills = [s for s in jd.required_skills + jd.preferred_skills if _normalize(s) in overlap]
+    matched_skills = [
+        s for s in jd.required_skills + jd.preferred_skills if _normalize(s) in overlap
+    ]
 
     # Responsibility overlap (keyword matching)
     resp_score = _responsibility_overlap(exp, jd)
@@ -125,7 +125,9 @@ def score_project(
 
     overlap = all_jd_skills & proj_skills
     skill_score = len(overlap) / max(len(all_jd_skills), 1)
-    matched_skills = [s for s in jd.required_skills + jd.preferred_skills if _normalize(s) in overlap]
+    matched_skills = [
+        s for s in jd.required_skills + jd.preferred_skills if _normalize(s) in overlap
+    ]
 
     # Projects get lower recency and role signal scores
     total = 0.35 * skill_score + 0.25 * 0.0 + 0.15 * 0.3 + 0.15 * 0.0 + 0.10 * 0.5

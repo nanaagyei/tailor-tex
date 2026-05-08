@@ -17,9 +17,7 @@ from tailortex.schemas.resume import GeneratedBullet, ResumePlan
 # LaTeX special characters handled in escape_latex().
 
 # Default template directory (sibling packages/templates).
-_DEFAULT_TEMPLATE_DIR = (
-    Path(__file__).resolve().parents[4] / "templates"
-)
+_DEFAULT_TEMPLATE_DIR = Path(__file__).resolve().parents[4] / "templates"
 
 
 def escape_latex(text: str) -> str:
@@ -106,13 +104,15 @@ def build_template_context(
         elif exp.is_current:
             dates += " -- Present"
 
-        experience_list.append({
-            "title": esc(exp.title),
-            "organization": esc(exp.organization),
-            "location": esc(exp.location or ""),
-            "dates": esc(dates),
-            "bullets": exp_bullets,
-        })
+        experience_list.append(
+            {
+                "title": esc(exp.title),
+                "organization": esc(exp.organization),
+                "location": esc(exp.location or ""),
+                "dates": esc(dates),
+                "bullets": exp_bullets,
+            }
+        )
 
     # Projects
     project_list: list[dict[str, Any]] = []
@@ -125,12 +125,14 @@ def build_template_context(
                 text = _bold_keywords(text, bk)
             proj_bullets.append(text)
 
-        project_list.append({
-            "name": esc(proj.name),
-            "description": esc(proj.description or ""),
-            "skills": [esc(s) for s in proj.skills],
-            "bullets": proj_bullets,
-        })
+        project_list.append(
+            {
+                "name": esc(proj.name),
+                "description": esc(proj.description or ""),
+                "skills": [esc(s) for s in proj.skills],
+                "bullets": proj_bullets,
+            }
+        )
 
     # Education
     education_list: list[dict[str, Any]] = []
@@ -139,21 +141,25 @@ def build_template_context(
         if edu.end_date:
             dates += f" -- {edu.end_date}"
 
-        education_list.append({
-            "institution": esc(edu.institution),
-            "degree": esc(edu.degree or ""),
-            "field": esc(edu.field or ""),
-            "dates": esc(dates),
-        })
+        education_list.append(
+            {
+                "institution": esc(edu.institution),
+                "degree": esc(edu.degree or ""),
+                "field": esc(edu.field or ""),
+                "dates": esc(dates),
+            }
+        )
 
     # Certifications
     cert_list: list[dict[str, Any]] = []
     for cert in profile.certifications:
-        cert_list.append({
-            "name": esc(cert.name),
-            "issuer": esc(cert.issuer or ""),
-            "date": esc(cert.date or ""),
-        })
+        cert_list.append(
+            {
+                "name": esc(cert.name),
+                "issuer": esc(cert.issuer or ""),
+                "date": esc(cert.date or ""),
+            }
+        )
 
     # Summary
     summary_text = ""

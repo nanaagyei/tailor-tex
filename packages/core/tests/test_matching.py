@@ -2,8 +2,6 @@
 
 from datetime import datetime
 
-import pytest
-
 from tailortex.matching.scorer import (
     MatchScore,
     score_experience,
@@ -11,7 +9,7 @@ from tailortex.matching.scorer import (
     score_project,
 )
 from tailortex.matching.selector import select_for_resume
-from tailortex.schemas.job import ParsedJobDescription, RoleSignals, JDSource
+from tailortex.schemas.job import JDSource, ParsedJobDescription, RoleSignals
 from tailortex.schemas.profile import (
     Bullet,
     CanonicalProfile,
@@ -228,10 +226,7 @@ class TestSelectForResume:
         assert plan.target_job_id == "jd-test001"
 
     def test_respects_max_experiences(self):
-        exps = [
-            _make_experience(exp_id=f"exp-{i}", skills=["Python"])
-            for i in range(5)
-        ]
+        exps = [_make_experience(exp_id=f"exp-{i}", skills=["Python"]) for i in range(5)]
         profile = _make_profile(experiences=exps)
         jd = _make_jd()
         plan = select_for_resume(profile, jd, max_experiences=2)
@@ -239,10 +234,7 @@ class TestSelectForResume:
         assert len(exp_sections) <= 2
 
     def test_respects_max_projects(self):
-        projs = [
-            _make_project(proj_id=f"proj-{i}", skills=["Python"])
-            for i in range(5)
-        ]
+        projs = [_make_project(proj_id=f"proj-{i}", skills=["Python"]) for i in range(5)]
         profile = _make_profile(projects=projs)
         jd = _make_jd()
         plan = select_for_resume(profile, jd, max_projects=1)

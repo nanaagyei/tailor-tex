@@ -46,16 +46,24 @@ class OpenAICompatibleProvider(LLMProvider):
             import httpx
         except ImportError:
             return LLMError(
-                error="httpx is required for OpenAI-compatible provider. Install with: pip install httpx",
+                error=(
+                    "httpx is required for OpenAI-compatible provider. "
+                    "Install with: pip install httpx"
+                ),
                 provider=self.name,
             )
 
         messages = [{"role": "user", "content": prompt}]
         if output_schema:
-            messages.insert(0, {
-                "role": "system",
-                "content": "You must respond with valid JSON only. No markdown, no explanation.",
-            })
+            messages.insert(
+                0,
+                {
+                    "role": "system",
+                    "content": (
+                        "You must respond with valid JSON only. No markdown, no explanation."
+                    ),
+                },
+            )
 
         body: dict[str, Any] = {
             "model": self._model,

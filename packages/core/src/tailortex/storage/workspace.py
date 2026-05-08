@@ -9,17 +9,16 @@ The workspace is a directory (default: ~/.tailortex/) containing:
 
 from __future__ import annotations
 
+import contextlib
 import json
 import os
 import tempfile
-from datetime import datetime
 from pathlib import Path
 from typing import TypeVar
 
 from pydantic import BaseModel
 
 from tailortex.schemas.profile import CanonicalProfile
-from tailortex.schemas.validation import ValidationReport
 
 T = TypeVar("T", bound=BaseModel)
 
@@ -103,10 +102,8 @@ class Workspace:
             os.replace(tmp, path)
         except BaseException:
             # Clean up temp file on failure
-            try:
+            with contextlib.suppress(OSError):
                 os.unlink(tmp)
-            except OSError:
-                pass
             raise
 
     # ------------------------------------------------------------------

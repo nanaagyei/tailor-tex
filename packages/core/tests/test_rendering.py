@@ -3,19 +3,17 @@
 import zipfile
 from pathlib import Path
 
-import pytest
-
-from tailortex.rendering.latex_renderer import (
-    build_template_context,
-    escape_latex,
-    render_latex,
-    _bold_keywords,
-)
 from tailortex.rendering.exporter import (
     export_diff_report,
     export_overleaf_bundle,
     export_tex,
     export_validation_report,
+)
+from tailortex.rendering.latex_renderer import (
+    _bold_keywords,
+    build_template_context,
+    escape_latex,
+    render_latex,
 )
 from tailortex.schemas.profile import (
     Bullet,
@@ -41,7 +39,9 @@ def _make_full_profile() -> CanonicalProfile:
             phone="555-123-4567",
             location="Austin, TX",
         ),
-        summary=Summary(source_text="Experienced software engineer with 5 years in backend systems."),
+        summary=Summary(
+            source_text="Experienced software engineer with 5 years in backend systems."
+        ),
         experiences=[
             Experience(
                 id="exp-1",

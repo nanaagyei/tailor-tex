@@ -11,10 +11,9 @@ import json
 import uuid
 from typing import Any
 
-from tailortex.llm.base import LLMError, LLMProvider, LLMResponse
+from tailortex.llm.base import LLMError, LLMProvider
 from tailortex.schemas.profile import Bullet
 from tailortex.schemas.resume import GeneratedBullet
-
 
 _MODE_INSTRUCTIONS = {
     "conservative": (
@@ -86,16 +85,19 @@ async def rewrite_bullets(
     """
     mode_instructions = _MODE_INSTRUCTIONS.get(mode, _MODE_INSTRUCTIONS["conservative"])
 
-    evidence = json.dumps([
-        {
-            "id": b.id,
-            "text": b.text,
-            "skills": b.skills,
-            "metrics": b.metrics,
-            "approved": b.approved,
-        }
-        for b in bullets
-    ], indent=2)
+    evidence = json.dumps(
+        [
+            {
+                "id": b.id,
+                "text": b.text,
+                "skills": b.skills,
+                "metrics": b.metrics,
+                "approved": b.approved,
+            }
+            for b in bullets
+        ],
+        indent=2,
+    )
 
     prompt = _REWRITE_PROMPT.format(
         mode=mode,
@@ -138,19 +140,21 @@ def _parse_rewrite_response(
     results: list[GeneratedBullet] = []
 
     items = parsed if isinstance(parsed, list) else parsed.get("bullets", [])
-    bullet_map = {b.id: b for b in original_bullets}
+    {b.id: b for b in original_bullets}
 
     for item in items:
         source_id = item.get("source_bullet_id", "")
 
-        results.append(GeneratedBullet(
-            id=f"gen-{_uid()}",
-            text=item.get("text", ""),
-            source_bullet_ids=[source_id] if source_id else [],
-            jd_keywords_used=item.get("jd_keywords_used", []),
-            validation_status="needs_confirmation",
-            validation_notes=item.get("validation_notes", []),
-        ))
+        results.append(
+            GeneratedBullet(
+                id=f"gen-{_uid()}",
+                text=item.get("text", ""),
+                source_bullet_ids=[source_id] if source_id else [],
+                jd_keywords_used=item.get("jd_keywords_used", []),
+                validation_status="needs_confirmation",
+                validation_notes=item.get("validation_notes", []),
+            )
+        )
 
     # Add any bullets that the LLM missed
     seen_source_ids = set()
@@ -159,13 +163,15 @@ def _parse_rewrite_response(
 
     for b in original_bullets:
         if b.id not in seen_source_ids:
-            results.append(GeneratedBullet(
-                id=f"gen-{b.id}",
-                text=b.text,
-                source_bullet_ids=[b.id],
-                validation_status="supported",
-                validation_notes=["Not processed by LLM — original text preserved."],
-            ))
+            results.append(
+                GeneratedBullet(
+                    id=f"gen-{b.id}",
+                    text=b.text,
+                    source_bullet_ids=[b.id],
+                    validation_status="supported",
+                    validation_notes=["Not processed by LLM — original text preserved."],
+                )
+            )
 
     return results
 
