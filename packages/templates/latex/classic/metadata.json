@@ -1,0 +1,8 @@
+{
+  "id": "classic",
+  "name": "Classic",
+  "description": "Traditional single-column layout with serif styling and underlined section headings. Clean and professional.",
+  "supports": ["ats", "pdf", "overleaf"],
+  "max_pages_recommended": 2,
+  "engine": ["pdflatex", "xelatex", "tectonic"]
+}

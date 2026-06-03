@@ -1,0 +1,183 @@
+{
+  "$defs": {
+    "JDSource": {
+      "properties": {
+        "type": {
+          "enum": [
+            "pasted_text",
+            "url",
+            "file"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "JDSource",
+      "type": "object"
+    },
+    "RoleSignals": {
+      "properties": {
+        "backend": {
+          "default": 0.0,
+          "title": "Backend",
+          "type": "number"
+        },
+        "frontend": {
+          "default": 0.0,
+          "title": "Frontend",
+          "type": "number"
+        },
+        "machine_learning": {
+          "default": 0.0,
+          "title": "Machine Learning",
+          "type": "number"
+        },
+        "qa": {
+          "default": 0.0,
+          "title": "Qa",
+          "type": "number"
+        },
+        "leadership": {
+          "default": 0.0,
+          "title": "Leadership",
+          "type": "number"
+        }
+      },
+      "title": "RoleSignals",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "job_id": {
+      "title": "Job Id",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/JDSource"
+    },
+    "company": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Company"
+    },
+    "role_title": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Role Title"
+    },
+    "location": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Location"
+    },
+    "employment_type": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Employment Type"
+    },
+    "seniority": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Seniority"
+    },
+    "required_skills": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Skills",
+      "type": "array"
+    },
+    "preferred_skills": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Preferred Skills",
+      "type": "array"
+    },
+    "responsibilities": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Responsibilities",
+      "type": "array"
+    },
+    "domain_keywords": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Domain Keywords",
+      "type": "array"
+    },
+    "role_signals": {
+      "$ref": "#/$defs/RoleSignals"
+    },
+    "prompt_injection_flags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Prompt Injection Flags",
+      "type": "array"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "job_id",
+    "source"
+  ],
+  "title": "ParsedJobDescription",
+  "type": "object"
+}

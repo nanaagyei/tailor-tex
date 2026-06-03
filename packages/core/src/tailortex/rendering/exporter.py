@@ -1,4 +1,4 @@
-"""Export manager — produces .tex files, Overleaf bundles, and reports."""
+"""Export manager — produces .tex, .md, Overleaf bundles, and reports."""
 
 from __future__ import annotations
 
@@ -7,7 +7,8 @@ import subprocess
 import zipfile
 from pathlib import Path
 
-from tailortex.rendering.latex_renderer import render_latex
+from tailortex.rendering.latex_renderer import build_template_context, render_latex
+from tailortex.reports.validation_report import generate_validation_report_markdown
 from tailortex.schemas.profile import CanonicalProfile
 from tailortex.schemas.resume import GeneratedBullet, ResumePlan
 from tailortex.schemas.validation import ValidationReport
@@ -20,6 +21,7 @@ def export_tex(
     generated_bullets: list[GeneratedBullet] | None = None,
     bold_keywords: list[str] | None = None,
     template_dir: Path | None = None,
+    template_id: str = "ats-modern",
 ) -> Path:
     """Export rendered LaTeX to a .tex file."""
     tex = render_latex(
@@ -28,9 +30,143 @@ def export_tex(
         generated_bullets,
         bold_keywords,
         template_dir,
+        template_id,
     )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(tex, encoding="utf-8")
+    return output_path
+
+
+def export_markdown(
+    profile: CanonicalProfile,
+    plan: ResumePlan,
+    output_path: Path,
+    generated_bullets: list[GeneratedBullet] | None = None,
+    bold_keywords: list[str] | None = None,
+) -> Path:
+    """Export a plain Markdown version of the resume."""
+    ctx = build_template_context(profile, plan, generated_bullets, bold_keywords, escape=False)
+
+    lines: list[str] = []
+
+    # Heading
+    lines.append(f"# {ctx['name']}")
+
+    # Contact line
+    contact_parts: list[str] = []
+    contact = ctx["contact"]
+    if contact.get("email"):
+        contact_parts.append(f"[{contact['email']}](mailto:{contact['email']})")
+    if contact.get("phone"):
+        contact_parts.append(contact["phone"])
+    for link in contact.get("links", []):
+        contact_parts.append(f"[{link}]({link})")
+    if contact.get("location"):
+        contact_parts.append(contact["location"])
+    if contact_parts:
+        lines.append("")
+        lines.append(" | ".join(contact_parts))
+
+    # Summary
+    if ctx.get("summary"):
+        lines.append("")
+        lines.append("## Summary")
+        lines.append("")
+        lines.append(ctx["summary"])
+
+    # Skills
+    if ctx.get("skills"):
+        lines.append("")
+        lines.append("## Skills")
+        lines.append("")
+        for group in ctx["skills"]:
+            items = ", ".join(group["items"])
+            lines.append(f"- **{group['group']}**: {items}")
+
+    # Experience
+    if ctx.get("experience"):
+        lines.append("")
+        lines.append("## Experience")
+        for exp in ctx["experience"]:
+            lines.append("")
+            location_str = f", {exp['location']}" if exp.get("location") else ""
+            lines.append(
+                f"### {exp['title']} — {exp['organization']}{location_str}"
+            )
+            lines.append("")
+            lines.append(exp["dates"])
+            if exp.get("bullets"):
+                lines.append("")
+                for bullet in exp["bullets"]:
+                    lines.append(f"- {bullet}")
+
+    # Projects
+    if ctx.get("projects"):
+        lines.append("")
+        lines.append("## Projects")
+        for proj in ctx["projects"]:
+            lines.append("")
+            skill_str = ""
+            if proj.get("skills"):
+                skill_str = f" ({', '.join(proj['skills'])})"
+            lines.append(f"### {proj['name']}{skill_str}")
+            if proj.get("description"):
+                lines.append("")
+                lines.append(proj["description"])
+            if proj.get("bullets"):
+                lines.append("")
+                for bullet in proj["bullets"]:
+                    lines.append(f"- {bullet}")
+
+    # Education
+    if ctx.get("education"):
+        lines.append("")
+        lines.append("## Education")
+        for edu in ctx["education"]:
+            lines.append("")
+            degree_str = edu["degree"]
+            if edu.get("field"):
+                degree_str += f" in {edu['field']}"
+            lines.append(f"### {edu['institution']}")
+            lines.append("")
+            lines.append(f"{degree_str} — {edu['dates']}")
+
+    # Certifications
+    if ctx.get("certifications"):
+        lines.append("")
+        lines.append("## Certifications")
+        for cert in ctx["certifications"]:
+            lines.append("")
+            issuer_str = f" — {cert['issuer']}" if cert.get("issuer") else ""
+            date_str = f" ({cert['date']})" if cert.get("date") else ""
+            lines.append(f"- **{cert['name']}**{issuer_str}{date_str}")
+
+    # Publications
+    if ctx.get("publications"):
+        lines.append("")
+        lines.append("## Selected Publications")
+        for pub in ctx["publications"]:
+            lines.append("")
+            venue_str = f" {pub['venue']}" if pub.get("venue") else ""
+            date_str = f", {pub['date']}" if pub.get("date") else ""
+            lines.append(f"- **\"{pub['title']}\"**{venue_str}{date_str}")
+            if pub.get("url"):
+                lines.append(f"  {pub['url']}")
+
+    # Awards
+    if ctx.get("awards"):
+        lines.append("")
+        lines.append("## Honors & Awards")
+        for award in ctx["awards"]:
+            lines.append("")
+            issuer_str = f", {award['issuer']}" if award.get("issuer") else ""
+            date_str = f" — {award['date']}" if award.get("date") else ""
+            lines.append(f"- **{award['title']}**{issuer_str}{date_str}")
+
+    lines.append("")
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text("\n".join(lines), encoding="utf-8")
     return output_path
 
 
@@ -41,6 +177,7 @@ def export_overleaf_bundle(
     generated_bullets: list[GeneratedBullet] | None = None,
     bold_keywords: list[str] | None = None,
     template_dir: Path | None = None,
+    template_id: str = "ats-modern",
 ) -> Path:
     """Export a zip bundle suitable for Overleaf upload.
 
@@ -52,6 +189,7 @@ def export_overleaf_bundle(
         generated_bullets,
         bold_keywords,
         template_dir,
+        template_id,
     )
 
     readme = (
@@ -75,31 +213,9 @@ def export_validation_report(
     output_path: Path,
 ) -> Path:
     """Export validation report as Markdown."""
-    lines: list[str] = []
-    lines.append("# Validation Report\n")
-    lines.append(f"**Status:** {report.status}\n")
-    lines.append("## Summary\n")
-    lines.append(f"- Supported: {report.summary.supported_claims}")
-    lines.append(f"- Needs confirmation: {report.summary.needs_confirmation}")
-    lines.append(f"- Rejected: {report.summary.rejected_claims}")
-    lines.append(f"- Warnings: {report.summary.warnings}")
-    lines.append("")
-
-    if report.claims:
-        lines.append("## Claims\n")
-        for claim in report.claims:
-            icon = {"supported": "+", "needs_confirmation": "?", "rejected": "x"}
-            lines.append(f"- [{icon.get(claim.status, '?')}] {claim.claim}")
-        lines.append("")
-
-    if report.warnings:
-        lines.append("## Warnings\n")
-        for w in report.warnings:
-            lines.append(f"- **{w.type}**: {w.message}")
-        lines.append("")
-
+    markdown = generate_validation_report_markdown(report)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text("\n".join(lines), encoding="utf-8")
+    output_path.write_text(markdown, encoding="utf-8")
     return output_path
 
 

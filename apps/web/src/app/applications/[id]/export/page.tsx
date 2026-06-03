@@ -43,7 +43,8 @@ import {
   renderResume,
   tailorResume,
 } from "@/lib/api";
-import type { ParsedJobDescription, ValidationReport } from "@/lib/types";
+import { estimateResumePages, getLengthGuidance } from "@/lib/resume-metrics";
+import type { ParsedJobDescription, ValidationReport, GeneratedBullet, ResumePlan } from "@/lib/types";
 
 export default function ExportPage({
   params,
@@ -54,6 +55,8 @@ export default function ExportPage({
   const [copied, setCopied] = useState(false);
   const [jd, setJd] = useState<ParsedJobDescription | null>(null);
   const [report, setReport] = useState<ValidationReport | null>(null);
+  const [bullets, setBullets] = useState<GeneratedBullet[]>([]);
+  const [plan, setPlan] = useState<ResumePlan | null>(null);
   const [texContent, setTexContent] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -78,6 +81,8 @@ export default function ExportPage({
 
         setTexContent(renderResult.tex);
         setReport(tailorResult.validation);
+        setBullets(tailorResult.generated_bullets);
+        setPlan(tailorResult.plan);
       } catch (err) {
         setError(
           err instanceof Error ? err.message : "Failed to load export data."
@@ -157,6 +162,13 @@ export default function ExportPage({
           </Button>
         </div>
 
+        {bullets.length > 0 && (
+          <ResumeLengthBanner
+            bulletCount={bullets.length}
+            sectionCount={plan?.sections.length ?? 0}
+          />
+        )}
+
         <div className="grid gap-4 lg:grid-cols-5">
           {/* Left: Export options */}
           <div className="lg:col-span-2 flex flex-col gap-4">
@@ -165,7 +177,7 @@ export default function ExportPage({
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-xs font-medium uppercase tracking-widest text-muted-foreground/60">
-                    Validation Summary
+                    JD Alignment Summary
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -261,11 +273,11 @@ export default function ExportPage({
                     </div>
                     <div className="flex-1">
                       <CardTitle className="text-sm flex items-center gap-2">
-                        Validation Report
+                        JD Alignment Report
                         <Download className="size-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                       </CardTitle>
                       <CardDescription className="text-xs mt-0.5">
-                        Markdown report with all claims, evidence, and warnings.
+                        Markdown report showing which claims are supported by your verified career evidence, with all claims, evidence, and warnings.
                       </CardDescription>
                     </div>
                   </div>
@@ -488,5 +500,26 @@ latexmk -pdf -interaction=nonstopmode resume.tex`}
         </DialogContent>
       </Dialog>
     </AppShell>
+    );
+}
+
+function ResumeLengthBanner({
+  bulletCount,
+  sectionCount,
+}: {
+  bulletCount: number;
+  sectionCount: number;
+}) {
+  const pages = estimateResumePages(bulletCount, sectionCount);
+  const guidance = getLengthGuidance(pages);
+  const colorMap = {
+    good: "border-emerald/20 bg-emerald/5 text-emerald",
+    warning: "border-warning/20 bg-warning/5 text-warning",
+    exceeded: "border-destructive/20 bg-destructive/5 text-destructive",
+  };
+  return (
+    <div className={`mb-4 rounded-lg border px-4 py-3 text-sm ${colorMap[guidance.status]}`}>
+      Est. {pages} {pages === 1 ? "page" : "pages"} &middot; {guidance.message}
+    </div>
   );
 }

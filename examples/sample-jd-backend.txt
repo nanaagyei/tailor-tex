@@ -1,0 +1,26 @@
+Senior Backend Engineer
+Apex Engineering | San Francisco, CA (Remote OK)
+Full-time
+
+About the role:
+We are looking for a Senior Backend Engineer to design and build scalable APIs and services that power our platform.
+
+Required qualifications:
+- 4+ years of experience building backend services
+- Strong proficiency in Python and Go
+- Experience with REST APIs and microservice architecture
+- Experience with Docker and container orchestration
+- Experience with PostgreSQL or similar relational databases
+
+Preferred qualifications:
+- Experience with CI/CD pipelines (GitHub Actions, Jenkins)
+- Familiarity with observability tools (OpenTelemetry, Datadog)
+- Experience with cloud platforms (AWS, GCP, or Azure)
+
+Responsibilities:
+- Design and implement RESTful APIs and backend services
+- Optimize database queries and data models for performance
+- Build and maintain CI/CD pipelines for automated testing and deployment
+- Collaborate with frontend engineers to integrate UI components with backend services
+- Participate in code reviews and mentor junior engineers
+- Write comprehensive tests and documentation

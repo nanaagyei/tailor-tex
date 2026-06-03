@@ -140,3 +140,14 @@ class CanonicalProfile(BaseModel):
     evidence_ledger: list[EvidenceLedgerEntry] = Field(default_factory=list)
     created_at: datetime = Field(default_factory=datetime.now)
     updated_at: datetime = Field(default_factory=datetime.now)
+
+    def is_approved(self) -> bool:
+        """Check if the profile has been reviewed and approved.
+
+        A profile is considered approved when at least one experience
+        or education entry has been explicitly approved by the user.
+        """
+        has_experience = any(exp.approved for exp in self.experiences)
+        has_education = any(edu.approved for edu in self.education)
+        has_project = any(proj.approved for proj in self.projects)
+        return has_experience or has_education or has_project

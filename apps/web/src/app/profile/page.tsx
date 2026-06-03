@@ -43,6 +43,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { EmptyState } from "@/components/empty-state";
+import { ConfidenceBadge } from "@/components/confidence-badge";
 import { getProfile, listProfiles, saveProfile } from "@/lib/api";
 import type {
   CanonicalProfile,
@@ -606,6 +607,7 @@ function ExperienceCard({
                     {experience.start_date} &ndash;{" "}
                     {experience.is_current ? "Present" : experience.end_date}
                   </Badge>
+                  <ConfidenceBadge confidence={experience.confidence} />
                   <EditButton onClick={handleOpen} />
                 </div>
               </div>
@@ -848,17 +850,20 @@ function ProjectCard({
     <>
       <Card>
         <CardHeader className="pb-2">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <CardTitle className="text-base">{project.name}</CardTitle>
-              {project.description && (
-                <CardDescription className="mt-1">
-                  {project.description}
-                </CardDescription>
-              )}
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <CardTitle className="text-base">{project.name}</CardTitle>
+                {project.description && (
+                  <CardDescription className="mt-1">
+                    {project.description}
+                  </CardDescription>
+                )}
+              </div>
+              <div className="flex items-center gap-1.5 shrink-0">
+                <ConfidenceBadge confidence={project.confidence} />
+                <EditButton onClick={handleOpen} />
+              </div>
             </div>
-            <EditButton onClick={handleOpen} />
-          </div>
         </CardHeader>
         <CardContent>
           {project.skills.length > 0 && (
@@ -1032,20 +1037,23 @@ function EducationCard({
               <GraduationCap className="size-4 text-muted-foreground" />
             </div>
             <div className="flex-1 min-w-0">
-              <div className="flex items-start justify-between gap-2">
-                <div>
-                  <CardTitle className="text-base">
-                    {education.degree}
-                    {education.field && education.field !== "Unknown"
-                      ? ` in ${education.field}`
-                      : ""}
-                  </CardTitle>
-                  <CardDescription className="mt-1">
-                    {education.institution}
-                  </CardDescription>
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <CardTitle className="text-base">
+                      {education.degree}
+                      {education.field && education.field !== "Unknown"
+                        ? ` in ${education.field}`
+                        : ""}
+                    </CardTitle>
+                    <CardDescription className="mt-1">
+                      {education.institution}
+                    </CardDescription>
+                  </div>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <ConfidenceBadge confidence={education.confidence} />
+                    <EditButton onClick={handleOpen} />
+                  </div>
                 </div>
-                <EditButton onClick={handleOpen} />
-              </div>
               <div className="flex flex-wrap items-center gap-2 mt-2">
                 {(education.start_date || education.end_date) && (
                   <Badge variant="outline" className="font-mono text-xs">

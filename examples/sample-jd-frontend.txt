@@ -1,0 +1,24 @@
+Frontend Engineer
+NovaTech | Austin, TX
+Full-time
+
+We're seeking a Frontend Engineer to build beautiful, performant user interfaces.
+
+Requirements:
+- 3+ years of frontend development experience
+- Proficiency in JavaScript/TypeScript and React
+- Experience with CSS frameworks and responsive design
+- Understanding of REST APIs and frontend-backend integration
+- Experience with testing frameworks (Jest, Cypress)
+
+Nice to have:
+- Experience with Next.js or similar frameworks
+- Familiarity with UI/UX design principles
+- Knowledge of accessibility standards
+
+Responsibilities:
+- Develop and maintain responsive web applications using React
+- Implement UI components following design specifications
+- Write unit and integration tests
+- Collaborate with backend engineers on API design
+- Optimize application performance and load times

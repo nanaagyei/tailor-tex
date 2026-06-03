@@ -63,3 +63,5 @@ tailortex-agent-docs/
 .cursor/
 
 .claude/
+
+IMPLEMENTATION_STATUS.md

@@ -43,6 +43,7 @@ import {
   getProfile,
   tailorResume,
 } from "@/lib/api";
+import { estimateResumePages, getLengthGuidance } from "@/lib/resume-metrics";
 import type {
   CanonicalProfile,
   ParsedJobDescription,
@@ -226,6 +227,14 @@ export default function TailoringWorkspacePage({
           <AlertTriangle className="size-4" />
           <AlertDescription>{error}</AlertDescription>
         </Alert>
+      )}
+
+      {/* Resume length indicator */}
+      {bullets.length > 0 && (
+        <ResumeLengthBanner
+          bulletCount={bullets.length}
+          sectionCount={plan?.sections.length ?? profile?.experiences.length ?? 0}
+        />
       )}
 
       <div className="grid gap-4 lg:grid-cols-3">
@@ -509,7 +518,7 @@ export default function TailoringWorkspacePage({
                   <>
                     <div>
                       <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground/60 mb-2">
-                        Validation Report
+                        JD Alignment Report
                       </p>
                       <div className="grid grid-cols-3 gap-2 mb-3">
                         <div className="text-center rounded-lg bg-emerald/10 py-2.5">
@@ -595,5 +604,26 @@ export default function TailoringWorkspacePage({
         </Card>
       </div>
     </AppShell>
+  );
+}
+
+function ResumeLengthBanner({
+  bulletCount,
+  sectionCount,
+}: {
+  bulletCount: number;
+  sectionCount: number;
+}) {
+  const pages = estimateResumePages(bulletCount, sectionCount);
+  const guidance = getLengthGuidance(pages);
+  const colorMap = {
+    good: "border-emerald/20 bg-emerald/5 text-emerald",
+    warning: "border-warning/20 bg-warning/5 text-warning",
+    exceeded: "border-destructive/20 bg-destructive/5 text-destructive",
+  };
+  return (
+    <div className={`mb-4 rounded-lg border px-4 py-3 text-sm ${colorMap[guidance.status]}`}>
+      Est. {pages} {pages === 1 ? "page" : "pages"} &middot; {guidance.message}
+    </div>
   );
 }

@@ -1,0 +1,25 @@
+Machine Learning Engineer
+DataForge AI | Remote
+Full-time
+
+Join our ML team to build production-grade machine learning systems.
+
+Required:
+- Strong Python programming skills
+- Experience with ML frameworks (PyTorch or TensorFlow)
+- Understanding of ML model deployment and serving
+- Experience with data processing (Pandas, NumPy)
+- Knowledge of SQL and database systems
+
+Preferred:
+- Experience with distributed training
+- Knowledge of MLOps tools and practices
+- Familiarity with cloud ML services (AWS SageMaker, GCP Vertex AI)
+- Publication record in ML conferences
+
+Responsibilities:
+- Design and implement ML model training pipelines
+- Deploy and monitor ML models in production
+- Collaborate with data scientists on feature engineering
+- Build data processing and ETL pipelines
+- Document experiments and model performance metrics

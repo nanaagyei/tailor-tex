@@ -86,6 +86,47 @@ def _make_profile() -> CanonicalProfile:
     )
 
 
+def _make_qa_profile() -> CanonicalProfile:
+    """Profile with QA/testing experience only — no engineering/architecture claims."""
+    return CanonicalProfile(
+        owner=Owner(full_name="QA User", email="qa@example.com"),
+        experiences=[
+            Experience(
+                id="exp-qa",
+                organization="TestCo",
+                title="QA Engineer",
+                start_date="2022-01",
+                is_current=True,
+                approved=True,
+                bullets=[
+                    Bullet(
+                        id="b-qa-1",
+                        text="Wrote comprehensive unit tests using Pytest for critical business logic",
+                        skills=["Python", "Pytest", "Testing"],
+                        approved=True,
+                        metrics=[],
+                    ),
+                ],
+            ),
+        ],
+        skills=[
+            Skill(name="Python"),
+            Skill(name="Pytest"),
+            Skill(name="Testing"),
+        ],
+        education=[
+            Education(
+                id="edu-1",
+                institution="UT Austin",
+                degree="B.S.",
+                field="Computer Science",
+                start_date="2017-08",
+                end_date="2021-05",
+            ),
+        ],
+    )
+
+
 class TestGoldenFabricationRejection:
     """Golden tests from the spec — these must always pass."""
 
@@ -293,3 +334,23 @@ class TestRewriteWithMockProvider:
             source_ids.update(r.source_bullet_ids)
         assert "b-1" in source_ids
         assert "b-2" in source_ids
+
+
+class TestGoldenScenarios:
+    """Golden tests for broader validation scenarios."""
+
+    def test_scoped_skill_not_generalized_across_roles(self):
+        """QA-scoped testing skill must not be generalized to engineering claims."""
+        profile = _make_qa_profile()
+        bullet = GeneratedBullet(
+            id="gen-b-qa",
+            text=(
+                "Built distributed systems using Python and microservice architecture "
+                "for high-scale backend services"
+            ),
+            source_bullet_ids=["b-qa-1"],
+            validation_status="needs_confirmation",
+        )
+        report = validate_claims([bullet], profile)
+        claim = report.claims[0]
+        assert claim.status != "supported"

@@ -1,0 +1,53 @@
+{
+  "profile_id": "morgan-castillo",
+  "version": "1.0.0",
+  "owner": {
+    "full_name": "Morgan Castillo",
+    "email": "morgan.castillo@proton.me",
+    "phone": "(512) 847-1928",
+    "location": "Austin, TX"
+  },
+  "experiences": [
+    {
+      "title": "Software Engineer",
+      "company": "Meridian Systems",
+      "location": "Austin, TX",
+      "dates": "Mar 2023 - Present",
+      "description": "Designed and maintained CI/CD pipelines using GitHub Actions, reducing deploy time by 40%.\nBuilt REST API endpoints in Python (FastAPI) serving 2M+ requests/day.\nImplemented structured logging and tracing with OpenTelemetry across 12 microservices.",
+      "approved": true
+    },
+    {
+      "title": "QA Engineer",
+      "company": "Tidewater Analytics",
+      "location": "Remote",
+      "dates": "Jun 2021 - Feb 2023",
+      "description": "Developed automated test suites using Pytest and Selenium, covering 85% of critical user paths.\nReduced production bug escape rate by 30% through integration testing improvements.",
+      "approved": true
+    }
+  ],
+  "projects": [
+    {
+      "name": "LogPipe",
+      "url": "https://github.com/mcastillo-dev/logpipe",
+      "description": "Built a Go CLI tool that aggregates logs from multiple Docker containers into a unified stream.",
+      "approved": true
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Texas at Austin",
+      "degree": "B.S. in Computer Science",
+      "dates": "Aug 2017 - May 2021",
+      "gpa": "3.7",
+      "approved": true
+    }
+  ],
+  "skills": {
+    "languages": ["Python", "Go", "JavaScript"],
+    "frameworks": ["FastAPI", "Flask", "React"],
+    "tools": ["Docker", "GitHub Actions", "PostgreSQL"],
+    "testing": ["Pytest", "Selenium"],
+    "concepts": ["REST APIs", "CI/CD", "microservices", "observability"]
+  },
+  "evidence_ledger": []
+}

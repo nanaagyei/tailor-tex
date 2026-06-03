@@ -41,6 +41,7 @@ export interface Experience {
     line_range: [number, number] | null;
   } | null;
   approved: boolean;
+  confidence?: number;
   bullets: Bullet[];
 }
 
@@ -52,6 +53,7 @@ export interface Project {
   skills: string[];
   bullets: Bullet[];
   approved: boolean;
+  confidence?: number;
 }
 
 export interface Education {
@@ -63,6 +65,7 @@ export interface Education {
   end_date: string | null;
   gpa: string | null;
   approved: boolean;
+  confidence?: number;
 }
 
 export interface Skill {

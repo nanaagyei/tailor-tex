@@ -6,11 +6,20 @@ Treats JD as untrusted input — includes prompt injection detection.
 
 from __future__ import annotations
 
+import json
+import logging
 import re
 import uuid
 from dataclasses import dataclass, field
+from typing import TYPE_CHECKING
 
+from tailortex.llm.prompts import JOB_DESCRIPTION_PARSER_PROMPT
 from tailortex.schemas.job import JDSource, ParsedJobDescription, RoleSignals
+
+if TYPE_CHECKING:
+    from tailortex.llm.base import LLMProvider
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -359,3 +368,135 @@ def _extract_domain_keywords(text_lower: str) -> list[str]:
     ]
     found = [d for d in domains if d in text_lower]
     return found
+
+
+# ---------------------------------------------------------------------------
+# LLM-based JD parser
+# ---------------------------------------------------------------------------
+
+_PARSED_JD_SCHEMA: dict = {
+    "type": "object",
+    "properties": {
+        "job_id": {"type": "string"},
+        "source": {"type": "string"},
+        "company": {"type": ["string", "null"]},
+        "role_title": {"type": ["string", "null"]},
+        "location": {"type": ["string", "null"]},
+        "employment_type": {"type": ["string", "null"]},
+        "seniority": {"type": ["string", "null"]},
+        "required_skills": {"type": "array", "items": {"type": "string"}},
+        "preferred_skills": {"type": "array", "items": {"type": "string"}},
+        "responsibilities": {"type": "array", "items": {"type": "string"}},
+        "domain_keywords": {"type": "array", "items": {"type": "string"}},
+        "role_signals": {
+            "type": "object",
+            "properties": {
+                "backend": {"type": "number"},
+                "frontend": {"type": "number"},
+                "machine_learning": {"type": "number"},
+                "qa": {"type": "number"},
+                "leadership": {"type": "number"},
+            },
+        },
+        "prompt_injection_flags": {"type": "array", "items": {"type": "string"}},
+    },
+    "required": ["job_id", "source", "required_skills", "preferred_skills", "responsibilities"],
+}
+
+
+async def parse_jd_with_llm(
+    text: str,
+    provider: LLMProvider,
+    company: str | None = None,
+    role_title: str | None = None,
+) -> JDParseResult:
+    """Parse raw JD text using an LLM, falling back to deterministic parsing.
+
+    Args:
+        text: Raw job description text.
+        provider: An LLM provider instance with complete_with_retry().
+        company: Optional company name to seed the parse.
+        role_title: Optional role title to seed the parse.
+
+    Returns:
+        JDParseResult with the parsed job description and any warnings.
+    """
+    prompt = JOB_DESCRIPTION_PARSER_PROMPT.format(
+        job_description=text,
+        parsed_job_description_schema=json.dumps(_PARSED_JD_SCHEMA, indent=2),
+    )
+
+    result = await provider.complete_with_retry(
+        prompt=prompt,
+        output_schema=_PARSED_JD_SCHEMA,
+    )
+
+    from tailortex.llm.base import LLMError, LLMResponse
+
+    if isinstance(result, LLMError):
+        logger.warning(
+            "LLM JD parse failed (%s), falling back to deterministic parser. Error: %s",
+            provider.name,
+            result.error,
+        )
+        fallback = parse_jd_text(text, company=company, role_title=role_title)
+        fallback.warnings.insert(
+            0, f"LLM parse failed: {result.error}. Used deterministic fallback."
+        )
+        return fallback
+
+    if not isinstance(result, LLMResponse) or not result.parsed:
+        logger.warning("LLM returned empty parse, falling back to deterministic parser.")
+        fallback = parse_jd_text(text, company=company, role_title=role_title)
+        fallback.warnings.insert(0, "LLM returned empty parse. Used deterministic fallback.")
+        return fallback
+
+    try:
+        parsed = result.parsed
+        if isinstance(parsed, list):
+            parsed = parsed[0] if parsed else {}
+
+        # Merge user-supplied company/role_title if LLM didn't return them
+        if company and not parsed.get("company"):
+            parsed["company"] = company
+        if role_title and not parsed.get("role_title"):
+            parsed["role_title"] = role_title
+
+        role_signals = parsed.get("role_signals", {})
+        if not isinstance(role_signals, dict):
+            role_signals = {}
+
+        jd = ParsedJobDescription(
+            job_id=parsed.get("job_id", f"jd-{_uid()}"),
+            source=JDSource(type=parsed.get("source", "pasted_text")),
+            company=parsed.get("company"),
+            role_title=parsed.get("role_title"),
+            location=parsed.get("location"),
+            employment_type=parsed.get("employment_type"),
+            seniority=parsed.get("seniority"),
+            required_skills=parsed.get("required_skills", []) or [],
+            preferred_skills=parsed.get("preferred_skills", []) or [],
+            responsibilities=parsed.get("responsibilities", []) or [],
+            domain_keywords=parsed.get("domain_keywords", []) or [],
+            role_signals=RoleSignals(
+                backend=float(role_signals.get("backend", 0)),
+                frontend=float(role_signals.get("frontend", 0)),
+                machine_learning=float(role_signals.get("machine_learning", 0)),
+                qa=float(role_signals.get("qa", 0)),
+                leadership=float(role_signals.get("leadership", 0)),
+            ),
+            prompt_injection_flags=parsed.get("prompt_injection_flags", []) or [],
+        )
+        return JDParseResult(jd=jd, raw_text=text)
+    except Exception as exc:
+        logger.warning(
+            "Failed to construct ParsedJobDescription from LLM response (%s). "
+            "Falling back to deterministic parser. Error: %s",
+            provider.name,
+            exc,
+        )
+        fallback = parse_jd_text(text, company=company, role_title=role_title)
+        fallback.warnings.insert(
+            0, f"LLM response construction failed: {exc}. Used deterministic fallback."
+        )
+        return fallback

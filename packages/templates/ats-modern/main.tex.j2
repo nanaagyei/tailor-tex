@@ -179,4 +179,34 @@
 
 {% endif %}
 
+{% if publications %}
+%-----------PUBLICATIONS-----------
+\section{Publications}
+{% raw %}\resumeSubHeadingListStart{% endraw %}
+
+{% for pub in publications %}
+{% raw %}  \resumeSubheading{% endraw %}
+
+    { {{- pub.title -}} }{ {{- pub.date | default('') -}} }
+    { {{- pub.venue | default('') -}} }{}
+{% endfor %}
+{% raw %}\resumeSubHeadingListEnd{% endraw %}
+
+{% endif %}
+
+{% if awards %}
+%-----------AWARDS-----------
+\section{Awards}
+{% raw %}\resumeSubHeadingListStart{% endraw %}
+
+{% for award in awards %}
+{% raw %}  \resumeSubheading{% endraw %}
+
+    { {{- award.title -}} }{ {{- award.date | default('') -}} }
+    { {{- award.issuer | default('') -}} }{}
+{% endfor %}
+{% raw %}\resumeSubHeadingListEnd{% endraw %}
+
+{% endif %}
+
 \end{document}

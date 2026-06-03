@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [main]
 
+permissions: {}
+
 jobs:
   python:
     name: Python (lint + test)
@@ -32,6 +34,18 @@ jobs:
 
       - name: Test
         run: cd packages/core && uv run pytest -v
+
+      - name: Install CLI dependencies
+        run: cd apps/cli && uv sync
+
+      - name: CLI tests
+        run: cd apps/cli && uv run pytest -v
+
+      - name: Install API dependencies
+        run: cd apps/api && uv sync
+
+      - name: API tests
+        run: cd apps/api && uv run pytest -v
 
   web:
     name: Web (lint + build)
@@ -62,3 +76,75 @@ jobs:
 
       - name: Build
         run: cd apps/web && pnpm build
+
+      - name: Test
+        run: cd apps/web && pnpm test
+
+  security:
+    name: Security (secrets + audit)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Secret scanning
+        uses: trufflesecurity/trufflehog-action@v1
+        with:
+          extra_args: --only-verified
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install core dependencies
+        run: cd packages/core && uv sync
+
+      - name: pip-audit (core)
+        uses: pypa/gh-action-pip-audit@v1
+        with:
+          inputs: packages/core/pyproject.toml
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+          cache-dependency-path: apps/web/pnpm-lock.yaml
+
+      - name: Install web dependencies
+        run: cd apps/web && pnpm install --frozen-lockfile
+
+      - name: pnpm audit
+        run: cd apps/web && pnpm audit
+
+  scorecard:
+    name: OpenSSF Scorecard
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Scorecard analysis
+        uses: ossf/scorecard-action@v2
+        with:
+          results_file: results.sarif
+          results_format: sarif
+
+      - name: Upload to code scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: results.sarif

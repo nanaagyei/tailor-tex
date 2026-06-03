@@ -170,6 +170,14 @@ class TailorRequest(BaseModel):
     template_id: str = "ats-modern"
 
 
+class ProfileApprovalError(HTTPException):
+    def __init__(self) -> None:
+        super().__init__(
+            status_code=400,
+            detail="Profile has not been approved. Review and approve your profile first.",
+        )
+
+
 @app.post("/tailor")
 async def tailor_resume(req: TailorRequest) -> dict[str, Any]:
     from tailortex.llm.rewriter import rewrite_bullets_deterministic
@@ -182,6 +190,9 @@ async def tailor_resume(req: TailorRequest) -> dict[str, Any]:
         profile = ws.load_profile(req.profile_id)
     except WorkspaceError:
         raise HTTPException(status_code=404, detail=f"Profile not found: {req.profile_id}")
+
+    if not profile.is_approved():
+        raise ProfileApprovalError()
 
     try:
         jd_data = ws.load_application(req.jd_id)
@@ -214,11 +225,13 @@ class RenderRequest(BaseModel):
     profile_id: str = "default"
     jd_id: str
     template_id: str = "ats-modern"
+    format: str = "tex"
 
 
 @app.post("/render")
 async def render_resume(req: RenderRequest) -> dict[str, str]:
     from tailortex.matching.selector import select_for_resume
+    from tailortex.rendering.exporter import export_markdown
     from tailortex.rendering.latex_renderer import render_latex
 
     ws = _ws()
@@ -228,6 +241,9 @@ async def render_resume(req: RenderRequest) -> dict[str, str]:
     except WorkspaceError:
         raise HTTPException(status_code=404, detail=f"Profile not found: {req.profile_id}")
 
+    if not profile.is_approved():
+        raise ProfileApprovalError()
+
     try:
         jd_data = ws.load_application(req.jd_id)
         jd = ParsedJobDescription(**jd_data)
@@ -235,9 +251,21 @@ async def render_resume(req: RenderRequest) -> dict[str, str]:
         raise HTTPException(status_code=404, detail=f"JD not found: {req.jd_id}")
 
     plan = select_for_resume(profile, jd, template_id=req.template_id)
-    tex = render_latex(profile, plan)
 
-    return {"tex": tex}
+    if req.format == "markdown":
+        import tempfile
+
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".md", delete=False) as tmp:
+            tmp_path = Path(tmp.name)
+        try:
+            export_markdown(profile, plan, tmp_path)
+            content = tmp_path.read_text()
+        finally:
+            tmp_path.unlink(missing_ok=True)
+        return {"markdown": content}
+    else:
+        tex = render_latex(profile, plan, template_id=req.template_id)
+        return {"tex": tex}
 
 
 # ── Config ──────────────────────────────────────────────
