@@ -129,6 +129,7 @@ For policy and threat model details, see [SECURITY.md](SECURITY.md).
 
 ## Documentation
 
+- [Documentation index](docs/README.md) - project decisions and issue-tracker guidance
 - [CONTRIBUTING.md](CONTRIBUTING.md) - contribution workflow and coding standards
 - [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) - community expectations
 - [SUPPORT.md](SUPPORT.md) - support channels and issue guidance
