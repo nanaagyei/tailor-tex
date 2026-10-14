@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "base_resume_path": {
+      "type": "string"
+    },
+    "dossier_id": {
+      "type": "string"
+    },
+    "evidence": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "metric",
+              "tool",
+              "scope",
+              "organization",
+              "title",
+              "date",
+              "credential",
+              "outcome"
+            ],
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "owner",
+          "kind",
+          "text"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "dossier_id",
+    "base_resume_path",
+    "evidence",
+    "notes"
+  ],
+  "title": "Synthetic candidate dossier",
+  "type": "object"
+}

@@ -13,7 +13,7 @@ TailorTex is a career-evidence compiler for technical candidates. Its unit of va
 - `apps/web/` — frozen web interface; see `apps/web/AGENTS.md` before web work.
 - `docs/spec/` — pointer to the GitHub issue tracker, which holds current implementation scope.
 - `docs/adr/` — accepted architectural decisions.
-- `benchmark/` — public benchmark artifacts (planned; created by the benchmark issues).
+- [`benchmark/`](benchmark/README.md) — evaluation definitions, rubric, and schemas; corpus and harness are planned.
 
 ## Commands
 

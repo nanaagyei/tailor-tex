@@ -1,0 +1,30 @@
+{
+  "atoms": [
+    {
+      "gold_ref": "/atoms/0",
+      "kind": "title",
+      "line": 2,
+      "value": "QA Engineer",
+      "verdict": "supported"
+    },
+    {
+      "gold_ref": "/atoms/1",
+      "kind": "organization",
+      "line": 2,
+      "value": "Example Systems",
+      "verdict": "supported"
+    },
+    {
+      "gold_ref": "/atoms/2",
+      "kind": "tool",
+      "line": 3,
+      "value": "Python",
+      "verdict": "supported"
+    }
+  ],
+  "case": {
+    "dossier_id": "dossier-example",
+    "job_id": "jd-qa-example"
+  },
+  "system_id": "example-system"
+}

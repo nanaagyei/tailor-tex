@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Versioned benchmark protocol, human rating rubric, and validated JSON formats (#10).
 - Repository checks now cover core, CLI, API, and web without masking failures (#9).
 - Reviewable CLI resume drafts, approved profile handoff, and saved jobs shared by the CLI and API, with read support for legacy job records (#7).
 - CLI and API test suites with CI jobs for both packages.
