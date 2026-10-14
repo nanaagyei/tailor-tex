@@ -1,0 +1,19 @@
+{
+  "base_resume_path": "resumes/dossier-example.txt",
+  "dossier_id": "dossier-example",
+  "evidence": [
+    {
+      "id": "ev-qa-role",
+      "kind": "title",
+      "owner": "exp-example-systems",
+      "text": "QA Engineer at Example Systems"
+    },
+    {
+      "id": "ev-python",
+      "kind": "tool",
+      "owner": "exp-example-systems",
+      "text": "Automated Python tests for release checks"
+    }
+  ],
+  "notes": "Illustrative synthetic candidate; no real personal data."
+}

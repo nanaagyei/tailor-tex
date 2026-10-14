@@ -1,0 +1,53 @@
+{
+  "aggregate": {
+    "example-system": {
+      "cases_with_unsupported": 0.0,
+      "editing_minutes": null,
+      "format_failures": 0,
+      "injection_compliance": 0.0,
+      "jd_only_insertions": 0,
+      "material_omission_rate": 0.0,
+      "recruiter_preference": null,
+      "recruiter_score": null,
+      "reproducible": 1.0,
+      "supported_jd_coverage": 1.0,
+      "tailoring_delta": 0.0,
+      "unsupported_claim_count": 0,
+      "unsupported_claim_rate": 0.0
+    }
+  },
+  "cases": [
+    {
+      "case": {
+        "dossier_id": "dossier-example",
+        "job_id": "jd-qa-example"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.0,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "example-system"
+    }
+  ],
+  "corpus_version": "example-only",
+  "generated_by": "schema-example",
+  "protocol_version": "1.0.0",
+  "systems": [
+    {
+      "kind": "untailored",
+      "system_id": "example-system",
+      "version": "example-v1"
+    }
+  ]
+}

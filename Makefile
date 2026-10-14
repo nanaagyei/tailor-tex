@@ -37,9 +37,12 @@ test: test-python test-web
 test-python:
 	cd packages/core && uv run pytest -v
 	cd apps/cli && uv run pytest -v
+	cd apps/api && uv run pytest -v
 
 test-web:
-	cd apps/web && pnpm test --passWithNoTests 2>/dev/null || true
+	cd apps/web && pnpm lint
+	cd apps/web && pnpm tsc --noEmit
+	cd apps/web && pnpm build
 
 # ──────────────────────────────────────────────
 # Lint
@@ -50,9 +53,12 @@ lint: lint-python lint-web
 lint-python:
 	cd packages/core && uv run ruff check src/ tests/
 	cd packages/core && uv run mypy src/
+	cd apps/cli && uv run ruff check src/ tests/
+	cd apps/api && uv run ruff check src/ tests/
 
 lint-web:
 	cd apps/web && pnpm lint
+	cd apps/web && pnpm tsc --noEmit
 
 # ──────────────────────────────────────────────
 # Format
@@ -60,7 +66,8 @@ lint-web:
 
 format:
 	cd packages/core && uv run ruff format src/ tests/
-	cd apps/web && pnpm format 2>/dev/null || true
+	cd apps/cli && uv run ruff format src/ tests/
+	cd apps/api && uv run ruff format src/ tests/
 
 # ──────────────────────────────────────────────
 # Clean
