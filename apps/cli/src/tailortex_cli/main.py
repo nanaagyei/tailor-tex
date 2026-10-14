@@ -65,6 +65,7 @@ def init(
     """Create a new TailorTex workspace."""
     ws = _get_workspace(workspace)
     if ws.exists():
+        ws.init()
         console.print("[yellow]Workspace already exists.[/yellow]")
         return
     ws.init()
@@ -76,6 +77,7 @@ def init(
 @app.command(name="import")
 def import_resume(
     file: Path = typer.Argument(..., help="Resume file to import (PDF, DOCX, MD, TXT)."),
+    profile_id: str = typer.Option("default", "--profile", help="Profile ID."),
     workspace: Optional[str] = typer.Option(None, help="Custom workspace path."),
 ) -> None:
     """Import a resume file and create a profile draft."""
@@ -96,19 +98,18 @@ def import_resume(
         raise typer.Exit(EXIT_PARSER)
 
     draft = parse_resume_text(result.text)
-
-    # Save the parsed draft as an application for now
-    ws.save_application("draft-profile", draft.model_dump())
+    draft.profile.profile_id = profile_id
+    draft_path = ws.save_draft(draft.profile, draft.raw_text)
 
     console.print(f"[green]Imported:[/green] {file.name}")
-    console.print("Profile draft saved.")
+    console.print(f"Profile draft saved: {draft_path}")
 
-    if result.warnings:
-        for w in result.warnings:
-            console.print(f"  [yellow]Warning:[/yellow] {w}")
+    for warning in result.diagnostics + [w.message for w in draft.warnings]:
+        console.print(f"  [yellow]Warning:[/yellow] {warning}")
 
     console.print("\nNext:")
-    console.print("  tailortex profile review")
+    console.print(f"  tailortex profile review --profile {profile_id}")
+    console.print(f"  tailortex profile approve --all --profile {profile_id}")
 
 
 # ── Profile commands ────────────────────────────────────
@@ -127,41 +128,87 @@ def profile_review(
         err_console.print("[red]No workspace found. Run 'tailortex init' first.[/red]")
         raise typer.Exit(EXIT_GENERAL)
 
-    try:
-        profile = ws.load_profile(profile_id)
-    except WorkspaceError:
-        err_console.print(f"[red]Profile not found:[/red] {profile_id}")
-        raise typer.Exit(EXIT_GENERAL)
+    if ws.has_draft(profile_id):
+        profile = ws.load_draft(profile_id)
+        console.print("Showing DRAFT (not approved)")
+    else:
+        try:
+            profile = ws.load_profile(profile_id)
+        except WorkspaceError:
+            err_console.print(f"[red]Profile not found:[/red] {profile_id}")
+            raise typer.Exit(EXIT_GENERAL)
+        console.print("Showing APPROVED PROFILE")
 
     console.print_json(profile.model_dump_json(indent=2))
-    console.print("\nTo approve, edit the JSON and run:")
-    console.print("  tailortex profile approve <edited-profile.json>")
+    if ws.has_draft(profile_id):
+        console.print("\nTo approve all imported items, run:")
+        console.print(f"  tailortex profile approve --all --profile {profile_id}")
+        console.print("Or edit the JSON and run:")
+        console.print("  tailortex profile approve <edited-profile.json>")
 
 
 @profile_app.command(name="approve")
 def profile_approve(
-    file: Path = typer.Argument(..., help="Edited profile JSON file."),
+    file: Optional[Path] = typer.Argument(None, help="Edited profile JSON file."),
+    all_items: bool = typer.Option(False, "--all", help="Approve every item in a saved draft."),
+    profile_id: str = typer.Option("default", "--profile", help="Draft profile ID."),
     workspace: Optional[str] = typer.Option(None, help="Custom workspace path."),
 ) -> None:
     """Approve a reviewed profile."""
     from tailortex.schemas.profile import CanonicalProfile
 
-    if not file.exists():
-        err_console.print(f"[red]File not found:[/red] {file}")
+    if (file is None) == (not all_items):
+        err_console.print("Choose exactly one approval form:")
+        err_console.print("  tailortex profile approve FILE")
+        err_console.print("  tailortex profile approve --all [--profile ID]")
         raise typer.Exit(EXIT_GENERAL)
 
-    try:
-        raw = json.loads(file.read_text())
-        profile = CanonicalProfile(**raw)
-    except Exception as e:
-        err_console.print(f"[red]Invalid profile:[/red] {e}")
-        raise typer.Exit(EXIT_VALIDATION)
-
     ws = _get_workspace(workspace)
+    if all_items:
+        from tailortex.storage.workspace import WorkspaceError
+
+        try:
+            profile = ws.load_draft(profile_id)
+        except WorkspaceError:
+            err_console.print(f"[red]Draft not found:[/red] {profile_id}. Run 'tailortex import'.")
+            raise typer.Exit(EXIT_GENERAL)
+        if profile.summary:
+            profile.summary.approved = True
+        for experience in profile.experiences:
+            experience.approved = True
+            for bullet in experience.bullets:
+                bullet.approved = True
+        for project in profile.projects:
+            project.approved = True
+            for bullet in project.bullets:
+                bullet.approved = True
+        for items in (
+            profile.education,
+            profile.skills,
+            profile.certifications,
+            profile.publications,
+            profile.awards,
+        ):
+            for item in items:
+                item.approved = True
+    else:
+        assert file is not None
+        if not file.exists():
+            err_console.print(f"[red]File not found:[/red] {file}")
+            raise typer.Exit(EXIT_GENERAL)
+        try:
+            raw = json.loads(file.read_text())
+            profile = CanonicalProfile(**raw)
+        except Exception as e:
+            err_console.print(f"[red]Invalid profile:[/red] {e}")
+            raise typer.Exit(EXIT_VALIDATION)
+
     if not ws.exists():
         ws.init()
 
     ws.save_profile(profile)
+    if all_items:
+        ws.delete_draft(profile_id)
     console.print(f"[green]Profile approved:[/green] {profile.profile_id}")
     console.print("\nNext:")
     console.print("  tailortex jd parse <job-description.txt>")
@@ -194,10 +241,13 @@ def profile_list(
 def jd_parse(
     file: Optional[Path] = typer.Argument(None, help="Job description text file."),
     stdin: bool = typer.Option(False, "--stdin", help="Read from stdin."),
+    company: Optional[str] = typer.Option(None, "--company", help="Company name."),
+    role: Optional[str] = typer.Option(None, "--role", help="Role title."),
     workspace: Optional[str] = typer.Option(None, help="Custom workspace path."),
 ) -> None:
     """Parse a job description."""
     from tailortex.parsers.jd_parser import parse_jd_text
+    from tailortex.schemas.job import JDRecord
 
     if stdin:
         text = sys.stdin.read()
@@ -207,24 +257,24 @@ def jd_parse(
         err_console.print("[red]Provide a file or use --stdin.[/red]")
         raise typer.Exit(EXIT_PARSER)
 
-    result = parse_jd_text(text)
+    result = parse_jd_text(text, company=company, role_title=role)
 
     ws = _get_workspace(workspace)
     if not ws.exists():
         ws.init()
 
-    ws.save_application(result.job_id, result.model_dump())
+    ws.save_job(JDRecord(jd=result.jd, raw_text=result.raw_text, warnings=result.warnings))
 
     table = Table(title="Parsed Job Description")
     table.add_column("Field", style="bold")
     table.add_column("Value")
 
-    table.add_row("Job ID", result.job_id)
-    table.add_row("Company", result.company or "Unknown")
-    table.add_row("Role", result.role_title or "Unknown")
-    table.add_row("Seniority", result.seniority or "Unknown")
-    table.add_row("Required Skills", ", ".join(result.required_skills[:10]))
-    table.add_row("Preferred Skills", ", ".join(result.preferred_skills[:10]))
+    table.add_row("Job ID", result.jd.job_id)
+    table.add_row("Company", result.jd.company or "Unknown")
+    table.add_row("Role", result.jd.role_title or "Unknown")
+    table.add_row("Seniority", result.jd.seniority or "Unknown")
+    table.add_row("Required Skills", ", ".join(result.jd.required_skills[:10]))
+    table.add_row("Preferred Skills", ", ".join(result.jd.preferred_skills[:10]))
 
     console.print(table)
 
@@ -232,9 +282,33 @@ def jd_parse(
         for w in result.warnings:
             console.print(f"  [yellow]Warning:[/yellow] {w}")
 
-    console.print(f"\n[green]Saved:[/green] {result.job_id}")
+    console.print(f"\n[green]Saved:[/green] {result.jd.job_id}")
     console.print("\nNext:")
-    console.print(f"  tailortex tailor --jd {result.job_id}")
+    console.print(f"  tailortex tailor --jd {result.jd.job_id}")
+
+
+@jd_app.command(name="list")
+def jd_list(
+    workspace: Optional[str] = typer.Option(None, help="Custom workspace path."),
+) -> None:
+    """List saved job descriptions."""
+    ws = _get_workspace(workspace)
+    if not ws.exists():
+        err_console.print("[red]No workspace found. Run 'tailortex init' first.[/red]")
+        raise typer.Exit(EXIT_GENERAL)
+
+    job_ids = ws.list_jobs()
+    if not job_ids:
+        console.print("No jobs found. Run 'tailortex jd parse'.")
+        return
+    table = Table(title="Saved Jobs")
+    table.add_column("Job ID")
+    table.add_column("Company")
+    table.add_column("Role")
+    for job_id in job_ids:
+        job = ws.load_job(job_id).jd
+        table.add_row(job_id, job.company or "Unknown", job.role_title or "Unknown")
+    console.print(table)
 
 
 # ── Tailor command ──────────────────────────────────────
@@ -255,7 +329,8 @@ def tailor(
     from tailortex.validation.claim_validator import validate_claims
     from tailortex.rendering.exporter import export_tex
     from tailortex.storage.workspace import WorkspaceError
-    from tailortex.parsers.jd_parser import parse_jd_text, JDParseResult
+    from tailortex.parsers.jd_parser import parse_jd_text
+    from tailortex.schemas.job import JDRecord
 
     ws = _get_workspace(workspace)
     if not ws.exists():
@@ -266,23 +341,29 @@ def tailor(
     try:
         profile = ws.load_profile(profile_id)
     except WorkspaceError:
+        if ws.has_draft(profile_id):
+            err_console.print(
+                "[red]Profile not approved.[/red] Run 'tailortex profile approve --all'."
+            )
+            raise typer.Exit(EXIT_VALIDATION)
         err_console.print(f"[red]Profile not found:[/red] {profile_id}")
         raise typer.Exit(EXIT_GENERAL)
 
     # Load or parse JD
     jd_path = Path(jd)
-    if jd_path.exists():
-        jd_result = parse_jd_text(jd_path.read_text())
+    if jd_path.is_file():
+        parsed = parse_jd_text(jd_path.read_text(encoding="utf-8"))
+        ws.save_job(JDRecord(jd=parsed.jd, raw_text=parsed.raw_text, warnings=parsed.warnings))
+        job = parsed.jd
     else:
         try:
-            jd_data = ws.load_application(jd)
-            jd_result = JDParseResult(**jd_data)
+            job = ws.load_job(jd).jd
         except WorkspaceError:
-            err_console.print(f"[red]JD not found:[/red] {jd}")
+            err_console.print(f"[red]JD not found: {jd}. Run 'tailortex jd list'.[/red]")
             raise typer.Exit(EXIT_GENERAL)
 
     with console.status("Selecting evidence..."):
-        plan = select_for_resume(profile, jd_result, template_id=template)
+        plan = select_for_resume(profile, job, template_id=template)
 
     # Collect bullets for rewriting
     all_bullets = []
@@ -292,7 +373,7 @@ def tailor(
         all_bullets.extend(proj.bullets)
 
     with console.status("Generating bullets..."):
-        generated = rewrite_bullets_deterministic(all_bullets, jd_result.required_skills)
+        generated = rewrite_bullets_deterministic(all_bullets, job.required_skills)
 
     with console.status("Validating claims..."):
         report = validate_claims(generated, profile)
@@ -313,7 +394,7 @@ def tailor(
             err_console.print(f"  [red]{w.message}[/red]")
 
     # Export .tex
-    out_path = output or Path(f"{jd_result.job_id}.tex")
+    out_path = output or Path(f"{job.job_id}.tex")
     with console.status("Rendering LaTeX..."):
         bold_kw = plan.keyword_strategy.covered[:10]
         export_tex(profile, plan, out_path, generated, bold_kw)
@@ -441,6 +522,16 @@ def workspace_list(
     console.print(f"\n[bold]Profiles ({len(profiles)}):[/bold]")
     for p in profiles:
         console.print(f"  {p}")
+
+    drafts = ws.list_drafts()
+    console.print(f"\n[bold]Drafts ({len(drafts)}):[/bold]")
+    for draft in drafts:
+        console.print(f"  {draft}")
+
+    jobs = ws.list_jobs()
+    console.print(f"\n[bold]Jobs ({len(jobs)}):[/bold]")
+    for job in jobs:
+        console.print(f"  {job}")
 
     applications = ws.list_applications()
     console.print(f"\n[bold]Applications ({len(applications)}):[/bold]")
