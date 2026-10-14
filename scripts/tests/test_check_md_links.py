@@ -36,6 +36,21 @@ class CheckMarkdownLinksTests(unittest.TestCase):
         self.assertIn("README.md:1", errors[0])
         self.assertIn("missing.md", errors[0])
 
+    def test_missing_reference_style_target_is_reported(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            root = Path(temporary_directory)
+            (root / "README.md").write_text(
+                "[guide][guide-link]\n\n[guide-link]: docs/missing.md\n",
+                encoding="utf-8",
+            )
+            tracked = {PurePosixPath("README.md")}
+
+            errors = check_markdown_links(root, tracked, tracked)
+
+        self.assertEqual(len(errors), 1)
+        self.assertIn("README.md:3", errors[0])
+        self.assertIn("docs/missing.md", errors[0])
+
     def test_ignores_code_examples(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             root = Path(temporary_directory)

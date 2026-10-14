@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Any
 
@@ -16,7 +15,6 @@ from tailortex.parsers.jd_parser import parse_jd_text
 from tailortex.schemas.job import ParsedJobDescription
 from tailortex.parsers.resume_parser import parse_resume_text
 from tailortex.schemas.profile import CanonicalProfile
-from tailortex.schemas.resume import ResumePlan
 from tailortex.storage.workspace import Workspace, WorkspaceError
 
 app = FastAPI(
