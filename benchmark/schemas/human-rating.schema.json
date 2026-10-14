@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "editing_minutes": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "preference": {
+      "anyOf": [
+        {
+          "enum": [
+            "A",
+            "B",
+            "no_preference"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "rater_id": {
+      "type": "string"
+    },
+    "ratings": {
+      "additionalProperties": false,
+      "properties": {
+        "advance": {
+          "maximum": 5,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "clarity": {
+          "maximum": 5,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "credibility": {
+          "maximum": 5,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "relevance": {
+          "maximum": 5,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "relevance",
+        "clarity",
+        "credibility",
+        "advance"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "packet_id",
+    "rater_id",
+    "ratings",
+    "preference",
+    "editing_minutes"
+  ],
+  "title": "Blind human rating",
+  "type": "object"
+}
