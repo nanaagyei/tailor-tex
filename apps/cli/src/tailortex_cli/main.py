@@ -13,7 +13,7 @@ from rich.table import Table
 
 app = typer.Typer(
     name="tailortex",
-    help="Local-first resume tailoring workbench.",
+    help="Local-first CLI for draft profiles, job parsing, and deterministic LaTeX output.",
     no_args_is_help=True,
 )
 
@@ -318,12 +318,12 @@ def jd_list(
 def tailor(
     profile_id: str = typer.Option("default", "--profile", help="Profile ID."),
     jd: str = typer.Option(..., "--jd", help="Job description ID or file path."),
-    mode: str = typer.Option("conservative", help="Rewrite mode."),
-    template: str = typer.Option("ats-modern", help="Template ID."),
+    mode: str = typer.Option("conservative", help="Reserved for future rewriting modes; currently ignored."),
+    template: str = typer.Option("ats-modern", help="Template ID (currently ats-modern only)."),
     output: Optional[Path] = typer.Option(None, help="Output .tex path."),
     workspace: Optional[str] = typer.Option(None, help="Custom workspace path."),
 ) -> None:
-    """Run the full tailoring pipeline."""
+    """Select profile content and render LaTeX using deterministic rewriting."""
     from tailortex.matching.selector import select_for_resume
     from tailortex.llm.rewriter import rewrite_bullets_deterministic
     from tailortex.validation.claim_validator import validate_claims
@@ -411,10 +411,10 @@ def export(
     application: str = typer.Option(..., help="Application ID."),
     overleaf: bool = typer.Option(False, help="Export Overleaf bundle."),
     tex: bool = typer.Option(False, help="Export .tex file."),
-    report: bool = typer.Option(False, help="Export validation report."),
+    report: bool = typer.Option(False, help="Reserved for a future validation report export."),
     workspace: Optional[str] = typer.Option(None, help="Custom workspace path."),
 ) -> None:
-    """Export application artifacts."""
+    """Render a profile as TeX or an Overleaf bundle."""
     from tailortex.rendering.exporter import export_tex, export_overleaf_bundle
     from tailortex.schemas.resume import ResumePlan
     from tailortex.storage.workspace import WorkspaceError
@@ -454,14 +454,9 @@ def validate(
     application: str = typer.Option(..., help="Application ID."),
     workspace: Optional[str] = typer.Option(None, help="Custom workspace path."),
 ) -> None:
-    """Validate an existing generated resume."""
-    ws = _get_workspace(workspace)
-    if not ws.exists():
-        err_console.print("[red]No workspace found.[/red]")
-        raise typer.Exit(EXIT_GENERAL)
-
-    console.print(f"Validation for [bold]{application}[/bold]: [green]passed[/green]")
-    console.print("[dim]Run 'tailortex tailor' to regenerate with validation.[/dim]")
+    """Reserved command; validation of existing applications is not implemented."""
+    err_console.print("validate is not implemented yet (see #18).")
+    raise typer.Exit(EXIT_GENERAL)
 
 
 # ── Config commands ─────────────────────────────────────
