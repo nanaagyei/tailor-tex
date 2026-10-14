@@ -17,7 +17,7 @@ TailorTex is a career-evidence compiler for technical candidates. Its unit of va
 
 ## Commands
 
-Use Python 3.12+, Node.js 20+, `uv`, and `pnpm`. For a local install, run `make install`.
+Use Python 3.12+, Node.js 20+, `uv`, and pnpm 10 (matching CI). For a local install, run `make install`.
 
 The current CI workflow runs these commands:
 
@@ -32,7 +32,7 @@ The current CI workflow runs these commands:
 - Markdown links: `python scripts/check_md_links.py`
 - Markdown link-check tests: `python -m unittest discover -s scripts/tests -v`
 
-For package checks not currently wired into CI, run `cd apps/cli && uv run pytest -v` or `cd apps/api && uv run pytest -v`. CI currently has no CLI or API jobs, and the web package has no test script.
+CI currently has no CLI or API jobs. Neither package has tests yet, so `uv run pytest -v` in those packages exits with "no tests collected." The web package has no test script.
 
 ## Invariants
 

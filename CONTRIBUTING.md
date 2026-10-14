@@ -52,7 +52,7 @@ make dev
 
 1. Check existing issues to avoid duplicate work.
 2. For larger changes, open an issue first to discuss the approach.
-3. Read `AGENTS.md` and the relevant GitHub issue's scope, dependencies, acceptance criteria, and validation method before implementing. For web work, also read `apps/web/AGENTS.md`.
+3. Read `AGENTS.md`, the [specification guide](docs/spec/README.md), and the relevant GitHub issue's scope, dependencies, acceptance criteria, and validation method before implementing. For web work, also read `apps/web/AGENTS.md`.
 
 ### Code Standards
 

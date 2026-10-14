@@ -12,6 +12,9 @@ from urllib.parse import unquote, urlsplit
 FENCE_RE = re.compile(r"^\s*(```+|~~~+)")
 INLINE_CODE_RE = re.compile(r"(`+).*?\1")
 LINK_RE = re.compile(r"!?\[[^\]]*\]\(\s*(?:<([^>]+)>|([^\s)]+))")
+REFERENCE_DEFINITION_RE = re.compile(
+    r"^\s{0,3}\[(?!\^)[^\]]+\]:\s*(?:<([^>]+)>|(\S+))"
+)
 
 
 def extract_links(markdown: str) -> list[tuple[int, str]]:
@@ -34,6 +37,12 @@ def extract_links(markdown: str) -> list[tuple[int, str]]:
         without_code = INLINE_CODE_RE.sub("", line)
         for match in LINK_RE.finditer(without_code):
             destination = match.group(1) or match.group(2)
+            if destination:
+                links.append((line_number, destination))
+
+        reference_match = REFERENCE_DEFINITION_RE.match(without_code)
+        if reference_match:
+            destination = reference_match.group(1) or reference_match.group(2)
             if destination:
                 links.append((line_number, destination))
 
