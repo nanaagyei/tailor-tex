@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "TailorTex",
   description:
-    "Local-first resume tailoring workbench. Convert your career profile and job descriptions into truthful, ATS-readable LaTeX resumes.",
+    "Local-first resume tailoring workbench. Import a profile, parse a job description, and generate single-column LaTeX without data tables or content images.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

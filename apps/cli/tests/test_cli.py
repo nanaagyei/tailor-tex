@@ -99,7 +99,7 @@ def test_profile_approval_rejects_invalid_json(tmp_path: Path) -> None:
         (("profile", "list"), 1, "No workspace found"),
         (("tailor", "--jd", "missing"), 1, "No workspace found"),
         (("export", "--application", "missing"), 1, "No workspace found"),
-        (("validate", "--application", "missing"), 1, "No workspace found"),
+        (("validate", "--application", "missing"), 1, "validate is not implemented yet (see #18)."),
         (("workspace", "list"), 1, "No workspace found"),
         (("workspace", "info"), 1, "No workspace found"),
         (("config", "get"), 1, "No workspace found"),
@@ -125,6 +125,19 @@ def test_config_set_and_get(tmp_path: Path) -> None:
         "name": "local"
     }
     assert '"name": "local"' in loaded.output
+
+
+@pytest.mark.parametrize("initialized", [False, True])
+def test_validate_reports_not_implemented(tmp_path: Path, initialized: bool) -> None:
+    workspace = tmp_path / "workspace"
+    if initialized:
+        assert invoke(workspace, "init").exit_code == 0
+
+    result = invoke(workspace, "validate", "--application", "x")
+
+    assert result.exit_code == 1
+    assert "validate is not implemented yet (see #18)." in result.output
+    assert "passed" not in result.output
 
 
 def test_import_creates_reviewable_draft(tmp_path: Path) -> None:

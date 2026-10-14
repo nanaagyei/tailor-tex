@@ -39,8 +39,8 @@ const actions = [
     accent: "blue" as const,
   },
   {
-    title: "Configure Provider",
-    description: "Set up an LLM provider or use rule-based mode.",
+    title: "Settings",
+    description: "View local settings. Model-provider integration is planned.",
     icon: Settings,
     href: "/settings",
     accent: "zinc" as const,
@@ -49,7 +49,7 @@ const actions = [
 
 const features = [
   { icon: Shield, text: "Your data stays on your machine" },
-  { icon: CheckCircle2, text: "Every claim traces to approved evidence" },
+  { icon: CheckCircle2, text: "Evidence-linked output is planned" },
   { icon: Zap, text: "No accounts, no telemetry, no paywalls" },
 ];
 
@@ -102,9 +102,9 @@ export default function WelcomePage() {
             </div>
 
             <p className="text-muted-foreground leading-relaxed max-w-md">
-              Import your resume, parse a job description, and generate a
-              truthful, ATS-readable LaTeX resume — all without sending your
-              data anywhere.
+              Import your resume, parse a job description, and generate
+              single-column LaTeX without data tables or content images.
+              The current workflow runs locally.
             </p>
           </div>
 

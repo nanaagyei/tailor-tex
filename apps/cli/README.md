@@ -13,7 +13,10 @@ with each command to select a workspace other than `~/.tailortex/`.
 | `tailortex jd parse JD.txt [--company TEXT] [--role TEXT]` | Parse and save a job. |
 | `tailortex jd list` | List saved jobs with their IDs. |
 | `tailortex tailor --jd ID --output out.tex` | Tailor the approved profile to a saved job. |
+| `tailortex validate --application ID` | Reserved; exits 1 because validation of an existing application is not implemented ([#18](https://github.com/nanaagyei/tailor-tex/issues/18)). |
 | `tailortex workspace list` | List profiles, drafts, jobs, and applications. |
 
 `tailortex jd parse --stdin` reads job text from standard input. `tailortex tailor --jd FILE`
 also accepts a text file, saves the parsed job, and produces the TeX output.
+
+Tailoring currently uses deterministic rewriting and reports claim-detector findings, but can still export after rejected claims. The `--mode` option is reserved and currently ignored. The `export --report` flag is also reserved; use `--tex` or `--overleaf` for working export formats. Model-provider use, consent, redaction, evidence-linked output, and fail-closed validation are planned; see the [capability table](../../README.md#capability-status).

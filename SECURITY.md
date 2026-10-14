@@ -23,14 +23,19 @@ Instead, use [GitHub Security Advisories](https://github.com/nanaagyei/tailor-te
 
 ## Security Principles
 
-TailorTex handles sensitive career data. Our security model:
+TailorTex handles sensitive career data. Current protections and planned controls are listed separately.
 
-1. **Local-first storage** — All data stays on the user's machine by default.
-2. **No silent cloud calls** — Cloud LLM providers require explicit user consent via a disclosure modal.
-3. **Redaction support** — Sensitive entities (names, companies, emails) can be redacted before cloud transmission.
-4. **No logging of sensitive data** — Raw resumes, personal info, and API keys are excluded from logs.
-5. **Path traversal prevention** — Workspace file operations validate all paths stay within the workspace directory.
-6. **Prompt injection resistance** — Job descriptions are treated as untrusted data, never as LLM instructions.
+### In effect today
+
+- **Local storage** — The CLI stores workspace data on the user's machine. Imported resume source text is stored in the local draft until approval or deletion.
+- **Path traversal prevention** — Workspace file operations check that paths stay within the workspace directory.
+- **Job-description injection flagging** — The parser flags suspicious instructions in job descriptions. The current CLI does not send them to a model provider.
+- **No telemetry** — The application has no telemetry or tracking integration.
+
+### Planned
+
+- **Cloud-provider consent** — [#19](https://github.com/nanaagyei/tailor-tex/issues/19) will wire explicit consent into the application call path before provider requests.
+- **Redaction in the call path** — [#19](https://github.com/nanaagyei/tailor-tex/issues/19) will wire redaction into provider requests. A redaction helper exists, but the CLI does not use it.
 
 ## Supported Versions
 
@@ -40,6 +45,6 @@ TailorTex handles sensitive career data. Our security model:
 
 ## Secrets Management
 
-- API keys: stored via environment variables or OS keychain, never committed to source.
+- Provider API-key configuration is planned in [#19](https://github.com/nanaagyei/tailor-tex/issues/19); the current CLI does not read the variables in `.env.example`.
 - `.env` files are gitignored.
 - The `.env.example` file contains only placeholder values.
