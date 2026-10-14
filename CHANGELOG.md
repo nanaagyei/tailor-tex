@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- CLI and API test suites with CI jobs for both packages.
 - Tracked contributor guidance, the career-evidence compiler decision, and a Markdown link check in CI.
 - Initial monorepo structure with Python core, CLI, API, and Next.js web UI.
 - Pydantic schemas for canonical profile, job description, resume plan, and validation report.

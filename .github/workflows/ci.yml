@@ -48,6 +48,52 @@ jobs:
       - name: Test
         run: cd packages/core && uv run pytest -v
 
+  cli:
+    name: CLI (lint + test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install CLI dependencies
+        run: cd apps/cli && uv sync
+
+      - name: Lint
+        run: cd apps/cli && uv run ruff check src/ tests/
+
+      - name: Test
+        run: cd apps/cli && uv run pytest -v
+
+  api:
+    name: API (lint + test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install API dependencies
+        run: cd apps/api && uv sync
+
+      - name: Lint
+        run: cd apps/api && uv run ruff check src/ tests/
+
+      - name: Test
+        run: cd apps/api && uv run pytest -v
+
   web:
     name: Web (lint + build)
     runs-on: ubuntu-latest

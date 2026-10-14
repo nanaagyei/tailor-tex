@@ -134,8 +134,8 @@ def profile_review(
         raise typer.Exit(EXIT_GENERAL)
 
     console.print_json(profile.model_dump_json(indent=2))
-    console.print(f"\nTo approve, edit the JSON and run:")
-    console.print(f"  tailortex profile approve <edited-profile.json>")
+    console.print("\nTo approve, edit the JSON and run:")
+    console.print("  tailortex profile approve <edited-profile.json>")
 
 
 @profile_app.command(name="approve")

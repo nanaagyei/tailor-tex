@@ -25,6 +25,12 @@ The current CI workflow runs these commands:
 - Core lint: `cd packages/core && uv run ruff check src/ tests/`
 - Core type check: `cd packages/core && uv run mypy src/`
 - Core tests: `cd packages/core && uv run pytest -v`
+- CLI install: `cd apps/cli && uv sync`
+- CLI lint: `cd apps/cli && uv run ruff check src/ tests/`
+- CLI tests: `cd apps/cli && uv run pytest -v`
+- API install: `cd apps/api && uv sync`
+- API lint: `cd apps/api && uv run ruff check src/ tests/`
+- API tests: `cd apps/api && uv run pytest -v`
 - Web install: `cd apps/web && pnpm install --frozen-lockfile`
 - Web lint: `cd apps/web && pnpm lint`
 - Web type check: `cd apps/web && pnpm tsc --noEmit`
@@ -32,7 +38,7 @@ The current CI workflow runs these commands:
 - Markdown links: `python scripts/check_md_links.py`
 - Markdown link-check tests: `python -m unittest discover -s scripts/tests -v`
 
-CI currently has no CLI or API jobs. Neither package has tests yet, so `uv run pytest -v` in those packages exits with "no tests collected." The web package has no test script.
+The CLI has two expected-failure tests for broken import and JD parse handoffs tracked by #7. The web package has no test script.
 
 ## Invariants
 
