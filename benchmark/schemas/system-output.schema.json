@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifact_path": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "case": {
+      "additionalProperties": false,
+      "properties": {
+        "dossier_id": {
+          "type": "string"
+        },
+        "job_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "dossier_id",
+        "job_id"
+      ],
+      "type": "object"
+    },
+    "kind": {
+      "enum": [
+        "tailortex",
+        "prompt-baseline",
+        "external",
+        "untailored"
+      ],
+      "type": "string"
+    },
+    "model": {
+      "anyOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "provider": {
+              "type": "string"
+            },
+            "temperature": {
+              "maximum": 2,
+              "minimum": 0,
+              "type": "number"
+            },
+            "version": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "provider",
+            "name",
+            "version",
+            "temperature"
+          ],
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "run_metadata": {
+      "additionalProperties": false,
+      "properties": {
+        "max_pages": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "observed_pages": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "run_date": {
+          "format": "date",
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id",
+        "run_date",
+        "max_pages",
+        "observed_pages"
+      ],
+      "type": "object"
+    },
+    "system_id": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "system_id",
+    "kind",
+    "version",
+    "model",
+    "case",
+    "text",
+    "artifact_path",
+    "run_metadata"
+  ],
+  "title": "One tailored resume run",
+  "type": "object"
+}

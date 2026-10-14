@@ -57,6 +57,9 @@ Thumbs.db
 
 # Build artifacts
 *.zip
+apps/cli/*.tex
+/jd-*.tex
+/jd-*.md
 
 tailortex-agent-docs/
 
