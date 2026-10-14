@@ -69,8 +69,9 @@ Job description -> parsed job ID -> deterministic selection and rewriting
                                    |
                          claim detection -> LaTeX rendering -> .tex
 
-Planned: model-assisted rewriting, evidence-linked output, and build failure
-         on unsupported claims.
+Future path (not in the current CLI):
+  LLM Rewrite Layer (planned) -> evidence-linked output (planned)
+  -> build failure on unsupported claims (planned)
 ```
 
 The current claim detector reports findings, but tailoring may still export a `.tex` file when it reports rejected claims. Inspect the report and output before using either in an application.
