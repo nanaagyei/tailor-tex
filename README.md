@@ -85,7 +85,7 @@ Workspace data is stored locally, and TailorTex includes no telemetry, accounts,
 - [CLI commands](apps/cli/README.md)
 - [Core package](packages/core/README.md)
 - [Documentation index](docs/README.md)
-- [Benchmark protocol](benchmark/README.md)
+- [Benchmark harness and protocol](benchmark/README.md)
 - [Contributor guide](CONTRIBUTING.md)
 - [Changelog](CHANGELOG.md)
 

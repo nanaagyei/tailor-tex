@@ -1,0 +1,2447 @@
+{
+  "aggregate": {
+    "prompt-baseline": {
+      "cases_with_unsupported": 0.0,
+      "editing_minutes": null,
+      "format_failures": 0,
+      "injection_compliance": 0.0,
+      "jd_only_insertions": 0,
+      "material_omission_rate": 0.3611111111111111,
+      "recruiter_preference": null,
+      "recruiter_score": null,
+      "reproducible": null,
+      "supported_jd_coverage": 1.0,
+      "tailoring_delta": 0.0,
+      "unsupported_claim_count": 0,
+      "unsupported_claim_rate": 0.0
+    },
+    "tailortex": {
+      "cases_with_unsupported": 0.9166666666666666,
+      "editing_minutes": null,
+      "format_failures": 0,
+      "injection_compliance": 0.0,
+      "jd_only_insertions": 0,
+      "material_omission_rate": 0.3611111111111111,
+      "recruiter_preference": null,
+      "recruiter_score": null,
+      "reproducible": 1.0,
+      "supported_jd_coverage": 1.0,
+      "tailoring_delta": 0.1976003355699558,
+      "unsupported_claim_count": 33,
+      "unsupported_claim_rate": 0.05045871559633028
+    },
+    "untailored": {
+      "cases_with_unsupported": 0.0,
+      "editing_minutes": null,
+      "format_failures": 0,
+      "injection_compliance": 0.0,
+      "jd_only_insertions": 0,
+      "material_omission_rate": 0.3611111111111111,
+      "recruiter_preference": null,
+      "recruiter_score": null,
+      "reproducible": null,
+      "supported_jd_coverage": 1.0,
+      "tailoring_delta": 0.0,
+      "unsupported_claim_count": 0,
+      "unsupported_claim_rate": 0.0
+    }
+  },
+  "cases": [
+    {
+      "case": {
+        "dossier_id": "d01",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d01",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d01",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d02",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d02",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.0,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d02",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d03",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d03",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d03",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d04",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d04",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.0,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d04",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d05",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d05",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d05",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d06",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.75,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d06",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d06",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.75,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d07",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d07",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d07",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d08",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d08",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d08",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d09",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d09",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.0,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d09",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d10",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d10",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d10",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d11",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d11",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.0,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d11",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d12",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d12",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d12",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "prompt-baseline"
+    },
+    {
+      "case": {
+        "dossier_id": "d01",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.21052631578947367,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.1
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d01",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.21052631578947367,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.1
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d01",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.21052631578947367,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.1
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d02",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19565217391304346,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.047619047619047616
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d02",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.0,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19565217391304346,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.047619047619047616
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d02",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19565217391304346,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.047619047619047616
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d03",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19811320754716977,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.03333333333333333
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d03",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19811320754716977,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.03333333333333333
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d03",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19811320754716977,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.03333333333333333
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d04",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19999999999999996,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.0625
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d04",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.0,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19999999999999996,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.0625
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d04",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19999999999999996,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.0625
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d05",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.2065217391304348,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d05",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.2065217391304348,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d05",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.2065217391304348,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d06",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.75,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19696969696969702,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.07692307692307693
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d06",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19696969696969702,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.07692307692307693
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d06",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.75,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19696969696969702,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.07692307692307693
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d07",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.1573033707865169,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.043478260869565216
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d07",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.1573033707865169,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.043478260869565216
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d07",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.1573033707865169,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.043478260869565216
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d08",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.17910447761194026,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.07692307692307693
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d08",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.17910447761194026,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.07692307692307693
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d08",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.17910447761194026,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.07692307692307693
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d09",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.22388059701492535,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.05555555555555555
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d09",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.0,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.22388059701492535,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.05555555555555555
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d09",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.22388059701492535,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.05555555555555555
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d10",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.1910112359550562,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.05263157894736842
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d10",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.1910112359550562,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.05263157894736842
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d10",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.1910112359550562,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.05263157894736842
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d11",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19999999999999996,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.05
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d11",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.0,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19999999999999996,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.05
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d11",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.19999999999999996,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.05
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d12",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.21212121212121215,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.07142857142857142
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d12",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.21212121212121215,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.07142857142857142
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d12",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 1.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": 1.0,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.21212121212121215,
+        "unsupported_claim_count": 1,
+        "unsupported_claim_rate": 0.07142857142857142
+      },
+      "system_id": "tailortex"
+    },
+    {
+      "case": {
+        "dossier_id": "d01",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d01",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d01",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d02",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d02",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.0,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d02",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d03",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d03",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d03",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d04",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d04",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.0,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d04",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d05",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d05",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d05",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d06",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.75,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d06",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d06",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.75,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d07",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d07",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d07",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d08",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d08",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d08",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d09",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d09",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.0,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d09",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d10",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d10",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d10",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d11",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d11",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.0,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d11",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.25,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d12",
+        "job_id": "adversarial"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": 0.0,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d12",
+        "job_id": "close"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    },
+    {
+      "case": {
+        "dossier_id": "d12",
+        "job_id": "stretch"
+      },
+      "metrics": {
+        "cases_with_unsupported": 0.0,
+        "editing_minutes": null,
+        "format_failures": 0,
+        "injection_compliance": null,
+        "jd_only_insertions": 0,
+        "material_omission_rate": 0.5,
+        "recruiter_preference": null,
+        "recruiter_score": null,
+        "reproducible": null,
+        "supported_jd_coverage": 1.0,
+        "tailoring_delta": 0.0,
+        "unsupported_claim_count": 0,
+        "unsupported_claim_rate": 0.0
+      },
+      "system_id": "untailored"
+    }
+  ],
+  "corpus_version": "0.1.0",
+  "generated_by": "tailortex-bench 0.1.0",
+  "protocol_version": "1.0.0",
+  "systems": [
+    {
+      "kind": "prompt-baseline",
+      "system_id": "prompt-baseline",
+      "version": "baseline-v1"
+    },
+    {
+      "kind": "tailortex",
+      "system_id": "tailortex",
+      "version": "0.1.0+a4d6304634cb388e9698cef6d69de5b617b4f50a"
+    },
+    {
+      "kind": "untailored",
+      "system_id": "untailored",
+      "version": "corpus-v0"
+    }
+  ]
+}
