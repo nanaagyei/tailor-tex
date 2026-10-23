@@ -1,0 +1,35 @@
+Imani Veylor
+imani.veylor@example.com | (202) 555-0102
+
+Summary
+Technical candidate focused on high-volume API reliability.
+
+Experience
+
+Software Engineer | Cadrivex Labs
+Jun 2016 - Aug 2019
+- Built Go endpoints that handled 9 million requests each day.
+- Added PostgreSQL query reviews for the billing service.
+
+Backend Engineer | Meralvix Labs
+Sep 2019 - Mar 2022
+- Introduced OpenTelemetry traces across 14 services and reduced triage time by 27%.
+- Mentored peers on Python service test design.
+
+Backend Engineer II | Meralvix Labs
+Apr 2022 - Present
+- Led API reliability reviews and cut repeat incidents by 31%.
+- Maintained Git release rules for cross-team service changes.
+
+Projects
+
+Trace Atlas
+- Published an OpenTelemetry trace guide for incident responders.
+
+Education
+
+Example Engineering University
+B.S. in Computer Science | Aug 2012 - May 2016
+
+Skills
+Go, Python, PostgreSQL, OpenTelemetry, Git

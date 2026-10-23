@@ -1,0 +1,205 @@
+{
+  "dossier_id": "d02",
+  "base_resume_path": "resume.txt",
+  "evidence": [
+    {
+      "id": "ev-001",
+      "owner": "exp-1",
+      "kind": "title",
+      "text": "Backend Engineer"
+    },
+    {
+      "id": "ev-002",
+      "owner": "exp-1",
+      "kind": "organization",
+      "text": "Auvremora Systems"
+    },
+    {
+      "id": "ev-003",
+      "owner": "exp-1",
+      "kind": "date",
+      "text": "Jan 2022 - Dec 2023"
+    },
+    {
+      "id": "ev-004",
+      "owner": "exp-1",
+      "kind": "scope",
+      "text": "contributed to the integration service"
+    },
+    {
+      "id": "ev-005",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-006",
+      "owner": "exp-1",
+      "kind": "metric",
+      "text": "18%"
+    },
+    {
+      "id": "ev-007",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reduced manual reconciliation"
+    },
+    {
+      "id": "ev-008",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "PostgreSQL"
+    },
+    {
+      "id": "ev-009",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "improved migration handoffs"
+    },
+    {
+      "id": "ev-010",
+      "owner": "exp-2",
+      "kind": "title",
+      "text": "Software Engineer"
+    },
+    {
+      "id": "ev-011",
+      "owner": "exp-2",
+      "kind": "organization",
+      "text": "Bexilune Works"
+    },
+    {
+      "id": "ev-012",
+      "owner": "exp-2",
+      "kind": "date",
+      "text": "Sep 2024 - Present"
+    },
+    {
+      "id": "ev-013",
+      "owner": "exp-2",
+      "kind": "scope",
+      "text": "contributed to the payment adapter environment"
+    },
+    {
+      "id": "ev-014",
+      "owner": "exp-2",
+      "kind": "tool",
+      "text": "Docker Compose"
+    },
+    {
+      "id": "ev-015",
+      "owner": "exp-2",
+      "kind": "tool",
+      "text": "Git"
+    },
+    {
+      "id": "ev-016",
+      "owner": "exp-2",
+      "kind": "outcome",
+      "text": "shortened release preparation"
+    },
+    {
+      "id": "ev-017",
+      "owner": "project-1",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-018",
+      "owner": "project-1",
+      "kind": "outcome",
+      "text": "documented retry boundaries"
+    },
+    {
+      "id": "ev-019",
+      "owner": "education",
+      "kind": "organization",
+      "text": "Example Computing College"
+    },
+    {
+      "id": "ev-020",
+      "owner": "education",
+      "kind": "credential",
+      "text": "B.S. in Software Engineering"
+    },
+    {
+      "id": "ev-021",
+      "owner": "education",
+      "kind": "date",
+      "text": "Aug 2016 - May 2020"
+    },
+    {
+      "id": "ev-022",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-023",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "PostgreSQL"
+    },
+    {
+      "id": "ev-024",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Git"
+    },
+    {
+      "id": "ev-025",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Docker Compose"
+    },
+    {
+      "id": "ev-026",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "FastAPI"
+    },
+    {
+      "id": "ev-027",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Redis"
+    },
+    {
+      "id": "ev-028",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "wrote incident notes"
+    },
+    {
+      "id": "ev-029",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "tested idempotent requests"
+    },
+    {
+      "id": "ev-030",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "prepared onboarding examples"
+    },
+    {
+      "id": "ev-031",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reviewed API contracts"
+    },
+    {
+      "id": "ev-032",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "created a local seed script"
+    },
+    {
+      "id": "ev-033",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "measured reconciliation defects"
+    }
+  ],
+  "notes": "Entirely synthetic backend candidate. Evidence items after the 25 resume facts are verified but omitted from the base resume."
+}

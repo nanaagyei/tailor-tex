@@ -1,0 +1,145 @@
+{
+  "dossier_id": "d12",
+  "base_resume_path": "resume.txt",
+  "evidence": [
+    {
+      "id": "ev-001",
+      "owner": "exp-1",
+      "kind": "title",
+      "text": "Research Engineer"
+    },
+    {
+      "id": "ev-002",
+      "owner": "exp-1",
+      "kind": "organization",
+      "text": "Ordevyx Research"
+    },
+    {
+      "id": "ev-003",
+      "owner": "exp-1",
+      "kind": "date",
+      "text": "Jun 2017 - Present"
+    },
+    {
+      "id": "ev-004",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-005",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "compared model assumptions"
+    },
+    {
+      "id": "ev-006",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "NumPy"
+    },
+    {
+      "id": "ev-007",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "PyTorch"
+    },
+    {
+      "id": "ev-008",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reproduced baseline findings"
+    },
+    {
+      "id": "ev-009",
+      "owner": "project-1",
+      "kind": "tool",
+      "text": "Git"
+    },
+    {
+      "id": "ev-010",
+      "owner": "project-1",
+      "kind": "outcome",
+      "text": "documented experiment runs"
+    },
+    {
+      "id": "ev-011",
+      "owner": "education",
+      "kind": "organization",
+      "text": "Example Research University"
+    },
+    {
+      "id": "ev-012",
+      "owner": "education",
+      "kind": "credential",
+      "text": "Ph.D. in Computer Science"
+    },
+    {
+      "id": "ev-013",
+      "owner": "education",
+      "kind": "date",
+      "text": "Aug 2011 - May 2017"
+    },
+    {
+      "id": "ev-014",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-015",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "NumPy"
+    },
+    {
+      "id": "ev-016",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "PyTorch"
+    },
+    {
+      "id": "ev-017",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Git"
+    },
+    {
+      "id": "ev-018",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "JAX"
+    },
+    {
+      "id": "ev-019",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "pandas"
+    },
+    {
+      "id": "ev-020",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reviewed sampling bias"
+    },
+    {
+      "id": "ev-021",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "created ablation plans"
+    },
+    {
+      "id": "ev-022",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "prepared reproducibility notes"
+    },
+    {
+      "id": "ev-023",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "mentored research assistants"
+    }
+  ],
+  "notes": "Entirely synthetic research engineer candidate. Evidence items after the 17 resume facts are verified but omitted from the base resume."
+}

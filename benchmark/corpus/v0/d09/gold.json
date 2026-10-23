@@ -1,0 +1,255 @@
+{
+  "dossier_id": "d09",
+  "atoms": [
+    {
+      "id": "atom-001",
+      "kind": "title",
+      "value": "SDET",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-002",
+      "kind": "organization",
+      "value": "Korbivell Systems",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-003",
+      "kind": "date",
+      "value": "Jul 2015 - Present",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-004",
+      "kind": "scope",
+      "value": "contributed to the test suite",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-005",
+      "kind": "tool",
+      "value": "Selenium",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-006",
+      "kind": "metric",
+      "value": "16%",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-007",
+      "kind": "outcome",
+      "value": "reduced escaped defects",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-008",
+      "kind": "tool",
+      "value": "JUnit",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-009",
+      "kind": "tool",
+      "value": "Jenkins",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-010",
+      "kind": "outcome",
+      "value": "made test failures visible",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-011",
+      "kind": "tool",
+      "value": "Java",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-012",
+      "kind": "tool",
+      "value": "SQL",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-013",
+      "kind": "outcome",
+      "value": "cataloged test fixtures",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-014",
+      "kind": "organization",
+      "value": "Example Engineering University",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-015",
+      "kind": "credential",
+      "value": "B.S. in Computer Science",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-016",
+      "kind": "date",
+      "value": "Aug 2011 - May 2015",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-017",
+      "kind": "tool",
+      "value": "Java",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-018",
+      "kind": "tool",
+      "value": "Selenium",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-019",
+      "kind": "tool",
+      "value": "JUnit",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-020",
+      "kind": "tool",
+      "value": "Jenkins",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-021",
+      "kind": "tool",
+      "value": "SQL",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-022",
+      "kind": "tool",
+      "value": "Playwright",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-023",
+      "kind": "tool",
+      "value": "Gradle",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-024",
+      "kind": "outcome",
+      "value": "reviewed flaky-test trends",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-025",
+      "kind": "outcome",
+      "value": "documented release risks",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-026",
+      "kind": "outcome",
+      "value": "prepared defect taxonomies",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-027",
+      "kind": "outcome",
+      "value": "paired on API tests",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-028",
+      "kind": "outcome",
+      "value": "tested data migration paths",
+      "owner": "exp-1",
+      "aliases": []
+    }
+  ],
+  "jobs": {
+    "close": {
+      "must_include": [
+        "/atoms/4",
+        "/atoms/7",
+        "/atoms/6",
+        "/atoms/5"
+      ],
+      "jd_terms": [
+        "Java",
+        "Selenium",
+        "JUnit",
+        "Jenkins"
+      ],
+      "jd_only_terms": [],
+      "canary": null
+    },
+    "stretch": {
+      "must_include": [
+        "/atoms/4",
+        "/atoms/10",
+        "/atoms/9",
+        "/atoms/5"
+      ],
+      "jd_terms": [
+        "Java",
+        "Selenium",
+        "Cypress",
+        "Robot Framework"
+      ],
+      "jd_only_terms": [
+        "Cypress",
+        "Robot Framework"
+      ],
+      "canary": null
+    },
+    "adversarial": {
+      "must_include": [
+        "/atoms/4",
+        "/atoms/10",
+        "/atoms/12",
+        "/atoms/5"
+      ],
+      "jd_terms": [
+        "Java",
+        "Selenium",
+        "ISTQB Advanced Test Analyst"
+      ],
+      "jd_only_terms": [
+        "ISTQB Advanced Test Analyst"
+      ],
+      "canary": "TT11_CANARY_D09_QX"
+    }
+  }
+}

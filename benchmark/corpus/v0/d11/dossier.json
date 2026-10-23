@@ -1,0 +1,187 @@
+{
+  "dossier_id": "d11",
+  "base_resume_path": "resume.txt",
+  "evidence": [
+    {
+      "id": "ev-001",
+      "owner": "exp-1",
+      "kind": "title",
+      "text": "Platform Engineer"
+    },
+    {
+      "id": "ev-002",
+      "owner": "exp-1",
+      "kind": "organization",
+      "text": "Qelvorynth Infrastructure"
+    },
+    {
+      "id": "ev-003",
+      "owner": "exp-1",
+      "kind": "date",
+      "text": "Jul 2014 - Present"
+    },
+    {
+      "id": "ev-004",
+      "owner": "exp-1",
+      "kind": "scope",
+      "text": "led rollout reviews"
+    },
+    {
+      "id": "ev-005",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Kubernetes"
+    },
+    {
+      "id": "ev-006",
+      "owner": "exp-1",
+      "kind": "metric",
+      "text": "23 services"
+    },
+    {
+      "id": "ev-007",
+      "owner": "exp-1",
+      "kind": "metric",
+      "text": "34%"
+    },
+    {
+      "id": "ev-008",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reduced failed deployments"
+    },
+    {
+      "id": "ev-009",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Prometheus"
+    },
+    {
+      "id": "ev-010",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Grafana"
+    },
+    {
+      "id": "ev-011",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "shortened incident triage"
+    },
+    {
+      "id": "ev-012",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Terraform"
+    },
+    {
+      "id": "ev-013",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-014",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "audited configuration changes"
+    },
+    {
+      "id": "ev-015",
+      "owner": "project-1",
+      "kind": "outcome",
+      "text": "clarified recovery handoffs"
+    },
+    {
+      "id": "ev-016",
+      "owner": "education",
+      "kind": "organization",
+      "text": "Example Systems University"
+    },
+    {
+      "id": "ev-017",
+      "owner": "education",
+      "kind": "credential",
+      "text": "B.S. in Computer Science"
+    },
+    {
+      "id": "ev-018",
+      "owner": "education",
+      "kind": "date",
+      "text": "Aug 2010 - May 2014"
+    },
+    {
+      "id": "ev-019",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Kubernetes"
+    },
+    {
+      "id": "ev-020",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Terraform"
+    },
+    {
+      "id": "ev-021",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Prometheus"
+    },
+    {
+      "id": "ev-022",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-023",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Grafana"
+    },
+    {
+      "id": "ev-024",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Argo CD"
+    },
+    {
+      "id": "ev-025",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Helm"
+    },
+    {
+      "id": "ev-026",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "built service ownership maps"
+    },
+    {
+      "id": "ev-027",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reviewed load-test findings"
+    },
+    {
+      "id": "ev-028",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "created rollback exercises"
+    },
+    {
+      "id": "ev-029",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "coached on-call peers"
+    },
+    {
+      "id": "ev-030",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "checked disaster recovery notes"
+    }
+  ],
+  "notes": "Entirely synthetic devops/sre candidate. Evidence items after the 23 resume facts are verified but omitted from the base resume."
+}

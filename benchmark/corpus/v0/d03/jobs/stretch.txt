@@ -1,0 +1,19 @@
+Platform Integration Engineer — High-volume api reliability
+
+Our technical team is seeking someone to improve service contracts, failure handling, and API maintenance. The person in this role will own a bounded stream of work, record assumptions, and make tradeoffs visible before a release. Work includes investigating existing behavior, preparing a small change, and describing how another engineer can verify it. The team values plain explanations and careful attribution of contributions.
+
+Required:
+
+Working knowledge of Go and Python, plus production familiarity with Kubernetes and Rust.
+
+The successful candidate can review integration changes with engineers and support colleagues. They should be able to show a service change that is testable, documented, and simple to operate. Examples may come from employment, internships, or substantial projects when those examples actually support the claim.
+
+Preferred:
+
+Exposure to high-volume API reliability and evidence of careful handoffs across teams.
+
+We appreciate concise evidence of what the applicant personally did, the tools used, and the result observed. We review applications for clear ownership, context, and an account of how the work was checked after release. Examples of shared work should explain the individual contribution.
+
+Applicants with adjacent experience are welcome. Separate direct use of a required technology from related work; a strong application explains the boundary honestly and shows how the candidate would learn the missing parts.
+
+The team works asynchronously, writes short implementation notes, and reviews changes with the people who will operate them. The application should make specific, verifiable experience easy to find without losing the context in which it happened.

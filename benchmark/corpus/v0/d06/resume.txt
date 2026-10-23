@@ -1,0 +1,25 @@
+Noor Valen
+noor.valen@example.com | (202) 555-0105
+
+Summary
+Technical candidate focused on reproducible data analysis.
+
+Experience
+
+Data Intern | Gavorynth Data
+Jun 2024 - Aug 2024
+- Cleaned survey records with pandas and documented missing-value rules.
+- Used SQL to compare weekly extracts for consistency.
+
+Projects
+
+Demand Notebook
+- Trained a scikit-learn baseline and recorded error categories in Python.
+
+Education
+
+Example Quantitative Institute
+B.S. in Statistics | Aug 2021 - May 2025
+
+Skills
+Python, pandas, SQL, scikit-learn

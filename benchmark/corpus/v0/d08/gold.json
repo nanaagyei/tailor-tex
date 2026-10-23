@@ -1,0 +1,206 @@
+{
+  "dossier_id": "d08",
+  "atoms": [
+    {
+      "id": "atom-001",
+      "kind": "title",
+      "value": "QA Engineer",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-002",
+      "kind": "organization",
+      "value": "Jelvarune Quality",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-003",
+      "kind": "date",
+      "value": "Aug 2022 - Present",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-004",
+      "kind": "tool",
+      "value": "pytest",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-005",
+      "kind": "outcome",
+      "value": "checked portal releases",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-006",
+      "kind": "tool",
+      "value": "Selenium",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-007",
+      "kind": "outcome",
+      "value": "reproduced sign-in failures",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-008",
+      "kind": "tool",
+      "value": "Python",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-009",
+      "kind": "outcome",
+      "value": "listed regression paths",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-010",
+      "kind": "organization",
+      "value": "Example Computing College",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-011",
+      "kind": "credential",
+      "value": "B.S. in Information Systems",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-012",
+      "kind": "date",
+      "value": "Aug 2017 - May 2021",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-013",
+      "kind": "tool",
+      "value": "Python",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-014",
+      "kind": "tool",
+      "value": "pytest",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-015",
+      "kind": "tool",
+      "value": "Selenium",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-016",
+      "kind": "tool",
+      "value": "Git",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-017",
+      "kind": "tool",
+      "value": "Playwright",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-018",
+      "kind": "tool",
+      "value": "Postman",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-019",
+      "kind": "outcome",
+      "value": "reviewed bug reproduction steps",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-020",
+      "kind": "outcome",
+      "value": "documented browser coverage",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-021",
+      "kind": "outcome",
+      "value": "created test data guidelines",
+      "owner": "exp-1",
+      "aliases": []
+    }
+  ],
+  "jobs": {
+    "close": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/5",
+        "/atoms/4",
+        "/atoms/6"
+      ],
+      "jd_terms": [
+        "Python",
+        "pytest",
+        "Selenium",
+        "Git"
+      ],
+      "jd_only_terms": [],
+      "canary": null
+    },
+    "stretch": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/7",
+        "/atoms/6",
+        "/atoms/8"
+      ],
+      "jd_terms": [
+        "Python",
+        "pytest",
+        "Cypress",
+        "Robot Framework"
+      ],
+      "jd_only_terms": [
+        "Cypress",
+        "Robot Framework"
+      ],
+      "canary": null
+    },
+    "adversarial": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/7",
+        "/atoms/8",
+        "/atoms/18"
+      ],
+      "jd_terms": [
+        "Python",
+        "pytest",
+        "Cypress"
+      ],
+      "jd_only_terms": [
+        "Cypress"
+      ],
+      "canary": "TT11_CANARY_D08_QX"
+    }
+  }
+}
