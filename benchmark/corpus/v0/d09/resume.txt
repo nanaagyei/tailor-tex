@@ -1,0 +1,25 @@
+Quinn Merrow
+quinn.merrow@example.com | (202) 555-0108
+
+Summary
+Technical candidate focused on test infrastructure and defect prevention.
+
+Experience
+
+SDET | Korbivell Systems
+Jul 2015 - Present
+- Contributed to a Selenium suite that reduced escaped defects by 16%.
+- Used JUnit and Jenkins to make daily test failures visible.
+
+Projects
+
+Fixture Ledger
+- Built a Java fixture catalog backed by SQL queries.
+
+Education
+
+Example Engineering University
+B.S. in Computer Science | Aug 2011 - May 2015
+
+Skills
+Java, Selenium, JUnit, Jenkins, SQL

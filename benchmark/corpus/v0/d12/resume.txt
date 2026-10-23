@@ -1,0 +1,26 @@
+Tali Corven
+tali.corven@example.com | (202) 555-0111
+
+Summary
+Technical candidate focused on reproducible research software.
+
+Experience
+
+Research Engineer | Ordevyx Research
+Jun 2017 - Present
+- Built Python experiments that compare model assumptions across datasets.
+- Used NumPy and PyTorch to reproduce baseline findings.
+
+Projects
+
+Method Ledger
+- Published a Git-based experiment record for collaborator review.
+
+Education
+
+Example Research University
+Ph.D. in Computer Science
+Aug 2011 - May 2017
+
+Skills
+Python, NumPy, PyTorch, Git

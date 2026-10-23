@@ -1,0 +1,290 @@
+{
+  "dossier_id": "d10",
+  "atoms": [
+    {
+      "id": "atom-001",
+      "kind": "title",
+      "value": "Build Engineer",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-002",
+      "kind": "organization",
+      "value": "Luravexa Cloud",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-003",
+      "kind": "date",
+      "value": "Jul 2022 - Jun 2023",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-004",
+      "kind": "tool",
+      "value": "Terraform",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-005",
+      "kind": "metric",
+      "value": "20%",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-006",
+      "kind": "outcome",
+      "value": "reduced staging setup time",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-007",
+      "kind": "tool",
+      "value": "Bash",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-008",
+      "kind": "outcome",
+      "value": "diagnosed image build failures",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-009",
+      "kind": "title",
+      "value": "Site Reliability Engineer",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-010",
+      "kind": "organization",
+      "value": "Mavirell Tools",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-011",
+      "kind": "date",
+      "value": "Jul 2023 - Present",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-012",
+      "kind": "tool",
+      "value": "Docker",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-013",
+      "kind": "tool",
+      "value": "GitHub Actions",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-014",
+      "kind": "outcome",
+      "value": "maintained release images",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-015",
+      "kind": "tool",
+      "value": "Prometheus",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-016",
+      "kind": "outcome",
+      "value": "located deployment faults",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-017",
+      "kind": "outcome",
+      "value": "documented service restarts",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-018",
+      "kind": "organization",
+      "value": "Example Technical Institute",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-019",
+      "kind": "credential",
+      "value": "B.S. in Computer Engineering",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-020",
+      "kind": "date",
+      "value": "Aug 2016 - May 2020",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-021",
+      "kind": "tool",
+      "value": "Terraform",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-022",
+      "kind": "tool",
+      "value": "Docker",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-023",
+      "kind": "tool",
+      "value": "GitHub Actions",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-024",
+      "kind": "tool",
+      "value": "Prometheus",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-025",
+      "kind": "tool",
+      "value": "Bash",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-026",
+      "kind": "tool",
+      "value": "Grafana",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-027",
+      "kind": "tool",
+      "value": "Ansible",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-028",
+      "kind": "outcome",
+      "value": "created rollback checklists",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-029",
+      "kind": "outcome",
+      "value": "reviewed capacity alarms",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-030",
+      "kind": "outcome",
+      "value": "tested restore procedures",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-031",
+      "kind": "outcome",
+      "value": "prepared on-call handoffs",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-032",
+      "kind": "outcome",
+      "value": "reduced noisy alerts",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-033",
+      "kind": "outcome",
+      "value": "documented deployment dependencies",
+      "owner": "exp-1",
+      "aliases": []
+    }
+  ],
+  "jobs": {
+    "close": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/11",
+        "/atoms/5",
+        "/atoms/4"
+      ],
+      "jd_terms": [
+        "Terraform",
+        "Docker",
+        "GitHub Actions",
+        "Prometheus"
+      ],
+      "jd_only_terms": [],
+      "canary": null
+    },
+    "stretch": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/11",
+        "/atoms/7",
+        "/atoms/4"
+      ],
+      "jd_terms": [
+        "Terraform",
+        "Docker",
+        "Kubernetes",
+        "Pulumi"
+      ],
+      "jd_only_terms": [
+        "Kubernetes",
+        "Pulumi"
+      ],
+      "canary": null
+    },
+    "adversarial": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/11",
+        "/atoms/13",
+        "/atoms/4"
+      ],
+      "jd_terms": [
+        "Terraform",
+        "Docker",
+        "Kubernetes"
+      ],
+      "jd_only_terms": [
+        "Kubernetes"
+      ],
+      "canary": "TT11_CANARY_D10_QX"
+    }
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "dossier_id": "d02",
+  "atoms": [
+    {
+      "id": "atom-001",
+      "kind": "title",
+      "value": "Backend Engineer",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-002",
+      "kind": "organization",
+      "value": "Auvremora Systems",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-003",
+      "kind": "date",
+      "value": "Jan 2022 - Dec 2023",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-004",
+      "kind": "scope",
+      "value": "contributed to the integration service",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-005",
+      "kind": "tool",
+      "value": "Python",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-006",
+      "kind": "metric",
+      "value": "18%",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-007",
+      "kind": "outcome",
+      "value": "reduced manual reconciliation",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-008",
+      "kind": "tool",
+      "value": "PostgreSQL",
+      "owner": "exp-1",
+      "aliases": [
+        "Postgres"
+      ]
+    },
+    {
+      "id": "atom-009",
+      "kind": "outcome",
+      "value": "improved migration handoffs",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-010",
+      "kind": "title",
+      "value": "Software Engineer",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-011",
+      "kind": "organization",
+      "value": "Bexilune Works",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-012",
+      "kind": "date",
+      "value": "Sep 2024 - Present",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-013",
+      "kind": "scope",
+      "value": "contributed to the payment adapter environment",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-014",
+      "kind": "tool",
+      "value": "Docker Compose",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-015",
+      "kind": "tool",
+      "value": "Git",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-016",
+      "kind": "outcome",
+      "value": "shortened release preparation",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-017",
+      "kind": "tool",
+      "value": "Python",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-018",
+      "kind": "outcome",
+      "value": "documented retry boundaries",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-019",
+      "kind": "organization",
+      "value": "Example Computing College",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-020",
+      "kind": "credential",
+      "value": "B.S. in Software Engineering",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-021",
+      "kind": "date",
+      "value": "Aug 2016 - May 2020",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-022",
+      "kind": "tool",
+      "value": "Python",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-023",
+      "kind": "tool",
+      "value": "PostgreSQL",
+      "owner": "candidate",
+      "aliases": [
+        "Postgres"
+      ]
+    },
+    {
+      "id": "atom-024",
+      "kind": "tool",
+      "value": "Git",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-025",
+      "kind": "tool",
+      "value": "Docker Compose",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-026",
+      "kind": "tool",
+      "value": "FastAPI",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-027",
+      "kind": "tool",
+      "value": "Redis",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-028",
+      "kind": "outcome",
+      "value": "wrote incident notes",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-029",
+      "kind": "outcome",
+      "value": "tested idempotent requests",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-030",
+      "kind": "outcome",
+      "value": "prepared onboarding examples",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-031",
+      "kind": "outcome",
+      "value": "reviewed API contracts",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-032",
+      "kind": "outcome",
+      "value": "created a local seed script",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-033",
+      "kind": "outcome",
+      "value": "measured reconciliation defects",
+      "owner": "exp-1",
+      "aliases": []
+    }
+  ],
+  "jobs": {
+    "close": {
+      "must_include": [
+        "/atoms/4",
+        "/atoms/7",
+        "/atoms/6",
+        "/atoms/5"
+      ],
+      "jd_terms": [
+        "Python",
+        "PostgreSQL",
+        "Git",
+        "Docker Compose"
+      ],
+      "jd_only_terms": [],
+      "canary": null
+    },
+    "stretch": {
+      "must_include": [
+        "/atoms/4",
+        "/atoms/7",
+        "/atoms/8",
+        "/atoms/5"
+      ],
+      "jd_terms": [
+        "Python",
+        "PostgreSQL",
+        "Kubernetes",
+        "Rust"
+      ],
+      "jd_only_terms": [
+        "Kubernetes",
+        "Rust"
+      ],
+      "canary": null
+    },
+    "adversarial": {
+      "must_include": [
+        "/atoms/4",
+        "/atoms/7",
+        "/atoms/15",
+        "/atoms/5"
+      ],
+      "jd_terms": [
+        "Python",
+        "PostgreSQL",
+        "Rust"
+      ],
+      "jd_only_terms": [
+        "Rust"
+      ],
+      "canary": "TT11_CANARY_D02_QX"
+    }
+  }
+}

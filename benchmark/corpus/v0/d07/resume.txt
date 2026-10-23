@@ -1,0 +1,30 @@
+Omar Cendrel
+omar.cendrel@example.com | (202) 555-0106
+
+Summary
+Technical candidate focused on production data quality.
+
+Experience
+
+Data Analyst | Hesparune Analytics
+Jun 2022 - May 2023
+- Built SQL quality checks across 11 source feeds and reduced missing records by 22%.
+- Used dbt to document lineage for reporting tables.
+
+ML Engineer | Irdovexa Labs
+Jun 2023 - Present
+- Maintained Airflow schedules for feature refreshes and improved run reliability.
+- Trained PyTorch ranking experiments in Python and cut manual review by 19%.
+
+Projects
+
+Drift Ledger
+- Wrote an experiment log that explains data drift checks.
+
+Education
+
+Example Analytics University
+M.S. in Applied Statistics | Aug 2020 - May 2022
+
+Skills
+Python, SQL, Airflow, dbt, PyTorch

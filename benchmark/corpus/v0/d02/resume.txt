@@ -1,0 +1,30 @@
+Dana Mistral
+dana.mistral@example.com | (202) 555-0101
+
+Summary
+Technical candidate focused on reliable service integrations.
+
+Experience
+
+Backend Engineer | Auvremora Systems
+Jan 2022 - Dec 2023
+- Contributed to a Python integration service that reduced manual reconciliation by 18%.
+- Maintained PostgreSQL migration notes and reviewed failure reports with support staff.
+
+Software Engineer | Bexilune Works
+Sep 2024 - Present
+- Contributed to a Docker Compose development environment for a payment adapter.
+- Added Git review checks that shortened release preparation.
+
+Projects
+
+Retry Map
+- Documented retry boundaries for a local Python queue prototype.
+
+Education
+
+Example Computing College
+B.S. in Software Engineering | Aug 2016 - May 2020
+
+Skills
+Python, PostgreSQL, Git, Docker Compose

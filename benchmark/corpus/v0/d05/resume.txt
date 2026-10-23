@@ -1,0 +1,30 @@
+Mina Orrel
+mina.orrel@example.com | (202) 555-0104
+
+Summary
+Technical candidate focused on design-system delivery.
+
+Experience
+
+Frontend Engineer | Evitrell Studio
+Jul 2023 - Present
+- Contributed to a React component library used by 6 product teams.
+- Added Playwright checks that cut visual regressions by 24%.
+
+Part-time UI Developer | Farnivell Tools
+Jan 2023 - Dec 2023
+- Built TypeScript reporting screens that made handoff reviews faster.
+- Used Figma specifications to refine CSS responsive states.
+
+Projects
+
+Pattern Shelf
+- Documented accessible component usage for volunteer maintainers.
+
+Education
+
+Example Digital College
+B.A. in Interactive Media | Aug 2017 - May 2021
+
+Skills
+TypeScript, React, CSS, Playwright, Figma

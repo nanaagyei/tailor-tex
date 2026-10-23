@@ -1,0 +1,19 @@
+ML Engineer — Production data quality
+
+Our technical team is seeking someone to improve data quality, reproducible transformations, and model evaluation. The person in this role will own a bounded stream of work, record assumptions, and make tradeoffs visible before a release. Work includes investigating existing behavior, preparing a small change, and describing how another engineer can verify it. The team values plain explanations and careful attribution of contributions.
+
+Required:
+
+Hands-on experience with Python and SQL; practical familiarity with Airflow and dbt.
+
+The successful candidate can review assumptions with analysts and product colleagues. They should be able to show a data or model change with visible provenance and clear failure handling. Examples may come from employment, internships, or substantial projects when those examples actually support the claim.
+
+Preferred:
+
+Experience documenting tradeoffs in production data quality and explaining changes to colleagues.
+
+We appreciate concise evidence of what the applicant personally did, the tools used, and the result observed. We review applications for clear ownership, context, and an account of how the work was checked after release. Examples of shared work should explain the individual contribution.
+
+This opening is designed for candidates whose work overlaps directly with the core stack. We value precise descriptions of work actually completed over broad claims about adjacent technologies.
+
+The team works asynchronously, writes short implementation notes, and reviews changes with the people who will operate them. The application should make specific, verifiable experience easy to find without losing the context in which it happened.

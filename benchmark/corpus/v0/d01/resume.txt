@@ -1,0 +1,21 @@
+Ari Quillmere
+ari.quillmere@example.com | (202) 555-0100
+
+Summary
+Technical candidate focused on backend service interfaces.
+
+Projects
+
+Parcel Ledger
+- Built a Python service that reconciles parcel records with SQLite and makes review easier.
+
+Queue Notebook
+- Wrote pytest checks for retry behavior in a small message queue simulator.
+
+Education
+
+Example Technical Institute
+B.S. in Computer Science | Aug 2021 - May 2025
+
+Skills
+Python, SQLite, Git, pytest

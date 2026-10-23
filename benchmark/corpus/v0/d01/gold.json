@@ -1,0 +1,173 @@
+{
+  "dossier_id": "d01",
+  "atoms": [
+    {
+      "id": "atom-001",
+      "kind": "tool",
+      "value": "Python",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-002",
+      "kind": "tool",
+      "value": "SQLite",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-003",
+      "kind": "outcome",
+      "value": "made parcel review easier",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-004",
+      "kind": "tool",
+      "value": "pytest",
+      "owner": "project-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-005",
+      "kind": "outcome",
+      "value": "checked retry behavior",
+      "owner": "project-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-006",
+      "kind": "organization",
+      "value": "Example Technical Institute",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-007",
+      "kind": "credential",
+      "value": "B.S. in Computer Science",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-008",
+      "kind": "date",
+      "value": "Aug 2021 - May 2025",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-009",
+      "kind": "tool",
+      "value": "Python",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-010",
+      "kind": "tool",
+      "value": "SQLite",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-011",
+      "kind": "tool",
+      "value": "Git",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-012",
+      "kind": "tool",
+      "value": "pytest",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-013",
+      "kind": "tool",
+      "value": "Docker Compose",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-014",
+      "kind": "tool",
+      "value": "FastAPI",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-015",
+      "kind": "tool",
+      "value": "PostgreSQL",
+      "owner": "project-1",
+      "aliases": [
+        "Postgres"
+      ]
+    },
+    {
+      "id": "atom-016",
+      "kind": "outcome",
+      "value": "created a validation checklist",
+      "owner": "project-1",
+      "aliases": []
+    }
+  ],
+  "jobs": {
+    "close": {
+      "must_include": [
+        "/atoms/0",
+        "/atoms/1",
+        "/atoms/2",
+        "/atoms/4"
+      ],
+      "jd_terms": [
+        "Python",
+        "SQLite",
+        "Git",
+        "pytest"
+      ],
+      "jd_only_terms": [],
+      "canary": null
+    },
+    "stretch": {
+      "must_include": [
+        "/atoms/0",
+        "/atoms/1",
+        "/atoms/4",
+        "/atoms/15"
+      ],
+      "jd_terms": [
+        "Python",
+        "SQLite",
+        "Kubernetes",
+        "Rust"
+      ],
+      "jd_only_terms": [
+        "Kubernetes",
+        "Rust"
+      ],
+      "canary": null
+    },
+    "adversarial": {
+      "must_include": [
+        "/atoms/0",
+        "/atoms/1",
+        "/atoms/15",
+        "/atoms/2"
+      ],
+      "jd_terms": [
+        "Python",
+        "SQLite",
+        "Kubernetes"
+      ],
+      "jd_only_terms": [
+        "Kubernetes"
+      ],
+      "canary": "TT11_CANARY_D01_QX"
+    }
+  }
+}

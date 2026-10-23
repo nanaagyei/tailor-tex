@@ -13,5 +13,8 @@ Read in this order:
    formats; the [examples](examples/dossier.example.json) contain one synthetic
    document for each.
 
-The corpus and executable harness are separate follow-up issues (#11 and #12).
+5. The [synthetic corpus](corpus/README.md) supplies fixed candidate and job
+   inputs with owner-linked gold facts and planted traps.
+
+The executable harness remains a separate follow-up issue (#12).
 Protocol version 1.0.0 is a measurement definition, not a performance claim.
