@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Independent benchmark harness, auditor calibration, system adapters, and pinned pre-wedge baseline (#12).
 - Synthetic benchmark corpus v0 with 12 dossiers, 36 jobs, gold facts, trap coverage, and a checked manifest (#11).
 - Capability status and a tested synthetic quick start; public copy now distinguishes shipped behavior from planned safeguards (#8).
 - Versioned benchmark protocol, human rating rubric, and validated JSON formats (#10).

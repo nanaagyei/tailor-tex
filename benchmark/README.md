@@ -16,5 +16,11 @@ Read in this order:
 5. The [synthetic corpus](corpus/README.md) supplies fixed candidate and job
    inputs with owner-linked gold facts and planted traps.
 
-The executable harness remains a separate follow-up issue (#12).
+## How to run
+
+Install `packages/bench` with `uv sync`, then run `uv run tailortex-bench
+validate-corpus`, `uv run tailortex-bench calibrate-auditor`, and `uv run
+tailortex-bench run --system tailortex --repeat 2`. See the
+[bench package guide](../packages/bench/README.md) for all adapters, outputs,
+and reports.
 Protocol version 1.0.0 is a measurement definition, not a performance claim.

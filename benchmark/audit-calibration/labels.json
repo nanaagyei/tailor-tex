@@ -1,0 +1,739 @@
+{
+  "lines": [
+    {
+      "expected": [],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "metric",
+          "owner": "exp-1",
+          "value": "18%"
+        }
+      ],
+      "id": "cal-01",
+      "job_terms": [],
+      "line": "18%"
+    },
+    {
+      "expected": [],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "tool",
+          "owner": "exp-1",
+          "value": "Python"
+        }
+      ],
+      "id": "cal-02",
+      "job_terms": [
+        "Python"
+      ],
+      "line": "Python"
+    },
+    {
+      "expected": [],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "scope",
+          "owner": "exp-1",
+          "value": "led"
+        }
+      ],
+      "id": "cal-03",
+      "job_terms": [],
+      "line": "led"
+    },
+    {
+      "expected": [],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "organization",
+          "owner": "exp-1",
+          "value": "Auvremora Systems"
+        }
+      ],
+      "id": "cal-04",
+      "job_terms": [],
+      "line": "Auvremora Systems"
+    },
+    {
+      "expected": [],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "date",
+          "owner": "exp-1",
+          "value": "Jan 2022 - Dec 2023"
+        }
+      ],
+      "id": "cal-05",
+      "job_terms": [],
+      "line": "Jan 2022 - Dec 2023"
+    },
+    {
+      "expected": [],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "credential",
+          "owner": "education",
+          "value": "B.S. in Computer Science"
+        }
+      ],
+      "id": "cal-06",
+      "job_terms": [],
+      "line": "B.S. in Computer Science"
+    },
+    {
+      "expected": [],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "outcome",
+          "owner": "exp-1",
+          "value": "reduced manual reconciliation"
+        }
+      ],
+      "id": "cal-07",
+      "job_terms": [],
+      "line": "- reduced manual reconciliation"
+    },
+    {
+      "expected": [],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "title",
+          "owner": "exp-1",
+          "value": "Backend Engineer"
+        },
+        {
+          "aliases": [],
+          "id": "g2",
+          "kind": "organization",
+          "owner": "exp-1",
+          "value": "Auvremora Systems"
+        }
+      ],
+      "id": "cal-08",
+      "job_terms": [],
+      "line": "Backend Engineer | Auvremora Systems"
+    },
+    {
+      "expected": [],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "tool",
+          "owner": "exp-1",
+          "value": "PostgreSQL"
+        }
+      ],
+      "id": "cal-09",
+      "job_terms": [
+        "PostgreSQL"
+      ],
+      "line": "PostgreSQL"
+    },
+    {
+      "expected": [],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "outcome",
+          "owner": "exp-1",
+          "value": "improved migration handoffs"
+        }
+      ],
+      "id": "cal-10",
+      "job_terms": [],
+      "line": "- improved migration handoffs"
+    },
+    {
+      "expected": [
+        {
+          "kind": "metric",
+          "verdict": "inflated"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "metric",
+          "owner": "exp-1",
+          "value": "30%"
+        }
+      ],
+      "id": "cal-11",
+      "job_terms": [],
+      "line": "35%"
+    },
+    {
+      "expected": [
+        {
+          "kind": "metric",
+          "verdict": "inflated"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "metric",
+          "owner": "exp-1",
+          "value": "20%"
+        }
+      ],
+      "id": "cal-12",
+      "job_terms": [],
+      "line": "50%"
+    },
+    {
+      "expected": [
+        {
+          "kind": "metric",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [],
+      "id": "cal-13",
+      "job_terms": [],
+      "line": "99%"
+    },
+    {
+      "expected": [
+        {
+          "kind": "metric",
+          "verdict": "inflated"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "metric",
+          "owner": "exp-1",
+          "value": "3 engineers"
+        }
+      ],
+      "id": "cal-14",
+      "job_terms": [],
+      "line": "7 engineers"
+    },
+    {
+      "expected": [
+        {
+          "kind": "metric",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [],
+      "id": "cal-15",
+      "job_terms": [],
+      "line": "$9000"
+    },
+    {
+      "expected": [
+        {
+          "kind": "tool",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [],
+      "id": "cal-16",
+      "job_terms": [
+        "Kubernetes"
+      ],
+      "line": "Kubernetes"
+    },
+    {
+      "expected": [
+        {
+          "kind": "tool",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [],
+      "id": "cal-17",
+      "job_terms": [
+        "Rust"
+      ],
+      "line": "Rust"
+    },
+    {
+      "expected": [
+        {
+          "kind": "tool",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [],
+      "id": "cal-18",
+      "job_terms": [
+        "GraphQL"
+      ],
+      "line": "GraphQL"
+    },
+    {
+      "expected": [
+        {
+          "kind": "tool",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [],
+      "id": "cal-19",
+      "job_terms": [
+        "Terraform"
+      ],
+      "line": "Terraform"
+    },
+    {
+      "expected": [
+        {
+          "kind": "tool",
+          "verdict": "misattributed"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "tool",
+          "owner": "exp-2",
+          "value": "Docker"
+        },
+        {
+          "aliases": [],
+          "id": "g2",
+          "kind": "title",
+          "owner": "exp-1",
+          "value": "Backend Engineer"
+        },
+        {
+          "aliases": [],
+          "id": "g3",
+          "kind": "organization",
+          "owner": "exp-1",
+          "value": "Auvremora Systems"
+        }
+      ],
+      "id": "cal-20",
+      "job_terms": [
+        "Docker"
+      ],
+      "line": "Backend Engineer | Auvremora Systems\nDocker"
+    },
+    {
+      "expected": [
+        {
+          "kind": "scope",
+          "verdict": "inflated"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "scope",
+          "owner": "exp-1",
+          "value": "contributed to integration service"
+        }
+      ],
+      "id": "cal-21",
+      "job_terms": [],
+      "line": "led"
+    },
+    {
+      "expected": [
+        {
+          "kind": "scope",
+          "verdict": "inflated"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "scope",
+          "owner": "exp-1",
+          "value": "contributed to integration service"
+        }
+      ],
+      "id": "cal-22",
+      "job_terms": [],
+      "line": "owned"
+    },
+    {
+      "expected": [
+        {
+          "kind": "scope",
+          "verdict": "inflated"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "scope",
+          "owner": "exp-1",
+          "value": "contributed to integration service"
+        }
+      ],
+      "id": "cal-23",
+      "job_terms": [],
+      "line": "managed"
+    },
+    {
+      "expected": [
+        {
+          "kind": "scope",
+          "verdict": "inflated"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "scope",
+          "owner": "exp-1",
+          "value": "contributed to integration service"
+        }
+      ],
+      "id": "cal-24",
+      "job_terms": [],
+      "line": "spearheaded"
+    },
+    {
+      "expected": [
+        {
+          "kind": "organization",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [],
+      "id": "cal-25",
+      "job_terms": [],
+      "line": "Fictional Systems"
+    },
+    {
+      "expected": [
+        {
+          "kind": "organization",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [],
+      "id": "cal-26",
+      "job_terms": [],
+      "line": "Imaginary Works"
+    },
+    {
+      "expected": [
+        {
+          "kind": "organization",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [],
+      "id": "cal-27",
+      "job_terms": [],
+      "line": "Invented Labs"
+    },
+    {
+      "expected": [
+        {
+          "kind": "title",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "title",
+          "owner": "exp-1",
+          "value": "Backend Engineer"
+        },
+        {
+          "aliases": [],
+          "id": "g2",
+          "kind": "organization",
+          "owner": "exp-1",
+          "value": "Auvremora Systems"
+        }
+      ],
+      "id": "cal-28",
+      "job_terms": [],
+      "line": "Architect | Auvremora Systems"
+    },
+    {
+      "expected": [
+        {
+          "kind": "title",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "title",
+          "owner": "exp-1",
+          "value": "Backend Engineer"
+        },
+        {
+          "aliases": [],
+          "id": "g2",
+          "kind": "organization",
+          "owner": "exp-1",
+          "value": "Auvremora Systems"
+        }
+      ],
+      "id": "cal-29",
+      "job_terms": [],
+      "line": "Director | Auvremora Systems"
+    },
+    {
+      "expected": [
+        {
+          "kind": "title",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "title",
+          "owner": "exp-1",
+          "value": "Backend Engineer"
+        },
+        {
+          "aliases": [],
+          "id": "g2",
+          "kind": "organization",
+          "owner": "exp-1",
+          "value": "Auvremora Systems"
+        }
+      ],
+      "id": "cal-30",
+      "job_terms": [],
+      "line": "Manager | Auvremora Systems"
+    },
+    {
+      "expected": [
+        {
+          "kind": "date",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "date",
+          "owner": "exp-1",
+          "value": "Jan 2022 - Dec 2023"
+        }
+      ],
+      "id": "cal-31",
+      "job_terms": [],
+      "line": "Feb 2020 - Present"
+    },
+    {
+      "expected": [
+        {
+          "kind": "date",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "date",
+          "owner": "exp-1",
+          "value": "Jan 2022 - Dec 2023"
+        }
+      ],
+      "id": "cal-32",
+      "job_terms": [],
+      "line": "Mar 2018 - Dec 2022"
+    },
+    {
+      "expected": [
+        {
+          "kind": "date",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "date",
+          "owner": "exp-1",
+          "value": "Jan 2022 - Dec 2023"
+        }
+      ],
+      "id": "cal-33",
+      "job_terms": [],
+      "line": "Apr 2016 - May 2020"
+    },
+    {
+      "expected": [
+        {
+          "kind": "credential",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "credential",
+          "owner": "education",
+          "value": "B.S. in Computer Science"
+        }
+      ],
+      "id": "cal-34",
+      "job_terms": [],
+      "line": "Ph.D. in Physics"
+    },
+    {
+      "expected": [
+        {
+          "kind": "credential",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "credential",
+          "owner": "education",
+          "value": "B.S. in Computer Science"
+        }
+      ],
+      "id": "cal-35",
+      "job_terms": [],
+      "line": "M.S. in Mathematics"
+    },
+    {
+      "expected": [
+        {
+          "kind": "credential",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "credential",
+          "owner": "education",
+          "value": "B.S. in Computer Science"
+        }
+      ],
+      "id": "cal-36",
+      "job_terms": [],
+      "line": "Certified Cloud Architect"
+    },
+    {
+      "expected": [
+        {
+          "kind": "outcome",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "outcome",
+          "owner": "exp-1",
+          "value": "reduced manual reconciliation"
+        }
+      ],
+      "id": "cal-37",
+      "job_terms": [],
+      "line": "- eliminated pager alerts"
+    },
+    {
+      "expected": [
+        {
+          "kind": "outcome",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "outcome",
+          "owner": "exp-1",
+          "value": "reduced manual reconciliation"
+        }
+      ],
+      "id": "cal-38",
+      "job_terms": [],
+      "line": "- accelerated release cycles"
+    },
+    {
+      "expected": [
+        {
+          "kind": "outcome",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "outcome",
+          "owner": "exp-1",
+          "value": "reduced manual reconciliation"
+        }
+      ],
+      "id": "cal-39",
+      "job_terms": [],
+      "line": "- increased customer retention"
+    },
+    {
+      "expected": [
+        {
+          "kind": "outcome",
+          "verdict": "unsupported"
+        }
+      ],
+      "gold_atoms": [
+        {
+          "aliases": [],
+          "id": "g1",
+          "kind": "outcome",
+          "owner": "exp-1",
+          "value": "reduced manual reconciliation"
+        }
+      ],
+      "id": "cal-40",
+      "job_terms": [],
+      "line": "- created global platform"
+    }
+  ],
+  "version": "1.0.0"
+}

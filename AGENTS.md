@@ -13,7 +13,7 @@ TailorTex is a career-evidence compiler for technical candidates. Its unit of va
 - `apps/web/` — frozen web interface; see `apps/web/AGENTS.md` before web work.
 - `docs/spec/` — pointer to the GitHub issue tracker, which holds current implementation scope.
 - `docs/adr/` — accepted architectural decisions.
-- [`benchmark/`](benchmark/README.md) — evaluation definitions, rubric, and schemas; corpus and harness are planned.
+- [`benchmark/`](benchmark/README.md) — evaluation protocol, synthetic corpus, harness, and baseline results.
 
 ## Commands
 
@@ -25,6 +25,9 @@ The current CI workflow runs these commands:
 - Core lint: `cd packages/core && uv run ruff check src/ tests/`
 - Core type check: `cd packages/core && uv run mypy src/`
 - Core tests: `cd packages/core && uv run pytest -v`
+- Bench install: `cd packages/bench && uv sync`
+- Bench lint and type check: `cd packages/bench && uv run ruff check src/ tests/ && uv run mypy src/`
+- Bench tests and gates: `cd packages/bench && uv run pytest -v && uv run tailortex-bench validate-corpus && uv run tailortex-bench calibrate-auditor`
 - CLI install: `cd apps/cli && uv sync`
 - CLI lint: `cd apps/cli && uv run ruff check src/ tests/`
 - CLI tests: `cd apps/cli && uv run pytest -v`

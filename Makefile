@@ -8,6 +8,7 @@ install: install-python install-web
 
 install-python:
 	cd packages/core && uv sync
+	cd packages/bench && uv sync
 	cd apps/cli && uv sync
 	cd apps/api && uv sync
 
@@ -36,6 +37,7 @@ test: test-python test-web
 
 test-python:
 	cd packages/core && uv run pytest -v
+	cd packages/bench && uv run pytest -v
 	cd apps/cli && uv run pytest -v
 	cd apps/api && uv run pytest -v
 
@@ -53,6 +55,8 @@ lint: lint-python lint-web
 lint-python:
 	cd packages/core && uv run ruff check src/ tests/
 	cd packages/core && uv run mypy src/
+	cd packages/bench && uv run ruff check src/ tests/
+	cd packages/bench && uv run mypy src/
 	cd apps/cli && uv run ruff check src/ tests/
 	cd apps/api && uv run ruff check src/ tests/
 

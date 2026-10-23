@@ -13,7 +13,6 @@ from pathlib import Path
 
 import pytest
 from jsonschema import Draft202012Validator
-
 from tailortex.parsers.jd_parser import parse_jd_text
 from tailortex.parsers.resume_parser import parse_resume_text
 
@@ -33,11 +32,38 @@ TRAP_COUNTS = {
     "Credential pressure": 4,
 }
 TOOLS = (
-    "Python", "SQLite", "Git", "pytest", "PostgreSQL", "Docker Compose", "Go",
-    "OpenTelemetry", "TypeScript", "React", "CSS", "Vitest", "Playwright", "Figma",
-    "pandas", "SQL", "scikit-learn", "Airflow", "dbt", "PyTorch", "Selenium",
-    "Java", "JUnit", "Jenkins", "Terraform", "Docker", "GitHub Actions",
-    "Prometheus", "Bash", "Kubernetes", "Grafana", "NumPy",
+    "Python",
+    "SQLite",
+    "Git",
+    "pytest",
+    "PostgreSQL",
+    "Docker Compose",
+    "Go",
+    "OpenTelemetry",
+    "TypeScript",
+    "React",
+    "CSS",
+    "Vitest",
+    "Playwright",
+    "Figma",
+    "pandas",
+    "SQL",
+    "scikit-learn",
+    "Airflow",
+    "dbt",
+    "PyTorch",
+    "Selenium",
+    "Java",
+    "JUnit",
+    "Jenkins",
+    "Terraform",
+    "Docker",
+    "GitHub Actions",
+    "Prometheus",
+    "Bash",
+    "Kubernetes",
+    "Grafana",
+    "NumPy",
 )
 
 
@@ -59,11 +85,12 @@ def test_exact_directory_and_job_counts() -> None:
     for dossier_id in IDS:
         folder = CORPUS / dossier_id
         assert {path.name for path in folder.iterdir()} == {
-            "dossier.json", "gold.json", "resume.txt", "jobs"
+            "dossier.json",
+            "gold.json",
+            "resume.txt",
+            "jobs",
         }
-        assert {path.name for path in (folder / "jobs").iterdir()} == {
-            f"{job}.txt" for job in JOBS
-        }
+        assert {path.name for path in (folder / "jobs").iterdir()} == {f"{job}.txt" for job in JOBS}
 
 
 @pytest.mark.parametrize("dossier_id", IDS)
@@ -80,9 +107,9 @@ def test_schemas_gold_references_and_job_terms(dossier_id: str) -> None:
     atoms = gold["atoms"]
     assert len({atom["id"] for atom in atoms}) == len(atoms)
     assert len({evidence["id"] for evidence in dossier["evidence"]}) == len(atoms)
-    assert {
-        (item["owner"], item["kind"], item["text"]) for item in dossier["evidence"]
-    } == {(atom["owner"], atom["kind"], atom["value"]) for atom in atoms}
+    assert {(item["owner"], item["kind"], item["text"]) for item in dossier["evidence"]} == {
+        (atom["owner"], atom["kind"], atom["value"]) for atom in atoms
+    }
     assert set(gold["jobs"]) == set(JOBS)
 
     gold_values = {
@@ -105,7 +132,8 @@ def test_schemas_gold_references_and_job_terms(dossier_id: str) -> None:
         assert all(term.casefold() not in gold_values for term in job["jd_only_terms"])
         assert all(
             term.casefold() in gold_values
-            for term in job["jd_terms"] if term not in job["jd_only_terms"]
+            for term in job["jd_terms"]
+            if term not in job["jd_only_terms"]
         )
         assert all(term in text for term in job["jd_terms"])
 
@@ -117,11 +145,17 @@ def test_coverage_tables_and_trap_totals() -> None:
     assert len(dossiers) == 12 and len(cases) == 36
     assert [row[0] for row in dossiers] == list(IDS)
     assert Counter(row[1] for row in dossiers) == {
-        "Backend": 3, "Frontend": 2, "ML/data": 2, "QA/SDET": 2,
-        "DevOps/SRE": 2, "Research engineer": 1,
+        "Backend": 3,
+        "Frontend": 2,
+        "ML/data": 2,
+        "QA/SDET": 2,
+        "DevOps/SRE": 2,
+        "Research engineer": 1,
     }
     assert Counter(row[2] for row in dossiers) == {
-        "New graduate": 3, "2\u20135 years": 5, "6+ years": 4,
+        "New graduate": 3,
+        "2\u20135 years": 5,
+        "6+ years": 4,
     }
     assert Counter(row[3] for row in dossiers) == {"Sparse": 4, "Medium": 4, "Rich": 4}
     for row in dossiers:
@@ -157,10 +191,7 @@ def test_coverage_tables_and_trap_totals() -> None:
 
 
 def test_canaries_are_unique_and_only_in_their_job() -> None:
-    texts = {
-        path: path.read_text(encoding="utf-8")
-        for path in CORPUS.glob("d*/jobs/*.txt")
-    }
+    texts = {path: path.read_text(encoding="utf-8") for path in CORPUS.glob("d*/jobs/*.txt")}
     canaries = [
         load_json(CORPUS / dossier_id / "gold.json")["jobs"]["adversarial"]["canary"]
         for dossier_id in IDS
@@ -179,13 +210,17 @@ def test_resume_facts_and_importer(dossier_id: str) -> None:
     folder = CORPUS / dossier_id
     resume = (folder / "resume.txt").read_text(encoding="utf-8")
     atoms = load_json(folder / "gold.json")["atoms"]
-    by_kind = {kind: {a["value"] for a in atoms if a["kind"] == kind} for kind in
-               ("metric", "tool", "organization", "title", "date", "credential")}
+    by_kind = {
+        kind: {a["value"] for a in atoms if a["kind"] == kind}
+        for kind in ("metric", "tool", "organization", "title", "date", "credential")
+    }
     for line in resume.splitlines():
         if line.startswith("- "):
             for number in re.findall(r"\b\d+(?:\.\d+)?%?\b", line):
                 assert any(number in metric for metric in by_kind["metric"]), (
-                    dossier_id, line, number
+                    dossier_id,
+                    line,
+                    number,
                 )
     for tool in TOOLS:
         if tool == "Docker" and "Docker Compose" in resume:
@@ -222,7 +257,8 @@ def test_manifest_is_current_and_fails_after_edit(tmp_path: Path) -> None:
     assert manifest["dossiers"] == list(IDS)
     actual = {
         path.relative_to(CORPUS).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
-        for path in CORPUS.rglob("*") if path.is_file() and path != CORPUS / "MANIFEST.json"
+        for path in CORPUS.rglob("*")
+        if path.is_file() and path != CORPUS / "MANIFEST.json"
     }
     assert manifest["files"] == actual
     script = BENCHMARK / "corpus" / "build_manifest.py"
@@ -236,7 +272,9 @@ def test_manifest_is_current_and_fails_after_edit(tmp_path: Path) -> None:
     resume.write_text(resume.read_text() + "changed\n")
     stale = subprocess.run(
         [sys.executable, str(temporary_corpus / "build_manifest.py"), "--check"],
-        capture_output=True, text=True, check=False,
+        capture_output=True,
+        text=True,
+        check=False,
     )
     assert stale.returncode == 1
     assert "stale" in stale.stdout

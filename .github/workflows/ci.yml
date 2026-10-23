@@ -48,6 +48,27 @@ jobs:
       - name: Test
         run: cd packages/core && uv run pytest -v
 
+      - name: Install bench dependencies
+        run: cd packages/bench && uv sync
+
+      - name: Lint bench
+        run: cd packages/bench && uv run ruff check src/ tests/
+
+      - name: Type check bench
+        run: cd packages/bench && uv run mypy src/
+
+      - name: Test bench
+        run: cd packages/bench && uv run pytest -v
+
+      - name: Validate corpus and auditor
+        run: |
+          cd packages/bench
+          uv run tailortex-bench validate-corpus
+          uv run tailortex-bench calibrate-auditor
+
+      - name: Run deterministic benchmark
+        run: cd packages/bench && uv run tailortex-bench run --system tailortex --repeat 2 --out "$RUNNER_TEMP/bench"
+
   cli:
     name: CLI (lint + test)
     runs-on: ubuntu-latest
