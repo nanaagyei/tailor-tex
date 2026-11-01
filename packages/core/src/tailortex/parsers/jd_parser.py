@@ -11,7 +11,7 @@ import logging
 import re
 import uuid
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from tailortex.llm.prompts import JOB_DESCRIPTION_PARSER_PROMPT
 from tailortex.schemas.job import JDSource, ParsedJobDescription, RoleSignals
@@ -374,7 +374,7 @@ def _extract_domain_keywords(text_lower: str) -> list[str]:
 # LLM-based JD parser
 # ---------------------------------------------------------------------------
 
-_PARSED_JD_SCHEMA: dict = {
+_PARSED_JD_SCHEMA: dict[str, Any] = {
     "type": "object",
     "properties": {
         "job_id": {"type": "string"},

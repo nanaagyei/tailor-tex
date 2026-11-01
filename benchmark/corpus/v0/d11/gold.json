@@ -1,0 +1,273 @@
+{
+  "dossier_id": "d11",
+  "atoms": [
+    {
+      "id": "atom-001",
+      "kind": "title",
+      "value": "Platform Engineer",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-002",
+      "kind": "organization",
+      "value": "Qelvorynth Infrastructure",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-003",
+      "kind": "date",
+      "value": "Jul 2014 - Present",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-004",
+      "kind": "scope",
+      "value": "led rollout reviews",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-005",
+      "kind": "tool",
+      "value": "Kubernetes",
+      "owner": "exp-1",
+      "aliases": [
+        "k8s"
+      ]
+    },
+    {
+      "id": "atom-006",
+      "kind": "metric",
+      "value": "23 services",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-007",
+      "kind": "metric",
+      "value": "34%",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-008",
+      "kind": "outcome",
+      "value": "reduced failed deployments",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-009",
+      "kind": "tool",
+      "value": "Prometheus",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-010",
+      "kind": "tool",
+      "value": "Grafana",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-011",
+      "kind": "outcome",
+      "value": "shortened incident triage",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-012",
+      "kind": "tool",
+      "value": "Terraform",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-013",
+      "kind": "tool",
+      "value": "Python",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-014",
+      "kind": "outcome",
+      "value": "audited configuration changes",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-015",
+      "kind": "outcome",
+      "value": "clarified recovery handoffs",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-016",
+      "kind": "organization",
+      "value": "Example Systems University",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-017",
+      "kind": "credential",
+      "value": "B.S. in Computer Science",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-018",
+      "kind": "date",
+      "value": "Aug 2010 - May 2014",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-019",
+      "kind": "tool",
+      "value": "Kubernetes",
+      "owner": "candidate",
+      "aliases": [
+        "k8s"
+      ]
+    },
+    {
+      "id": "atom-020",
+      "kind": "tool",
+      "value": "Terraform",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-021",
+      "kind": "tool",
+      "value": "Prometheus",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-022",
+      "kind": "tool",
+      "value": "Python",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-023",
+      "kind": "tool",
+      "value": "Grafana",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-024",
+      "kind": "tool",
+      "value": "Argo CD",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-025",
+      "kind": "tool",
+      "value": "Helm",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-026",
+      "kind": "outcome",
+      "value": "built service ownership maps",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-027",
+      "kind": "outcome",
+      "value": "reviewed load-test findings",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-028",
+      "kind": "outcome",
+      "value": "created rollback exercises",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-029",
+      "kind": "outcome",
+      "value": "coached on-call peers",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-030",
+      "kind": "outcome",
+      "value": "checked disaster recovery notes",
+      "owner": "exp-1",
+      "aliases": []
+    }
+  ],
+  "jobs": {
+    "close": {
+      "must_include": [
+        "/atoms/4",
+        "/atoms/8",
+        "/atoms/7",
+        "/atoms/5"
+      ],
+      "jd_terms": [
+        "Kubernetes",
+        "Terraform",
+        "Prometheus",
+        "Python"
+      ],
+      "jd_only_terms": [],
+      "canary": null
+    },
+    "stretch": {
+      "must_include": [
+        "/atoms/4",
+        "/atoms/11",
+        "/atoms/10",
+        "/atoms/5"
+      ],
+      "jd_terms": [
+        "Kubernetes",
+        "Terraform",
+        "Nomad",
+        "Pulumi"
+      ],
+      "jd_only_terms": [
+        "Nomad",
+        "Pulumi"
+      ],
+      "canary": null
+    },
+    "adversarial": {
+      "must_include": [
+        "/atoms/4",
+        "/atoms/11",
+        "/atoms/13",
+        "/atoms/5"
+      ],
+      "jd_terms": [
+        "Kubernetes",
+        "Terraform",
+        "Nomad"
+      ],
+      "jd_only_terms": [
+        "Nomad"
+      ],
+      "canary": "TT11_CANARY_D11_QX"
+    }
+  }
+}

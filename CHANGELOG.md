@@ -9,8 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Independent benchmark harness, auditor calibration, system adapters, and pinned pre-wedge baseline (#12).
+- Synthetic benchmark corpus v0 with 12 dossiers, 36 jobs, gold facts, trap coverage, and a checked manifest (#11).
+- Capability status and a tested synthetic quick start; public copy now distinguishes shipped behavior from planned safeguards (#8).
+- Versioned benchmark protocol, human rating rubric, and validated JSON formats (#10).
+- Repository checks now cover core, CLI, API, and web without masking failures (#9).
+- Reviewable CLI resume drafts, approved profile handoff, and saved jobs shared by the CLI and API, with read support for legacy job records (#7).
+- CLI and API test suites with CI jobs for both packages.
+- Tracked contributor guidance, the career-evidence compiler decision, and a Markdown link check in CI.
 - Initial monorepo structure with Python core, CLI, API, and Next.js web UI.
 - Pydantic schemas for canonical profile, job description, resume plan, and validation report.
 - Local workspace manager with path traversal prevention.
-- shadcn/ui design system with Geist fonts, zinc palette, emerald accent.
+- shadcn/ui design system with zinc palette and emerald accent.
 - Project governance files (LICENSE, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY).
+
+### Fixed
+
+- Stage 0 promotion keeps the existing CLI and API behavior, runs the README quick start in CI, removes generated LaTeX files, and builds the web app offline with system fonts and telemetry disabled (#13).

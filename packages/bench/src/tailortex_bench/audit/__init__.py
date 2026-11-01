@@ -1,0 +1,1 @@
+"""Independent gold-fact auditor."""

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "atoms": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "gold_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "kind": {
+            "enum": [
+              "metric",
+              "tool",
+              "scope",
+              "organization",
+              "title",
+              "date",
+              "credential",
+              "outcome"
+            ],
+            "type": "string"
+          },
+          "line": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "value": {
+            "type": "string"
+          },
+          "verdict": {
+            "enum": [
+              "supported",
+              "misattributed",
+              "unsupported",
+              "inflated"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "value",
+          "line",
+          "verdict",
+          "gold_ref"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "case": {
+      "additionalProperties": false,
+      "properties": {
+        "dossier_id": {
+          "type": "string"
+        },
+        "job_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "dossier_id",
+        "job_id"
+      ],
+      "type": "object"
+    },
+    "system_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "case",
+    "system_id",
+    "atoms"
+  ],
+  "title": "Independent atomic claim audit",
+  "type": "object"
+}

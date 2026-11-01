@@ -1,6 +1,6 @@
 """TailorTex data schemas."""
 
-from tailortex.schemas.job import JDSource, ParsedJobDescription, RoleSignals
+from tailortex.schemas.job import JDRecord, JDSource, ParsedJobDescription, RoleSignals
 from tailortex.schemas.profile import (
     Award,
     Bullet,
@@ -44,6 +44,7 @@ __all__ = [
     "EvidenceLedgerEntry",
     "Experience",
     "GeneratedBullet",
+    "JDRecord",
     "JDSource",
     "KeywordStrategy",
     "Link",

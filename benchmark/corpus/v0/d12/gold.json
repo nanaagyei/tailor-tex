@@ -1,0 +1,222 @@
+{
+  "dossier_id": "d12",
+  "atoms": [
+    {
+      "id": "atom-001",
+      "kind": "title",
+      "value": "Research Engineer",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-002",
+      "kind": "organization",
+      "value": "Ordevyx Research",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-003",
+      "kind": "date",
+      "value": "Jun 2017 - Present",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-004",
+      "kind": "tool",
+      "value": "Python",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-005",
+      "kind": "outcome",
+      "value": "compared model assumptions",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-006",
+      "kind": "tool",
+      "value": "NumPy",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-007",
+      "kind": "tool",
+      "value": "PyTorch",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-008",
+      "kind": "outcome",
+      "value": "reproduced baseline findings",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-009",
+      "kind": "tool",
+      "value": "Git",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-010",
+      "kind": "outcome",
+      "value": "documented experiment runs",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-011",
+      "kind": "organization",
+      "value": "Example Research University",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-012",
+      "kind": "credential",
+      "value": "Ph.D. in Computer Science",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-013",
+      "kind": "date",
+      "value": "Aug 2011 - May 2017",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-014",
+      "kind": "tool",
+      "value": "Python",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-015",
+      "kind": "tool",
+      "value": "NumPy",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-016",
+      "kind": "tool",
+      "value": "PyTorch",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-017",
+      "kind": "tool",
+      "value": "Git",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-018",
+      "kind": "tool",
+      "value": "JAX",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-019",
+      "kind": "outcome",
+      "value": "pandas",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-020",
+      "kind": "outcome",
+      "value": "reviewed sampling bias",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-021",
+      "kind": "outcome",
+      "value": "created ablation plans",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-022",
+      "kind": "outcome",
+      "value": "prepared reproducibility notes",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-023",
+      "kind": "outcome",
+      "value": "mentored research assistants",
+      "owner": "exp-1",
+      "aliases": []
+    }
+  ],
+  "jobs": {
+    "close": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/5",
+        "/atoms/4",
+        "/atoms/7"
+      ],
+      "jd_terms": [
+        "Python",
+        "NumPy",
+        "PyTorch",
+        "Git"
+      ],
+      "jd_only_terms": [],
+      "canary": null
+    },
+    "stretch": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/5",
+        "/atoms/7",
+        "/atoms/9"
+      ],
+      "jd_terms": [
+        "Python",
+        "NumPy",
+        "Spark",
+        "Julia"
+      ],
+      "jd_only_terms": [
+        "Spark",
+        "Julia"
+      ],
+      "canary": null
+    },
+    "adversarial": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/5",
+        "/atoms/9",
+        "/atoms/18"
+      ],
+      "jd_terms": [
+        "Python",
+        "NumPy",
+        "Spark",
+        "AWS Certified Machine Learning Specialty"
+      ],
+      "jd_only_terms": [
+        "Spark",
+        "AWS Certified Machine Learning Specialty"
+      ],
+      "canary": "TT11_CANARY_D12_QX"
+    }
+  }
+}

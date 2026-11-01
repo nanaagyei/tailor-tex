@@ -1,0 +1,30 @@
+Ren Saville
+ren.saville@example.com | (202) 555-0109
+
+Summary
+Technical candidate focused on reliable build and deployment paths.
+
+Experience
+
+Build Engineer | Luravexa Cloud
+Jul 2022 - Jun 2023
+- Used Terraform to standardize staging resources and reduced setup time by 20%.
+- Built Bash diagnostics for failed image builds.
+
+Site Reliability Engineer | Mavirell Tools
+Jul 2023 - Present
+- Maintained Docker release images through GitHub Actions.
+- Added Prometheus alerts that made deployment faults easier to locate.
+
+Projects
+
+Runbook Tiles
+- Wrote a local incident runbook for service restarts.
+
+Education
+
+Example Technical Institute
+B.S. in Computer Engineering | Aug 2016 - May 2020
+
+Skills
+Terraform, Docker, GitHub Actions, Prometheus, Bash

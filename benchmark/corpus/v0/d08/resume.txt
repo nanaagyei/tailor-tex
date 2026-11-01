@@ -1,0 +1,25 @@
+Priya Lorne
+priya.lorne@example.com | (202) 555-0107
+
+Summary
+Technical candidate focused on repeatable release testing.
+
+Experience
+
+QA Engineer | Jelvarune Quality
+Aug 2022 - Present
+- Built pytest smoke checks for a customer portal.
+- Used Selenium to reproduce intermittent sign-in failures.
+
+Projects
+
+Check Catalog
+- Wrote Python scripts that list manual regression paths before releases.
+
+Education
+
+Example Computing College
+B.S. in Information Systems | Aug 2017 - May 2021
+
+Skills
+Python, pytest, Selenium, Git

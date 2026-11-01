@@ -1,0 +1,145 @@
+{
+  "dossier_id": "d06",
+  "base_resume_path": "resume.txt",
+  "evidence": [
+    {
+      "id": "ev-001",
+      "owner": "exp-1",
+      "kind": "title",
+      "text": "Data Intern"
+    },
+    {
+      "id": "ev-002",
+      "owner": "exp-1",
+      "kind": "organization",
+      "text": "Gavorynth Data"
+    },
+    {
+      "id": "ev-003",
+      "owner": "exp-1",
+      "kind": "date",
+      "text": "Jun 2024 - Aug 2024"
+    },
+    {
+      "id": "ev-004",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "pandas"
+    },
+    {
+      "id": "ev-005",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "documented missing-value rules"
+    },
+    {
+      "id": "ev-006",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "SQL"
+    },
+    {
+      "id": "ev-007",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "checked extract consistency"
+    },
+    {
+      "id": "ev-008",
+      "owner": "project-1",
+      "kind": "tool",
+      "text": "scikit-learn"
+    },
+    {
+      "id": "ev-009",
+      "owner": "project-1",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-010",
+      "owner": "project-1",
+      "kind": "outcome",
+      "text": "recorded model error categories"
+    },
+    {
+      "id": "ev-011",
+      "owner": "education",
+      "kind": "organization",
+      "text": "Example Quantitative Institute"
+    },
+    {
+      "id": "ev-012",
+      "owner": "education",
+      "kind": "credential",
+      "text": "B.S. in Statistics"
+    },
+    {
+      "id": "ev-013",
+      "owner": "education",
+      "kind": "date",
+      "text": "Aug 2021 - May 2025"
+    },
+    {
+      "id": "ev-014",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-015",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "pandas"
+    },
+    {
+      "id": "ev-016",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "SQL"
+    },
+    {
+      "id": "ev-017",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "scikit-learn"
+    },
+    {
+      "id": "ev-018",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Jupyter"
+    },
+    {
+      "id": "ev-019",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "DuckDB"
+    },
+    {
+      "id": "ev-020",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "prepared train-test splits"
+    },
+    {
+      "id": "ev-021",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reviewed dataset provenance"
+    },
+    {
+      "id": "ev-022",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "wrote feature descriptions"
+    },
+    {
+      "id": "ev-023",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "tested categorical encodings"
+    }
+  ],
+  "notes": "Entirely synthetic ml/data candidate. Evidence items after the 17 resume facts are verified but omitted from the base resume."
+}

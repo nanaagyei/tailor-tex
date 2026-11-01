@@ -1,0 +1,26 @@
+Sora Mavren
+sora.mavren@example.com | (202) 555-0110
+
+Summary
+Technical candidate focused on incident response and platform reliability.
+
+Experience
+
+Platform Engineer | Qelvorynth Infrastructure
+Jul 2014 - Present
+- Led Kubernetes rollout reviews for 23 services and reduced failed deployments by 34%.
+- Added Prometheus and Grafana views that shortened incident triage.
+- Used Terraform and Python to audit configuration changes.
+
+Projects
+
+Restore Drill
+- Documented a recovery drill and clarified handoff steps.
+
+Education
+
+Example Systems University
+B.S. in Computer Science | Aug 2010 - May 2014
+
+Skills
+Kubernetes, Terraform, Prometheus, Python, Grafana

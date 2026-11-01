@@ -24,10 +24,12 @@ dev-dependencies = [
     "pytest>=8.0",
     "httpx>=0.27",
     "ruff>=0.5",
+    "tailortex-cli",
 ]
 
 [tool.uv.sources]
 tailortex = { path = "../../packages/core", editable = true }
+tailortex-cli = { path = "../cli", editable = true }
 
 [tool.ruff]
 target-version = "py312"

@@ -14,5 +14,7 @@ updates:
       interval: "weekly"
   - package-ecosystem: "npm"
     directory: "/apps/web"
+  - package-ecosystem: "uv"
+    directory: "/packages/bench"
     schedule:
       interval: "weekly"

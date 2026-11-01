@@ -15,7 +15,7 @@ import uuid
 from typing import Any
 
 from tailortex.llm.base import LLMError, LLMProvider, LLMResponse
-from tailortex.llm.prompts import BULLET_REWRITE_PROMPT, MODE_INSTRUCTIONS
+from tailortex.llm.prompts import BULLET_REWRITE_PROMPT
 from tailortex.privacy.redaction import RedactionMap
 from tailortex.schemas.profile import Bullet
 from tailortex.schemas.resume import GeneratedBullet
@@ -96,9 +96,7 @@ async def rewrite_bullets(
         generated_bullet_schema=generated_bullet_schema,
     )
 
-    should_redact = redaction_map is not None and not provider.is_local
-
-    if should_redact:
+    if redaction_map is not None and not provider.is_local:
         prompt = redaction_map.redact(prompt)
 
     result = await provider.complete_with_retry(
@@ -109,7 +107,7 @@ async def rewrite_bullets(
     if isinstance(result, LLMError):
         return _fallback_bullets(bullets)
 
-    if should_redact:
+    if redaction_map is not None and not provider.is_local:
         result = LLMResponse(
             parsed=result.parsed,
             raw_text=redaction_map.rehydrate(result.raw_text),

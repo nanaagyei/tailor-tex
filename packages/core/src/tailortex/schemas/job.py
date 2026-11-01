@@ -36,3 +36,9 @@ class ParsedJobDescription(BaseModel):
     role_signals: RoleSignals = Field(default_factory=RoleSignals)
     prompt_injection_flags: list[str] = Field(default_factory=list)
     created_at: datetime = Field(default_factory=datetime.now)
+
+
+class JDRecord(BaseModel):
+    jd: ParsedJobDescription
+    raw_text: str
+    warnings: list[str] = Field(default_factory=list)

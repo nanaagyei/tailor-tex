@@ -1,0 +1,12 @@
+{
+  "editing_minutes": null,
+  "packet_id": "blind-example-1",
+  "preference": null,
+  "rater_id": "rater-opaque-1",
+  "ratings": {
+    "advance": 3,
+    "clarity": 3,
+    "credibility": 3,
+    "relevance": 3
+  }
+}

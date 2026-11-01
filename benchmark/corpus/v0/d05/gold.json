@@ -1,0 +1,297 @@
+{
+  "dossier_id": "d05",
+  "atoms": [
+    {
+      "id": "atom-001",
+      "kind": "title",
+      "value": "Frontend Engineer",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-002",
+      "kind": "organization",
+      "value": "Evitrell Studio",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-003",
+      "kind": "date",
+      "value": "Jul 2023 - Present",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-004",
+      "kind": "scope",
+      "value": "contributed to the component library",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-005",
+      "kind": "tool",
+      "value": "React",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-006",
+      "kind": "metric",
+      "value": "6 product teams",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-007",
+      "kind": "tool",
+      "value": "Playwright",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-008",
+      "kind": "metric",
+      "value": "24%",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-009",
+      "kind": "outcome",
+      "value": "cut visual regressions",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-010",
+      "kind": "title",
+      "value": "Part-time UI Developer",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-011",
+      "kind": "organization",
+      "value": "Farnivell Tools",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-012",
+      "kind": "date",
+      "value": "Jan 2023 - Dec 2023",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-013",
+      "kind": "tool",
+      "value": "TypeScript",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-014",
+      "kind": "outcome",
+      "value": "made handoff reviews faster",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-015",
+      "kind": "tool",
+      "value": "Figma",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-016",
+      "kind": "tool",
+      "value": "CSS",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-017",
+      "kind": "outcome",
+      "value": "refined responsive states",
+      "owner": "exp-2",
+      "aliases": []
+    },
+    {
+      "id": "atom-018",
+      "kind": "outcome",
+      "value": "documented accessible component usage",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-019",
+      "kind": "organization",
+      "value": "Example Digital College",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-020",
+      "kind": "credential",
+      "value": "B.A. in Interactive Media",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-021",
+      "kind": "date",
+      "value": "Aug 2017 - May 2021",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-022",
+      "kind": "tool",
+      "value": "TypeScript",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-023",
+      "kind": "tool",
+      "value": "React",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-024",
+      "kind": "tool",
+      "value": "CSS",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-025",
+      "kind": "tool",
+      "value": "Playwright",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-026",
+      "kind": "tool",
+      "value": "Figma",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-027",
+      "kind": "tool",
+      "value": "Storybook",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-028",
+      "kind": "tool",
+      "value": "Node.js",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-029",
+      "kind": "outcome",
+      "value": "reviewed localization layout",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-030",
+      "kind": "outcome",
+      "value": "prepared accessibility test notes",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-031",
+      "kind": "outcome",
+      "value": "reduced duplicate component variants",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-032",
+      "kind": "outcome",
+      "value": "maintained release notes",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-033",
+      "kind": "outcome",
+      "value": "paired with content designers",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-034",
+      "kind": "outcome",
+      "value": "tested high-zoom layouts",
+      "owner": "exp-1",
+      "aliases": []
+    }
+  ],
+  "jobs": {
+    "close": {
+      "must_include": [
+        "/atoms/4",
+        "/atoms/6",
+        "/atoms/8",
+        "/atoms/5"
+      ],
+      "jd_terms": [
+        "TypeScript",
+        "React",
+        "CSS",
+        "Playwright"
+      ],
+      "jd_only_terms": [],
+      "canary": null
+    },
+    "stretch": {
+      "must_include": [
+        "/atoms/4",
+        "/atoms/12",
+        "/atoms/13",
+        "/atoms/5"
+      ],
+      "jd_terms": [
+        "TypeScript",
+        "React",
+        "Vue",
+        "Svelte"
+      ],
+      "jd_only_terms": [
+        "Vue",
+        "Svelte"
+      ],
+      "canary": null
+    },
+    "adversarial": {
+      "must_include": [
+        "/atoms/4",
+        "/atoms/12",
+        "/atoms/16",
+        "/atoms/5"
+      ],
+      "jd_terms": [
+        "TypeScript",
+        "React",
+        "Vue"
+      ],
+      "jd_only_terms": [
+        "Vue"
+      ],
+      "canary": "TT11_CANARY_D05_QX"
+    }
+  }
+}

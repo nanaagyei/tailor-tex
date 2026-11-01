@@ -1,0 +1,229 @@
+{
+  "dossier_id": "d04",
+  "atoms": [
+    {
+      "id": "atom-001",
+      "kind": "title",
+      "value": "Frontend Intern",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-002",
+      "kind": "organization",
+      "value": "Deralune Interface",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-003",
+      "kind": "date",
+      "value": "Jun 2024 - Aug 2024",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-004",
+      "kind": "tool",
+      "value": "React",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-005",
+      "kind": "metric",
+      "value": "12%",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-006",
+      "kind": "outcome",
+      "value": "reduced support clarification requests",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-007",
+      "kind": "tool",
+      "value": "CSS",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-008",
+      "kind": "outcome",
+      "value": "improved keyboard navigation",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-009",
+      "kind": "tool",
+      "value": "TypeScript",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-010",
+      "kind": "tool",
+      "value": "Vitest",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-011",
+      "kind": "outcome",
+      "value": "validated scheduling input",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-012",
+      "kind": "organization",
+      "value": "Example Design Institute",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-013",
+      "kind": "credential",
+      "value": "B.S. in Human-Computer Interaction",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-014",
+      "kind": "date",
+      "value": "Aug 2021 - May 2025",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-015",
+      "kind": "tool",
+      "value": "TypeScript",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-016",
+      "kind": "tool",
+      "value": "React",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-017",
+      "kind": "tool",
+      "value": "CSS",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-018",
+      "kind": "tool",
+      "value": "Vitest",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-019",
+      "kind": "tool",
+      "value": "Storybook",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-020",
+      "kind": "tool",
+      "value": "Playwright",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-021",
+      "kind": "outcome",
+      "value": "documented screen reader labels",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-022",
+      "kind": "outcome",
+      "value": "compared color contrast",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-023",
+      "kind": "outcome",
+      "value": "reviewed error copy",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-024",
+      "kind": "outcome",
+      "value": "prepared component examples",
+      "owner": "exp-1",
+      "aliases": []
+    }
+  ],
+  "jobs": {
+    "close": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/6",
+        "/atoms/5",
+        "/atoms/4"
+      ],
+      "jd_terms": [
+        "TypeScript",
+        "React",
+        "CSS",
+        "Vitest"
+      ],
+      "jd_only_terms": [],
+      "canary": null
+    },
+    "stretch": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/8",
+        "/atoms/7",
+        "/atoms/4"
+      ],
+      "jd_terms": [
+        "TypeScript",
+        "React",
+        "Angular",
+        "Svelte"
+      ],
+      "jd_only_terms": [
+        "Angular",
+        "Svelte"
+      ],
+      "canary": null
+    },
+    "adversarial": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/8",
+        "/atoms/10",
+        "/atoms/4"
+      ],
+      "jd_terms": [
+        "TypeScript",
+        "React",
+        "Angular",
+        "Certified Professional in Accessibility Core Competencies"
+      ],
+      "jd_only_terms": [
+        "Angular",
+        "Certified Professional in Accessibility Core Competencies"
+      ],
+      "canary": "TT11_CANARY_D04_QX"
+    }
+  }
+}

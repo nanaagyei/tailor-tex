@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Any
 
@@ -13,10 +12,9 @@ from pydantic import BaseModel
 from tailortex import __version__
 from tailortex.parsers.extractors import extract_text
 from tailortex.parsers.jd_parser import parse_jd_text
-from tailortex.schemas.job import ParsedJobDescription
+from tailortex.schemas.job import JDRecord
 from tailortex.parsers.resume_parser import parse_resume_text
 from tailortex.schemas.profile import CanonicalProfile
-from tailortex.schemas.resume import ResumePlan
 from tailortex.storage.workspace import Workspace, WorkspaceError
 
 app = FastAPI(
@@ -108,6 +106,7 @@ async def import_resume(file: UploadFile = File(...)) -> dict[str, Any]:
             raise HTTPException(status_code=422, detail="Could not extract text from file")
 
         draft = parse_resume_text(result.text)
+        _ws().save_draft(draft.profile, draft.raw_text)
         return {
             "status": "imported",
             "draft": draft.profile.model_dump(),
@@ -129,24 +128,24 @@ class JDParseRequest(BaseModel):
 @app.post("/jd/parse")
 async def parse_jd(req: JDParseRequest) -> dict[str, Any]:
     result = parse_jd_text(req.text, company=req.company, role_title=req.role_title)
-    ws = _ws()
     jd_data = result.jd.model_dump()
-    ws.save_application(result.jd.job_id, jd_data)
+    _ws().save_job(JDRecord(jd=result.jd, raw_text=result.raw_text, warnings=result.warnings))
     return jd_data
 
 
 # ── Applications ────────────────────────────────────────
+# Legacy route aliases until #24; response bodies stay compatible with the frozen UI.
 
 
 @app.get("/applications")
 async def list_applications() -> list[str]:
-    return _ws().list_applications()
+    return _ws().list_jobs()
 
 
 @app.get("/applications/{app_id}")
 async def get_application(app_id: str) -> dict[str, Any]:
     try:
-        return _ws().load_application(app_id)
+        return _ws().load_job(app_id).jd.model_dump()
     except WorkspaceError:
         raise HTTPException(status_code=404, detail=f"Application not found: {app_id}")
 
@@ -154,7 +153,7 @@ async def get_application(app_id: str) -> dict[str, Any]:
 @app.delete("/applications/{app_id}")
 async def delete_application(app_id: str) -> dict[str, str]:
     try:
-        _ws().delete_application(app_id)
+        _ws().delete_job(app_id)
         return {"status": "deleted", "app_id": app_id}
     except WorkspaceError:
         raise HTTPException(status_code=404, detail=f"Application not found: {app_id}")
@@ -195,8 +194,7 @@ async def tailor_resume(req: TailorRequest) -> dict[str, Any]:
         raise ProfileApprovalError()
 
     try:
-        jd_data = ws.load_application(req.jd_id)
-        jd = ParsedJobDescription(**jd_data)
+        jd = ws.load_job(req.jd_id).jd
     except WorkspaceError:
         raise HTTPException(status_code=404, detail=f"JD not found: {req.jd_id}")
 
@@ -245,8 +243,7 @@ async def render_resume(req: RenderRequest) -> dict[str, str]:
         raise ProfileApprovalError()
 
     try:
-        jd_data = ws.load_application(req.jd_id)
-        jd = ParsedJobDescription(**jd_data)
+        jd = ws.load_job(req.jd_id).jd
     except WorkspaceError:
         raise HTTPException(status_code=404, detail=f"JD not found: {req.jd_id}")
 

@@ -1,0 +1,151 @@
+{
+  "dossier_id": "d04",
+  "base_resume_path": "resume.txt",
+  "evidence": [
+    {
+      "id": "ev-001",
+      "owner": "exp-1",
+      "kind": "title",
+      "text": "Frontend Intern"
+    },
+    {
+      "id": "ev-002",
+      "owner": "exp-1",
+      "kind": "organization",
+      "text": "Deralune Interface"
+    },
+    {
+      "id": "ev-003",
+      "owner": "exp-1",
+      "kind": "date",
+      "text": "Jun 2024 - Aug 2024"
+    },
+    {
+      "id": "ev-004",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "React"
+    },
+    {
+      "id": "ev-005",
+      "owner": "exp-1",
+      "kind": "metric",
+      "text": "12%"
+    },
+    {
+      "id": "ev-006",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reduced support clarification requests"
+    },
+    {
+      "id": "ev-007",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "CSS"
+    },
+    {
+      "id": "ev-008",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "improved keyboard navigation"
+    },
+    {
+      "id": "ev-009",
+      "owner": "project-1",
+      "kind": "tool",
+      "text": "TypeScript"
+    },
+    {
+      "id": "ev-010",
+      "owner": "project-1",
+      "kind": "tool",
+      "text": "Vitest"
+    },
+    {
+      "id": "ev-011",
+      "owner": "project-1",
+      "kind": "outcome",
+      "text": "validated scheduling input"
+    },
+    {
+      "id": "ev-012",
+      "owner": "education",
+      "kind": "organization",
+      "text": "Example Design Institute"
+    },
+    {
+      "id": "ev-013",
+      "owner": "education",
+      "kind": "credential",
+      "text": "B.S. in Human-Computer Interaction"
+    },
+    {
+      "id": "ev-014",
+      "owner": "education",
+      "kind": "date",
+      "text": "Aug 2021 - May 2025"
+    },
+    {
+      "id": "ev-015",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "TypeScript"
+    },
+    {
+      "id": "ev-016",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "React"
+    },
+    {
+      "id": "ev-017",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "CSS"
+    },
+    {
+      "id": "ev-018",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Vitest"
+    },
+    {
+      "id": "ev-019",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Storybook"
+    },
+    {
+      "id": "ev-020",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Playwright"
+    },
+    {
+      "id": "ev-021",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "documented screen reader labels"
+    },
+    {
+      "id": "ev-022",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "compared color contrast"
+    },
+    {
+      "id": "ev-023",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reviewed error copy"
+    },
+    {
+      "id": "ev-024",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "prepared component examples"
+    }
+  ],
+  "notes": "Entirely synthetic frontend candidate. Evidence items after the 18 resume facts are verified but omitted from the base resume."
+}

@@ -1,0 +1,103 @@
+{
+  "dossier_id": "d01",
+  "base_resume_path": "resume.txt",
+  "evidence": [
+    {
+      "id": "ev-001",
+      "owner": "project-1",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-002",
+      "owner": "project-1",
+      "kind": "tool",
+      "text": "SQLite"
+    },
+    {
+      "id": "ev-003",
+      "owner": "project-1",
+      "kind": "outcome",
+      "text": "made parcel review easier"
+    },
+    {
+      "id": "ev-004",
+      "owner": "project-2",
+      "kind": "tool",
+      "text": "pytest"
+    },
+    {
+      "id": "ev-005",
+      "owner": "project-2",
+      "kind": "outcome",
+      "text": "checked retry behavior"
+    },
+    {
+      "id": "ev-006",
+      "owner": "education",
+      "kind": "organization",
+      "text": "Example Technical Institute"
+    },
+    {
+      "id": "ev-007",
+      "owner": "education",
+      "kind": "credential",
+      "text": "B.S. in Computer Science"
+    },
+    {
+      "id": "ev-008",
+      "owner": "education",
+      "kind": "date",
+      "text": "Aug 2021 - May 2025"
+    },
+    {
+      "id": "ev-009",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-010",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "SQLite"
+    },
+    {
+      "id": "ev-011",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Git"
+    },
+    {
+      "id": "ev-012",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "pytest"
+    },
+    {
+      "id": "ev-013",
+      "owner": "project-1",
+      "kind": "tool",
+      "text": "Docker Compose"
+    },
+    {
+      "id": "ev-014",
+      "owner": "project-1",
+      "kind": "tool",
+      "text": "FastAPI"
+    },
+    {
+      "id": "ev-015",
+      "owner": "project-1",
+      "kind": "tool",
+      "text": "PostgreSQL"
+    },
+    {
+      "id": "ev-016",
+      "owner": "project-1",
+      "kind": "outcome",
+      "text": "created a validation checklist"
+    }
+  ],
+  "notes": "Entirely synthetic backend candidate. Evidence items after the 12 resume facts are verified but omitted from the base resume."
+}

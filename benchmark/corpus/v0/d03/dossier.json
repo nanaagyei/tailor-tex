@@ -1,0 +1,283 @@
+{
+  "dossier_id": "d03",
+  "base_resume_path": "resume.txt",
+  "evidence": [
+    {
+      "id": "ev-001",
+      "owner": "exp-1",
+      "kind": "title",
+      "text": "Software Engineer"
+    },
+    {
+      "id": "ev-002",
+      "owner": "exp-1",
+      "kind": "organization",
+      "text": "Cadrivex Labs"
+    },
+    {
+      "id": "ev-003",
+      "owner": "exp-1",
+      "kind": "date",
+      "text": "Jun 2016 - Aug 2019"
+    },
+    {
+      "id": "ev-004",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Go"
+    },
+    {
+      "id": "ev-005",
+      "owner": "exp-1",
+      "kind": "metric",
+      "text": "9 million requests each day"
+    },
+    {
+      "id": "ev-006",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "handled production requests"
+    },
+    {
+      "id": "ev-007",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "PostgreSQL"
+    },
+    {
+      "id": "ev-008",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "improved billing query review"
+    },
+    {
+      "id": "ev-009",
+      "owner": "exp-2",
+      "kind": "title",
+      "text": "Backend Engineer"
+    },
+    {
+      "id": "ev-010",
+      "owner": "exp-2",
+      "kind": "organization",
+      "text": "Meralvix Labs"
+    },
+    {
+      "id": "ev-011",
+      "owner": "exp-2",
+      "kind": "date",
+      "text": "Sep 2019 - Mar 2022"
+    },
+    {
+      "id": "ev-012",
+      "owner": "exp-2",
+      "kind": "tool",
+      "text": "OpenTelemetry"
+    },
+    {
+      "id": "ev-013",
+      "owner": "exp-2",
+      "kind": "metric",
+      "text": "14 services"
+    },
+    {
+      "id": "ev-014",
+      "owner": "exp-2",
+      "kind": "metric",
+      "text": "27%"
+    },
+    {
+      "id": "ev-015",
+      "owner": "exp-2",
+      "kind": "outcome",
+      "text": "reduced triage time"
+    },
+    {
+      "id": "ev-016",
+      "owner": "exp-2",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-017",
+      "owner": "exp-2",
+      "kind": "scope",
+      "text": "mentored peers on service tests"
+    },
+    {
+      "id": "ev-018",
+      "owner": "exp-3",
+      "kind": "title",
+      "text": "Backend Engineer II"
+    },
+    {
+      "id": "ev-019",
+      "owner": "exp-3",
+      "kind": "organization",
+      "text": "Meralvix Labs"
+    },
+    {
+      "id": "ev-020",
+      "owner": "exp-3",
+      "kind": "date",
+      "text": "Apr 2022 - Present"
+    },
+    {
+      "id": "ev-021",
+      "owner": "exp-3",
+      "kind": "scope",
+      "text": "led API reliability reviews"
+    },
+    {
+      "id": "ev-022",
+      "owner": "exp-3",
+      "kind": "metric",
+      "text": "31%"
+    },
+    {
+      "id": "ev-023",
+      "owner": "exp-3",
+      "kind": "outcome",
+      "text": "cut repeat incidents"
+    },
+    {
+      "id": "ev-024",
+      "owner": "exp-3",
+      "kind": "tool",
+      "text": "Git"
+    },
+    {
+      "id": "ev-025",
+      "owner": "exp-3",
+      "kind": "outcome",
+      "text": "improved release coordination"
+    },
+    {
+      "id": "ev-026",
+      "owner": "project-1",
+      "kind": "tool",
+      "text": "OpenTelemetry"
+    },
+    {
+      "id": "ev-027",
+      "owner": "project-1",
+      "kind": "outcome",
+      "text": "published a trace guide"
+    },
+    {
+      "id": "ev-028",
+      "owner": "education",
+      "kind": "organization",
+      "text": "Example Engineering University"
+    },
+    {
+      "id": "ev-029",
+      "owner": "education",
+      "kind": "credential",
+      "text": "B.S. in Computer Science"
+    },
+    {
+      "id": "ev-030",
+      "owner": "education",
+      "kind": "date",
+      "text": "Aug 2012 - May 2016"
+    },
+    {
+      "id": "ev-031",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Go"
+    },
+    {
+      "id": "ev-032",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-033",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "PostgreSQL"
+    },
+    {
+      "id": "ev-034",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "OpenTelemetry"
+    },
+    {
+      "id": "ev-035",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Git"
+    },
+    {
+      "id": "ev-036",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Redis"
+    },
+    {
+      "id": "ev-037",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "gRPC"
+    },
+    {
+      "id": "ev-038",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "created migration rollback plans"
+    },
+    {
+      "id": "ev-039",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reviewed capacity forecasts"
+    },
+    {
+      "id": "ev-040",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "coached incident commanders"
+    },
+    {
+      "id": "ev-041",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "built a service dependency map"
+    },
+    {
+      "id": "ev-042",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "ran failure drills"
+    },
+    {
+      "id": "ev-043",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "improved alert routing"
+    },
+    {
+      "id": "ev-044",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "documented API versioning"
+    },
+    {
+      "id": "ev-045",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reviewed service budgets"
+    },
+    {
+      "id": "ev-046",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "prepared load test scenarios"
+    }
+  ],
+  "notes": "Entirely synthetic backend candidate. Evidence items after the 35 resume facts are verified but omitted from the base resume."
+}

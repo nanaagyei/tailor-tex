@@ -1,3 +1,4 @@
+# ruff: noqa: E501  -- prompt text stays on its intended single lines.
 """Canonical prompt templates as module-level string constants.
 
 These replace inline prompt strings across the LLM modules.

@@ -43,14 +43,17 @@ def validate_latex(tex_content: str) -> list[str]:
 
     brace_count = _count_unmatched(tex_content, "{", "}")
     if brace_count != 0:
-        warnings.append(f"Unmatched braces: {brace_count} extra {{{'{' if brace_count > 0 else '}'}}}")
+        brace = "{" if brace_count > 0 else "}"
+        warnings.append(f"Unmatched braces: {brace_count} extra {{{brace}}}")
 
     if re.search(r"[{}]\s*\n\s*[{}]", tex_content):
         warnings.append("Suspicious empty brace pattern")
 
     unescaped_special = re.findall(r"(?<!\\)[&%$#_~^]", tex_content)
     if unescaped_special:
-        warnings.append(f"Possible unescaped special characters: {len(unescaped_special)} occurrences")
+        warnings.append(
+            f"Possible unescaped special characters: {len(unescaped_special)} occurrences"
+        )
 
     if "None" in tex_content:
         warnings.append("Literal 'None' found in output — likely unset template variable")

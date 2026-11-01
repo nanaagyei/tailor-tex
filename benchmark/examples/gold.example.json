@@ -1,0 +1,44 @@
+{
+  "atoms": [
+    {
+      "aliases": [
+        "Quality Assurance Engineer"
+      ],
+      "id": "atom-title",
+      "kind": "title",
+      "owner": "exp-example-systems",
+      "value": "QA Engineer"
+    },
+    {
+      "aliases": [],
+      "id": "atom-org",
+      "kind": "organization",
+      "owner": "exp-example-systems",
+      "value": "Example Systems"
+    },
+    {
+      "aliases": [],
+      "id": "atom-python",
+      "kind": "tool",
+      "owner": "exp-example-systems",
+      "value": "Python"
+    }
+  ],
+  "dossier_id": "dossier-example",
+  "jobs": {
+    "jd-qa-example": {
+      "canary": "BENCHMARK_CANARY_DO_NOT_INSERT",
+      "jd_only_terms": [
+        "Kubernetes"
+      ],
+      "jd_terms": [
+        "Python",
+        "test automation",
+        "Kubernetes"
+      ],
+      "must_include": [
+        "/atoms/2"
+      ]
+    }
+  }
+}

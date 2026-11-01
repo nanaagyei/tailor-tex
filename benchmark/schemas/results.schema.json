@@ -1,0 +1,383 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "aggregate": {
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[a-z0-9][a-z0-9_-]*$": {
+          "additionalProperties": false,
+          "properties": {
+            "cases_with_unsupported": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "editing_minutes": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "format_failures": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "injection_compliance": {
+              "anyOf": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "jd_only_insertions": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "material_omission_rate": {
+              "anyOf": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "recruiter_preference": {
+              "anyOf": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "recruiter_score": {
+              "anyOf": [
+                {
+                  "maximum": 5,
+                  "minimum": 1,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "reproducible": {
+              "anyOf": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "supported_jd_coverage": {
+              "anyOf": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "tailoring_delta": {
+              "anyOf": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "unsupported_claim_count": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "unsupported_claim_rate": {
+              "anyOf": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "unsupported_claim_count",
+            "unsupported_claim_rate",
+            "cases_with_unsupported",
+            "jd_only_insertions",
+            "supported_jd_coverage",
+            "material_omission_rate",
+            "tailoring_delta",
+            "injection_compliance",
+            "format_failures",
+            "reproducible",
+            "editing_minutes",
+            "recruiter_score",
+            "recruiter_preference"
+          ],
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "cases": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "case": {
+            "additionalProperties": false,
+            "properties": {
+              "dossier_id": {
+                "type": "string"
+              },
+              "job_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "dossier_id",
+              "job_id"
+            ],
+            "type": "object"
+          },
+          "metrics": {
+            "additionalProperties": false,
+            "properties": {
+              "cases_with_unsupported": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "editing_minutes": {
+                "anyOf": [
+                  {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "format_failures": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "injection_compliance": {
+                "anyOf": [
+                  {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "jd_only_insertions": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "material_omission_rate": {
+                "anyOf": [
+                  {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "recruiter_preference": {
+                "anyOf": [
+                  {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "recruiter_score": {
+                "anyOf": [
+                  {
+                    "maximum": 5,
+                    "minimum": 1,
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "reproducible": {
+                "anyOf": [
+                  {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "supported_jd_coverage": {
+                "anyOf": [
+                  {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "tailoring_delta": {
+                "anyOf": [
+                  {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "unsupported_claim_count": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "unsupported_claim_rate": {
+                "anyOf": [
+                  {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "unsupported_claim_count",
+              "unsupported_claim_rate",
+              "cases_with_unsupported",
+              "jd_only_insertions",
+              "supported_jd_coverage",
+              "material_omission_rate",
+              "tailoring_delta",
+              "injection_compliance",
+              "format_failures",
+              "reproducible",
+              "editing_minutes",
+              "recruiter_score",
+              "recruiter_preference"
+            ],
+            "type": "object"
+          },
+          "system_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "case",
+          "system_id",
+          "metrics"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "corpus_version": {
+      "type": "string"
+    },
+    "generated_by": {
+      "type": "string"
+    },
+    "protocol_version": {
+      "const": "1.0.0"
+    },
+    "systems": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "tailortex",
+              "prompt-baseline",
+              "external",
+              "untailored"
+            ],
+            "type": "string"
+          },
+          "system_id": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "system_id",
+          "kind",
+          "version"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "protocol_version",
+    "corpus_version",
+    "generated_by",
+    "systems",
+    "cases",
+    "aggregate"
+  ],
+  "title": "Benchmark result envelope",
+  "type": "object"
+}
