@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "atoms": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "aliases": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "metric",
+              "tool",
+              "scope",
+              "organization",
+              "title",
+              "date",
+              "credential",
+              "outcome"
+            ],
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "value",
+          "owner",
+          "aliases"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "dossier_id": {
+      "type": "string"
+    },
+    "jobs": {
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[a-z0-9][a-z0-9_-]*$": {
+          "additionalProperties": false,
+          "properties": {
+            "canary": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "jd_only_terms": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "jd_terms": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "must_include": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "must_include",
+            "jd_terms",
+            "jd_only_terms",
+            "canary"
+          ],
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "required": [
+    "dossier_id",
+    "atoms",
+    "jobs"
+  ],
+  "title": "Evidence and job gold",
+  "type": "object"
+}

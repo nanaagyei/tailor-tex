@@ -1,817 +1,319 @@
-"""Comprehensive CLI tests for TailorTex."""
+"""CLI command contracts against an isolated local workspace."""
+
+from __future__ import annotations
 
 import json
-import tempfile
 from pathlib import Path
 
 import pytest
 from typer.testing import CliRunner
 
-from tailortex_cli.main import (
-    EXIT_GENERAL,
-    EXIT_PARSER,
-    EXIT_PRIVACY,
-    EXIT_PROVIDER,
-    EXIT_RENDER,
-    EXIT_SUCCESS,
-    EXIT_VALIDATION,
-    app,
+from tailortex.parsers.jd_parser import parse_jd_text
+from tailortex.schemas.profile import CanonicalProfile
+from tailortex.storage.workspace import Workspace
+from tailortex_cli.main import app
+
+
+runner = CliRunner()
+
+
+def invoke(workspace: Path, *args: str):
+    return runner.invoke(app, [*args, "--workspace", str(workspace)])
+
+
+def write_synthetic_inputs(tmp_path: Path) -> tuple[Path, Path]:
+    resume = tmp_path / "resume.txt"
+    resume.write_text(
+        "Jordan Example\nExperience\nQA Engineer | Example Systems\n"
+        "January 2022 - Present\n- Automated Python tests for release checks.\n"
+        "Skills\nPython\n",
+        encoding="utf-8",
+    )
+    jd = tmp_path / "job.txt"
+    jd.write_text("QA Engineer. Required: Python experience.", encoding="utf-8")
+    return resume, jd
+
+
+def test_version() -> None:
+    result = runner.invoke(app, ["version"])
+
+    assert result.exit_code == 0
+    assert "tailortex 0.1.0" in result.output
+
+
+def test_init_workspace_commands_and_empty_profiles(tmp_path: Path) -> None:
+    workspace = tmp_path / "workspace"
+
+    first = invoke(workspace, "init")
+    second = invoke(workspace, "init")
+    listing = invoke(workspace, "workspace", "list")
+    info = invoke(workspace, "workspace", "info")
+    profiles = invoke(workspace, "profile", "list")
+
+    assert first.exit_code == second.exit_code == listing.exit_code == info.exit_code == 0
+    assert profiles.exit_code == 0
+    assert (workspace / "config.json").exists()
+    assert "already exists" in second.output
+    assert "Profiles (0)" in listing.output
+    assert "Applications (0)" in listing.output
+    assert "Profiles: 0" in info.output
+    assert "No profiles found" in profiles.output
+
+
+def test_profile_approve_review_and_list(tmp_path: Path) -> None:
+    workspace = tmp_path / "workspace"
+    profile_file = tmp_path / "profile.json"
+    profile_file.write_text(
+        json.dumps({"profile_id": "candidate", "owner": {"full_name": "Jordan Example"}}),
+        encoding="utf-8",
+    )
+
+    approved = invoke(workspace, "profile", "approve", str(profile_file))
+    reviewed = invoke(workspace, "profile", "review", "--profile", "candidate")
+    listed = invoke(workspace, "profile", "list")
+
+    assert approved.exit_code == reviewed.exit_code == listed.exit_code == 0
+    assert (workspace / "profiles" / "candidate.json").exists()
+    assert "Profile approved: candidate" in approved.output
+    assert "Jordan Example" in reviewed.output
+    assert "candidate" in listed.output
+
+
+def test_profile_approval_rejects_invalid_json(tmp_path: Path) -> None:
+    profile_file = tmp_path / "invalid.json"
+    profile_file.write_text("{invalid", encoding="utf-8")
+
+    result = invoke(tmp_path / "workspace", "profile", "approve", str(profile_file))
+
+    assert result.exit_code == 2
+    assert "Invalid profile" in result.output
+
+
+@pytest.mark.parametrize(
+    ("args", "exit_code", "message"),
+    [
+        (("import", "missing.txt"), 3, "File not found"),
+        (("jd", "parse", "missing.txt"), 3, "Provide a file or use --stdin"),
+        (("profile", "approve", "missing.json"), 1, "File not found"),
+        (("profile", "review"), 1, "No workspace found"),
+        (("profile", "list"), 1, "No workspace found"),
+        (("tailor", "--jd", "missing"), 1, "No workspace found"),
+        (("export", "--application", "missing"), 1, "No workspace found"),
+        (("validate", "--application", "missing"), 1, "validate is not implemented yet (see #18)."),
+        (("workspace", "list"), 1, "No workspace found"),
+        (("workspace", "info"), 1, "No workspace found"),
+        (("config", "get"), 1, "No workspace found"),
+    ],
 )
+def test_missing_inputs_have_actionable_errors(
+    tmp_path: Path, args: tuple[str, ...], exit_code: int, message: str
+) -> None:
+    result = invoke(tmp_path / "workspace", *args)
+
+    assert result.exit_code == exit_code
+    assert message in result.output
 
 
-# ── Test data ────────────────────────────────────────────────
+def test_config_set_and_get(tmp_path: Path) -> None:
+    workspace = tmp_path / "workspace"
 
-SAMPLE_RESUME = (
-    "Morgan Castillo\n"
-    "morgan.castillo@proton.me | (512) 847-1928\n"
-    "Austin, TX\n"
-    "https://github.com/mcastillo-dev | https://linkedin.com/in/mcastillo\n"
-    "\n"
-    "Summary\n"
-    "Software engineer with 4 years of experience building backend services, "
-    "testing infrastructure, and developer tooling.\n"
-    "\n"
-    "Experience\n"
-    "\n"
-    "Software Engineer | Meridian Systems\n"
-    "Austin, TX\n"
-    "Mar 2023 - Present\n"
-    "- Designed and maintained CI/CD pipelines using GitHub Actions, "
-    "reducing deploy time by 40%\n"
-    "- Built REST API endpoints in Python (FastAPI) serving 2M+ requests/day\n"
-)
+    saved = invoke(workspace, "config", "set", "provider.name", "local")
+    loaded = invoke(workspace, "config", "get")
 
-SAMPLE_JD = (
-    "Senior Backend Engineer\n\n"
-    "We are looking for a Senior Backend Engineer to join our team. "
-    "Required skills: Python, Docker, REST APIs, PostgreSQL. "
-    "Experience with CI/CD pipelines and microservices preferred. "
-    "You will design and maintain backend services and APIs.\n"
-)
+    assert saved.exit_code == loaded.exit_code == 0
+    assert json.loads((workspace / "config.json").read_text(encoding="utf-8"))["provider"] == {
+        "name": "local"
+    }
+    assert '"name": "local"' in loaded.output
 
 
-def _make_approved_profile_json() -> str:
-    """Construct a CanonicalProfile JSON with approved=True on experiences."""
-    return json.dumps(
+@pytest.mark.parametrize("initialized", [False, True])
+def test_validate_reports_not_implemented(tmp_path: Path, initialized: bool) -> None:
+    workspace = tmp_path / "workspace"
+    if initialized:
+        assert invoke(workspace, "init").exit_code == 0
+
+    result = invoke(workspace, "validate", "--application", "x")
+
+    assert result.exit_code == 1
+    assert "validate is not implemented yet (see #18)." in result.output
+    assert "passed" not in result.output
+
+
+def test_import_creates_reviewable_draft(tmp_path: Path) -> None:
+    workspace = tmp_path / "workspace"
+    resume, _ = write_synthetic_inputs(tmp_path)
+
+    result = invoke(workspace, "import", str(resume))
+    reviewed = invoke(workspace, "profile", "review")
+
+    assert result.exit_code == 0
+    assert "Profile draft saved" in result.output
+    assert (workspace / "drafts" / "default.json").exists()
+    assert (workspace / "drafts" / "default.source.txt").read_text() == resume.read_text().strip()
+    assert list((workspace / "applications").iterdir()) == []
+    assert reviewed.exit_code == 0
+    assert "Showing DRAFT (not approved)" in reviewed.output
+
+
+def test_jd_parse_saves_job(tmp_path: Path) -> None:
+    workspace = tmp_path / "workspace"
+    _, description = write_synthetic_inputs(tmp_path)
+
+    result = invoke(
+        workspace,
+        "jd",
+        "parse",
+        str(description),
+        "--company",
+        "Example Systems",
+        "--role",
+        "QA Engineer",
+    )
+
+    assert result.exit_code == 0
+    assert "Parsed Job Description" in result.output
+    assert len(list((workspace / "jobs").glob("*.json"))) == 1
+    assert list((workspace / "applications").iterdir()) == []
+    listing = invoke(workspace, "jd", "list")
+    assert listing.exit_code == 0
+    assert "Example Systems" in listing.output
+    assert "QA Engineer" in listing.output
+
+
+def test_approve_all_and_option_conflicts(tmp_path: Path) -> None:
+    workspace = tmp_path / "workspace"
+    resume, _ = write_synthetic_inputs(tmp_path)
+    imported = invoke(workspace, "import", str(resume), "--profile", "candidate")
+    assert imported.exit_code == 0
+    no_args = invoke(workspace, "profile", "approve")
+    conflict = invoke(workspace, "profile", "approve", str(resume), "--all")
+    assert no_args.exit_code == conflict.exit_code == 1
+    assert "profile approve FILE" in no_args.output
+    assert "profile approve --all" in no_args.output
+
+    approved = invoke(workspace, "profile", "approve", "--all", "--profile", "candidate")
+    assert approved.exit_code == 0
+    assert not (workspace / "drafts" / "candidate.json").exists()
+    assert not (workspace / "drafts" / "candidate.source.txt").exists()
+    profile = Workspace(workspace).load_profile("candidate")
+    assert all(exp.approved and all(b.approved for b in exp.bullets) for exp in profile.experiences)
+    assert all(skill.approved for skill in profile.skills)
+    assert (
+        "Showing APPROVED PROFILE"
+        in invoke(workspace, "profile", "review", "--profile", "candidate").output
+    )
+
+
+def test_approve_all_marks_every_profile_item(tmp_path: Path) -> None:
+    workspace = Workspace(tmp_path / "workspace")
+    workspace.init()
+    profile = CanonicalProfile.model_validate(
         {
-            "profile_id": "default",
-            "version": "1.0.0",
-            "owner": {
-                "full_name": "Morgan Castillo",
-                "email": "morgan.castillo@proton.me",
-                "phone": "(512) 847-1928",
-                "location": "Austin, TX",
-                "links": [
-                    {"label": "GitHub", "url": "https://github.com/mcastillo-dev"},
-                    {"label": "LinkedIn", "url": "https://linkedin.com/in/mcastillo"},
-                ],
-            },
-            "summary": {
-                "source_text": (
-                    "Software engineer with 4 years of experience building "
-                    "backend services, testing infrastructure, and developer tooling."
-                ),
-                "approved": True,
-            },
+            "owner": {"full_name": "Jordan Example"},
+            "summary": {"source_text": "QA engineer"},
             "experiences": [
                 {
-                    "id": "exp_test1",
-                    "organization": "Meridian Systems",
-                    "title": "Software Engineer",
-                    "location": "Austin, TX",
-                    "start_date": "2023-03",
-                    "is_current": True,
-                    "approved": True,
-                    "bullets": [
-                        {
-                            "id": "b1",
-                            "text": (
-                                "Designed and maintained CI/CD pipelines using "
-                                "GitHub Actions, reducing deploy time by 40%"
-                            ),
-                            "skills": ["CI/CD", "GitHub Actions"],
-                            "approved": True,
-                        },
-                        {
-                            "id": "b2",
-                            "text": (
-                                "Built REST API endpoints in Python (FastAPI) "
-                                "serving 2M+ requests/day"
-                            ),
-                            "skills": ["Python", "FastAPI", "REST APIs"],
-                            "approved": True,
-                        },
-                    ],
+                    "id": "exp-1",
+                    "organization": "Example Systems",
+                    "title": "QA Engineer",
+                    "start_date": "2022",
+                    "bullets": [{"id": "bullet-1", "text": "Automated Python tests"}],
                 }
             ],
-            "education": [],
-            "projects": [],
-            "skills": [],
-            "evidence_ledger": [],
-        }
-    )
-
-
-def _make_unapproved_profile_json() -> str:
-    """Profile JSON where no experiences/education/projects are approved."""
-    return json.dumps(
-        {
-            "profile_id": "default",
-            "version": "1.0.0",
-            "owner": {
-                "full_name": "Morgan Castillo",
-                "email": "morgan.castillo@proton.me",
-                "phone": "(512) 847-1928",
-                "location": "Austin, TX",
-                "links": [
-                    {"label": "GitHub", "url": "https://github.com/mcastillo-dev"},
-                ],
-            },
-            "experiences": [
+            "projects": [
                 {
-                    "id": "exp_raw1",
-                    "organization": "Meridian Systems",
-                    "title": "Software Engineer",
-                    "start_date": "2023-03",
-                    "is_current": True,
-                    "approved": False,
-                    "bullets": [
-                        {"id": "b1", "text": "Built CI/CD pipelines.", "approved": False},
-                        {"id": "b2", "text": "Built REST APIs.", "approved": False},
-                    ],
+                    "id": "project-1",
+                    "name": "Test suite",
+                    "bullets": [{"id": "bullet-2", "text": "Built tests"}],
                 }
             ],
-            "education": [],
-            "projects": [],
-            "skills": [],
-            "evidence_ledger": [],
+            "education": [
+                {
+                    "id": "education-1",
+                    "institution": "Example University",
+                    "degree": "BS",
+                    "field": "Computer Science",
+                }
+            ],
+            "skills": [{"name": "Python"}],
+            "certifications": [{"id": "cert-1", "name": "QA", "issuer": "Example"}],
+            "publications": [{"id": "pub-1", "title": "Testing"}],
+            "awards": [{"id": "award-1", "title": "Excellence"}],
         }
     )
-
-
-# ── Fixtures ──────────────────────────────────────────────
-
-
-@pytest.fixture
-def runner() -> CliRunner:
-    return CliRunner()
-
-
-@pytest.fixture
-def workspace_dir() -> Path:
-    with tempfile.TemporaryDirectory() as tmpdir:
-        yield Path(tmpdir)
-
-
-@pytest.fixture
-def resume_file(workspace_dir: Path) -> Path:
-    path = workspace_dir / "resume.txt"
-    path.write_text(SAMPLE_RESUME)
-    return path
-
-
-@pytest.fixture
-def jd_file(workspace_dir: Path) -> Path:
-    path = workspace_dir / "jd.txt"
-    path.write_text(SAMPLE_JD)
-    return path
-
-
-@pytest.fixture
-def approved_profile_file(workspace_dir: Path) -> Path:
-    path = workspace_dir / "approved_profile.json"
-    path.write_text(_make_approved_profile_json())
-    return path
-
-
-@pytest.fixture
-def unapproved_profile_file(workspace_dir: Path) -> Path:
-    path = workspace_dir / "unapproved_profile.json"
-    path.write_text(_make_unapproved_profile_json())
-    return path
-
-
-@pytest.fixture
-def invalid_json_file(workspace_dir: Path) -> Path:
-    path = workspace_dir / "bad.json"
-    path.write_text("{invalid: json, content")
-    return path
-
-
-@pytest.fixture
-def initialised_workspace(runner: CliRunner, workspace_dir: Path) -> Path:
-    """Workspace that has been initialised and has an imported resume."""
-    ws = workspace_dir / ".ws"
-    runner.invoke(app, ["init", "--workspace", str(ws)])
-    runner.invoke(
-        app,
-        ["import", str(workspace_dir / "resume.txt"), "--workspace", str(ws)],
+    workspace.save_draft(profile, "Synthetic resume text")
+    result = invoke(workspace.root, "profile", "approve", "--all")
+    assert result.exit_code == 0, result.output
+    approved = workspace.load_profile()
+    assert approved.summary and approved.summary.approved
+    assert all(
+        item.approved
+        for group in (
+            approved.experiences,
+            approved.projects,
+            approved.education,
+            approved.skills,
+            approved.certifications,
+            approved.publications,
+            approved.awards,
+        )
+        for item in group
     )
-    return ws
-
-
-def _ws_flag(workspace_dir: Path) -> list[str]:
-    """Build --workspace flag pointing into a tempdir root."""
-    return ["--workspace", str(workspace_dir / ".ws")]
-
-
-# ── Test: version ────────────────────────────────────────
-
-
-class TestVersion:
-    def test_outputs_version_string(self, runner: CliRunner) -> None:
-        result = runner.invoke(app, ["version"])
-        assert result.exit_code == EXIT_SUCCESS
-        assert "tailortex" in result.stdout
-
-
-# ── Test: init ───────────────────────────────────────────
-
-
-class TestInit:
-    def test_creates_workspace_dir(self, runner: CliRunner, workspace_dir: Path) -> None:
-        ws = workspace_dir / ".ws"
-        result = runner.invoke(app, ["init", "--workspace", str(ws)])
-        assert result.exit_code == EXIT_SUCCESS
-        assert ws.is_dir()
-        assert "Workspace created" in result.stdout
-
-    def test_existing_workspace_shows_message(
-        self, runner: CliRunner, workspace_dir: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        result = runner.invoke(app, ["init", "--workspace", str(ws)])
-        assert result.exit_code == EXIT_SUCCESS
-        assert "already exists" in result.stdout
-
-
-# ── Test: import ─────────────────────────────────────────
-
-
-class TestImport:
-    def test_imports_resume_file(
-        self, runner: CliRunner, workspace_dir: Path, resume_file: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        result = runner.invoke(
-            app, ["import", str(resume_file), "--workspace", str(ws)]
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "Imported" in result.stdout
-        assert "Profile draft saved" in result.stdout
-
-    def test_nonexistent_file_shows_error(
-        self, runner: CliRunner, workspace_dir: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        result = runner.invoke(
-            app, ["import", "/nonexistent/path/file.txt", "--workspace", str(ws)]
-        )
-        assert result.exit_code == EXIT_PARSER
-
-
-# ── Test: profile review ─────────────────────────────────
-
-
-class TestProfileReview:
-    def test_reviews_default_profile(
-        self, runner: CliRunner, workspace_dir: Path, approved_profile_file: Path
-    ) -> None:
-        """Review an approved profile."""
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        runner.invoke(
-            app,
-            ["profile", "approve", str(approved_profile_file), "--workspace", str(ws)],
-        )
-        result = runner.invoke(
-            app, ["profile", "review", "--workspace", str(ws)]
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "Morgan Castillo" in result.stdout
-
-    def test_no_workspace_shows_error(self, runner: CliRunner, workspace_dir: Path) -> None:
-        ws = workspace_dir / ".nonexistent"
-        result = runner.invoke(
-            app, ["profile", "review", "--workspace", str(ws)]
-        )
-        assert result.exit_code == EXIT_GENERAL
-
-
-# ── Test: profile approve ────────────────────────────────
-
-
-class TestProfileApprove:
-    def test_approves_valid_json(
-        self, runner: CliRunner, workspace_dir: Path, approved_profile_file: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        result = runner.invoke(
-            app,
-            ["profile", "approve", str(approved_profile_file), "--workspace", str(ws)],
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "Profile approved" in result.stdout
-
-    def test_rejects_invalid_json(
-        self, runner: CliRunner, workspace_dir: Path, invalid_json_file: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        result = runner.invoke(
-            app,
-            ["profile", "approve", str(invalid_json_file), "--workspace", str(ws)],
-        )
-        assert result.exit_code == EXIT_VALIDATION
-
-    def test_nonexistent_file_shows_error(
-        self, runner: CliRunner, workspace_dir: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        result = runner.invoke(
-            app,
-            ["profile", "approve", "/nonexistent/file.json", "--workspace", str(ws)],
-        )
-        assert result.exit_code == EXIT_GENERAL
-
-
-# ── Test: profile list ───────────────────────────────────
-
-
-class TestProfileList:
-    def test_lists_after_approval(
-        self, runner: CliRunner, workspace_dir: Path, approved_profile_file: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        runner.invoke(
-            app,
-            ["profile", "approve", str(approved_profile_file), "--workspace", str(ws)],
-        )
-        result = runner.invoke(
-            app, ["profile", "list", "--workspace", str(ws)]
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "default" in result.stdout
-
-    def test_empty_workspace_shows_message(
-        self, runner: CliRunner, workspace_dir: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        result = runner.invoke(
-            app, ["profile", "list", "--workspace", str(ws)]
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "No profiles" in result.stdout
-
-
-# ── Test: jd parse ──────────────────────────────────────
-
-
-class TestJDParse:
-    def test_parses_from_file(
-        self, runner: CliRunner, workspace_dir: Path, jd_file: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        result = runner.invoke(
-            app, ["jd", "parse", str(jd_file), "--workspace", str(ws)]
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "Parsed Job Description" in result.stdout
-
-    def test_parses_from_stdin(
-        self, runner: CliRunner, workspace_dir: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        result = runner.invoke(
-            app,
-            ["jd", "parse", "--stdin", "--workspace", str(ws)],
-            input=SAMPLE_JD,
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "Parsed Job Description" in result.stdout
-
-    def test_no_input_shows_error(
-        self, runner: CliRunner, workspace_dir: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        result = runner.invoke(
-            app, ["jd", "parse", "--workspace", str(ws)]
-        )
-        assert result.exit_code == EXIT_PARSER
-
-
-# ── Test: tailor ─────────────────────────────────────────
-
-
-class TestTailor:
-    def test_fails_when_profile_not_approved(
-        self, runner: CliRunner, workspace_dir: Path,
-        unapproved_profile_file: Path, jd_file: Path,
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        # Save a profile that exists but is not approved
-        runner.invoke(
-            app,
-            ["profile", "approve", str(unapproved_profile_file), "--workspace", str(ws)],
-        )
-        result = runner.invoke(
-            app,
-            [
-                "tailor",
-                "--profile", "default",
-                "--jd", str(jd_file),
-                "--workspace", str(ws),
-            ],
-        )
-        assert result.exit_code == EXIT_VALIDATION
-
-    def test_succeeds_with_approved_profile_and_jd_file(
-        self,
-        runner: CliRunner,
-        workspace_dir: Path,
-        approved_profile_file: Path,
-        jd_file: Path,
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        runner.invoke(
-            app,
-            ["profile", "approve", str(approved_profile_file), "--workspace", str(ws)],
-        )
-        result = runner.invoke(
-            app,
-            [
-                "tailor",
-                "--profile", "default",
-                "--jd", str(jd_file),
-                "--workspace", str(ws),
-            ],
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "Resume exported" in result.stdout
-
-
-# ── Test: export ─────────────────────────────────────────
-
-
-class TestExport:
-    def test_export_tex(
-        self, runner: CliRunner, workspace_dir: Path, approved_profile_file: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        runner.invoke(
-            app,
-            ["profile", "approve", str(approved_profile_file), "--workspace", str(ws)],
-        )
-        result = runner.invoke(
-            app,
-            [
-                "export",
-                "--application", "test-app",
-                "--tex",
-                "--workspace", str(ws),
-            ],
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "TeX file" in result.stdout
-
-    def test_export_overleaf(
-        self, runner: CliRunner, workspace_dir: Path, approved_profile_file: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        runner.invoke(
-            app,
-            ["profile", "approve", str(approved_profile_file), "--workspace", str(ws)],
-        )
-        result = runner.invoke(
-            app,
-            [
-                "export",
-                "--application", "test-app",
-                "--overleaf",
-                "--workspace", str(ws),
-            ],
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "Overleaf bundle" in result.stdout
-
-    def test_export_no_format_shows_message(
-        self, runner: CliRunner, workspace_dir: Path, approved_profile_file: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        runner.invoke(
-            app,
-            ["profile", "approve", str(approved_profile_file), "--workspace", str(ws)],
-        )
-        result = runner.invoke(
-            app,
-            ["export", "--application", "test-app", "--workspace", str(ws)],
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "Specify at least one" in result.stdout
-
-
-# ── Test: validate ───────────────────────────────────────
-
-
-class TestValidate:
-    def test_validates_application(
-        self, runner: CliRunner, workspace_dir: Path, approved_profile_file: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        runner.invoke(
-            app,
-            ["profile", "approve", str(approved_profile_file), "--workspace", str(ws)],
-        )
-        result = runner.invoke(
-            app,
-            ["validate", "--application", "test-app", "--workspace", str(ws)],
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "passed" in result.stdout
-
-    def test_no_workspace_shows_error(
-        self, runner: CliRunner, workspace_dir: Path
-    ) -> None:
-        ws = workspace_dir / ".nonexistent"
-        result = runner.invoke(
-            app,
-            ["validate", "--application", "test-app", "--workspace", str(ws)],
-        )
-        assert result.exit_code == EXIT_GENERAL
-
-
-# ── Test: config ─────────────────────────────────────────
-
-
-class TestConfig:
-    def test_get_shows_defaults(
-        self, runner: CliRunner, workspace_dir: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        result = runner.invoke(
-            app, ["config", "get", "--workspace", str(ws)]
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "version" in result.stdout
-
-    def test_set_and_verify(
-        self, runner: CliRunner, workspace_dir: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        set_result = runner.invoke(
-            app,
-            ["config", "set", "provider", "ollama", "--workspace", str(ws)],
-        )
-        assert set_result.exit_code == EXIT_SUCCESS
-        assert "provider = ollama" in set_result.stdout
-
-    def test_set_nested_key(
-        self, runner: CliRunner, workspace_dir: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        result = runner.invoke(
-            app,
-            ["config", "set", "llm.model", "gpt-4", "--workspace", str(ws)],
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "llm.model = gpt-4" in result.stdout
-
-    def test_no_workspace_auto_inits(
-        self, runner: CliRunner, workspace_dir: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        result = runner.invoke(
-            app, ["config", "set", "theme", "dark", "--workspace", str(ws)]
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert ws.is_dir()
-
-
-# ── Test: workspace ──────────────────────────────────────
-
-
-class TestWorkspace:
-    def test_list_shows_contents(
-        self, runner: CliRunner, workspace_dir: Path, approved_profile_file: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        runner.invoke(
-            app,
-            ["profile", "approve", str(approved_profile_file), "--workspace", str(ws)],
-        )
-        result = runner.invoke(
-            app, ["workspace", "list", "--workspace", str(ws)]
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert str(ws) in result.stdout
-
-    def test_info_shows_workspace_details(
-        self, runner: CliRunner, workspace_dir: Path, approved_profile_file: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        runner.invoke(
-            app,
-            ["profile", "approve", str(approved_profile_file), "--workspace", str(ws)],
-        )
-        result = runner.invoke(
-            app, ["workspace", "info", "--workspace", str(ws)]
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "Workspace path" in result.stdout
-
-    def test_info_no_workspace_shows_error(
-        self, runner: CliRunner, workspace_dir: Path
-    ) -> None:
-        ws = workspace_dir / ".nonexistent"
-        result = runner.invoke(
-            app, ["workspace", "info", "--workspace", str(ws)]
-        )
-        assert result.exit_code == EXIT_GENERAL
-
-    def test_delete_application(
-        self, runner: CliRunner, workspace_dir: Path, approved_profile_file: Path, resume_file: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        runner.invoke(app, ["import", str(resume_file), "--workspace", str(ws)])
-        runner.invoke(
-            app,
-            ["profile", "approve", str(approved_profile_file), "--workspace", str(ws)],
-        )
-        result = runner.invoke(
-            app,
-            ["workspace", "delete-application", "--force", "draft-profile", "--workspace", str(ws)],
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "Deleted application" in result.stdout
-
-    def test_delete_application_not_found(
-        self, runner: CliRunner, workspace_dir: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        result = runner.invoke(
-            app,
-            ["workspace", "delete-application", "--force", "nonexistent-app", "--workspace", str(ws)],
-        )
-        assert result.exit_code == EXIT_GENERAL
-        assert "not found" in (result.stdout.lower() + result.stderr.lower())
-
-    def test_purge_workspace(
-        self, runner: CliRunner, workspace_dir: Path, approved_profile_file: Path
-    ) -> None:
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        runner.invoke(
-            app,
-            ["profile", "approve", str(approved_profile_file), "--workspace", str(ws)],
-        )
-        result = runner.invoke(
-            app,
-            ["workspace", "purge", "--force", "--workspace", str(ws)],
-        )
-        assert result.exit_code == EXIT_SUCCESS
-        assert "Purging workspace" in result.stdout
-        assert not ws.exists()
-
-    def test_purge_no_workspace_shows_error(
-        self, runner: CliRunner, workspace_dir: Path
-    ) -> None:
-        ws = workspace_dir / ".nonexistent"
-        result = runner.invoke(
-            app, ["workspace", "purge", "--force", "--workspace", str(ws)]
-        )
-        assert result.exit_code == EXIT_GENERAL
-
-
-# ── Test: full pipeline ──────────────────────────────────
-
-
-class TestFullPipeline:
-    def test_init_import_approve_jd_tailor_export(
-        self,
-        runner: CliRunner,
-        workspace_dir: Path,
-        resume_file: Path,
-        approved_profile_file: Path,
-        jd_file: Path,
-    ) -> None:
-        """End-to-end: init → import → approve → jd parse → tailor → export."""
-        ws = workspace_dir / ".ws"
-
-        # 1. Init
-        r = runner.invoke(app, ["init", "--workspace", str(ws)])
-        assert r.exit_code == EXIT_SUCCESS, f"init failed: {r.stdout}"
-        assert ws.is_dir()
-
-        # 2. Import resume
-        r = runner.invoke(
-            app, ["import", str(resume_file), "--workspace", str(ws)]
-        )
-        assert r.exit_code == EXIT_SUCCESS, f"import failed: {r.stdout}"
-
-        # 3. Approve profile
-        r = runner.invoke(
-            app,
-            ["profile", "approve", str(approved_profile_file), "--workspace", str(ws)],
-        )
-        assert r.exit_code == EXIT_SUCCESS, f"profile approve failed: {r.stdout}"
-
-        # 4. Parse JD from file
-        r = runner.invoke(
-            app, ["jd", "parse", str(jd_file), "--workspace", str(ws)]
-        )
-        assert r.exit_code == EXIT_SUCCESS, f"jd parse failed: {r.stdout}"
-
-        # 5. Tailor
-        r = runner.invoke(
-            app,
-            [
-                "tailor",
-                "--profile", "default",
-                "--jd", str(jd_file),
-                "--mode", "conservative",
-                "--template", "ats-modern",
-                "--output", str(workspace_dir / "output.tex"),
-                "--workspace", str(ws),
-            ],
-        )
-        assert r.exit_code == EXIT_SUCCESS, f"tailor failed: {r.stdout}"
-
-        # 6. Export tex
-        r = runner.invoke(
-            app,
-            [
-                "export",
-                "--application", "test-app",
-                "--tex",
-                "--workspace", str(ws),
-            ],
-        )
-        assert r.exit_code == EXIT_SUCCESS, f"export failed: {r.stdout}"
-
-
-# ── Test: exit codes ─────────────────────────────────────
-
-
-class TestExitCodes:
-    def test_version_returns_success(self, runner: CliRunner) -> None:
-        result = runner.invoke(app, ["version"])
-        assert result.exit_code == EXIT_SUCCESS
-
-    def test_invalid_command_returns_general(self, runner: CliRunner) -> None:
-        result = runner.invoke(app, ["nonexistent-command"])
-        assert result.exit_code != 0
-
-    def test_exit_code_constants_are_distinct(self) -> None:
-        codes = {
-            EXIT_SUCCESS,
-            EXIT_GENERAL,
-            EXIT_VALIDATION,
-            EXIT_PARSER,
-            EXIT_PROVIDER,
-            EXIT_RENDER,
-            EXIT_PRIVACY,
-        }
-        assert len(codes) == 7
-
-
-# ── Test: import saves as application not profile ────────
-
-
-class TestImportSavesAsApplication:
-    def test_import_creates_application_not_profile(
-        self, runner: CliRunner, workspace_dir: Path, resume_file: Path
-    ) -> None:
-        """Fact: 'import' saves a profile draft as an application, not as a profile."""
-        ws = workspace_dir / ".ws"
-        runner.invoke(app, ["init", "--workspace", str(ws)])
-        runner.invoke(app, ["import", str(resume_file), "--workspace", str(ws)])
-
-        # Profile list should be empty
-        r = runner.invoke(app, ["profile", "list", "--workspace", str(ws)])
-        assert "No profiles" in r.stdout
-
-        # Workspace list should show the application
-        r = runner.invoke(app, ["workspace", "list", "--workspace", str(ws)])
-        assert "Applications" in r.stdout
-        assert "draft-profile" in r.stdout
+    assert all(bullet.approved for exp in approved.experiences for bullet in exp.bullets)
+    assert all(bullet.approved for project in approved.projects for bullet in project.bullets)
+
+
+def test_import_to_tex_by_id_and_unapproved_exit(tmp_path: Path) -> None:
+    workspace = tmp_path / "workspace"
+    resume, description = write_synthetic_inputs(tmp_path)
+    assert invoke(workspace, "init").exit_code == 0
+    assert invoke(workspace, "import", str(resume)).exit_code == 0
+    assert invoke(workspace, "profile", "review").exit_code == 0
+    assert invoke(workspace, "tailor", "--jd", str(description)).exit_code == 2
+    assert invoke(workspace, "profile", "approve", "--all").exit_code == 0
+    parsed = invoke(workspace, "jd", "parse", str(description))
+    assert parsed.exit_code == 0
+    job_id = next((workspace / "jobs").glob("*.json")).stem
+    assert job_id in parsed.output
+    assert job_id in invoke(workspace, "jd", "list").output
+    output = tmp_path / "out.tex"
+    tailored = invoke(workspace, "tailor", "--jd", job_id, "--output", str(output))
+    assert tailored.exit_code == 0, tailored.output
+    assert "\\documentclass" in output.read_text(encoding="utf-8")
+    assert "Jordan Example" in output.read_text(encoding="utf-8")
+    assert "Drafts (0)" in invoke(workspace, "workspace", "list").output
+    assert "Jobs (1)" in invoke(workspace, "workspace", "list").output
+
+
+def test_tailor_file_saves_job_and_unknown_id_is_actionable(tmp_path: Path) -> None:
+    workspace = tmp_path / "workspace"
+    resume, description = write_synthetic_inputs(tmp_path)
+    assert invoke(workspace, "import", str(resume)).exit_code == 0
+    assert invoke(workspace, "profile", "approve", "--all").exit_code == 0
+    output = tmp_path / "file.tex"
+    assert (
+        invoke(workspace, "tailor", "--jd", str(description), "--output", str(output)).exit_code
+        == 0
+    )
+    assert len(list((workspace / "jobs").glob("*.json"))) == 1
+    missing = invoke(workspace, "tailor", "--jd", "missing")
+    assert missing.exit_code == 1
+    assert "JD not found: missing. Run 'tailortex jd list'." in missing.output
+
+
+@pytest.mark.parametrize("shape", ["nested", "flat"])
+def test_tailor_legacy_job_id(tmp_path: Path, shape: str) -> None:
+    workspace = tmp_path / "workspace"
+    resume, _ = write_synthetic_inputs(tmp_path)
+    assert invoke(workspace, "import", str(resume)).exit_code == 0
+    assert invoke(workspace, "profile", "approve", "--all").exit_code == 0
+    parsed = parse_jd_text("QA Engineer requires Python")
+    payload = parsed.jd.model_dump(mode="json")
+    if shape == "nested":
+        payload = {"jd": payload, "raw_text": parsed.raw_text, "warnings": parsed.warnings}
+    Workspace(workspace).save_application(parsed.jd.job_id, payload)
+    output = tmp_path / f"legacy-{shape}.tex"
+    result = invoke(workspace, "tailor", "--jd", parsed.jd.job_id, "--output", str(output))
+    assert result.exit_code == 0, result.output
+    assert output.exists()

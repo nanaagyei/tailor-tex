@@ -1,7 +1,9 @@
-"""Workspace manager — local file storage for profiles, applications, and config.
+"""Workspace manager — local file storage for profiles, drafts, jobs, and config.
 
 The workspace is a directory (default: ~/.tailortex/) containing:
   profiles/       — canonical profiles (JSON)
+  drafts/         — imported profile drafts and source text
+  jobs/           — parsed job descriptions (JSON)
   applications/   — tailoring applications (JSON)
   config.json     — workspace settings
   exports/        — rendered artifacts
@@ -16,15 +18,17 @@ import tempfile
 from pathlib import Path
 from typing import Any, TypeVar, cast
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
+from tailortex.schemas.job import JDRecord, ParsedJobDescription
 from tailortex.schemas.profile import CanonicalProfile
 
 T = TypeVar("T", bound=BaseModel)
 
 DEFAULT_WORKSPACE = Path.home() / ".tailortex"
 
-_SUBDIRS = ("profiles", "applications", "exports")
+_SUBDIRS = ("profiles", "drafts", "jobs", "applications", "exports")
+_LEGACY_JOB_WARNING = "Legacy record: original job text not stored."
 
 
 class WorkspaceError(Exception):
@@ -44,6 +48,14 @@ class Workspace:
     @property
     def profiles_dir(self) -> Path:
         return self._root / "profiles"
+
+    @property
+    def drafts_dir(self) -> Path:
+        return self._root / "drafts"
+
+    @property
+    def jobs_dir(self) -> Path:
+        return self._root / "jobs"
 
     @property
     def applications_dir(self) -> Path:
@@ -152,6 +164,90 @@ class Workspace:
 
     def delete_profile(self, profile_id: str) -> None:
         self._delete_item(self.profiles_dir, profile_id)
+
+    # ------------------------------------------------------------------
+    # Draft operations
+    # ------------------------------------------------------------------
+
+    def save_draft(self, profile: CanonicalProfile, raw_text: str | None = None) -> Path:
+        path = self._save_model(self.drafts_dir, profile.profile_id, profile)
+        if raw_text is not None:
+            source_path = self._safe_path(self.drafts_dir, f"{profile.profile_id}.source.txt")
+            self._atomic_write(source_path, raw_text)
+        return path
+
+    def load_draft(self, profile_id: str = "default") -> CanonicalProfile:
+        return self._load_model(self.drafts_dir, profile_id, CanonicalProfile)
+
+    def has_draft(self, profile_id: str = "default") -> bool:
+        return self._safe_path(self.drafts_dir, f"{profile_id}.json").is_file()
+
+    def list_drafts(self) -> list[str]:
+        return self._list_items(self.drafts_dir)
+
+    def delete_draft(self, profile_id: str) -> None:
+        draft_path = self._safe_path(self.drafts_dir, f"{profile_id}.json")
+        source_path = self._safe_path(self.drafts_dir, f"{profile_id}.source.txt")
+        if not draft_path.exists() and not source_path.exists():
+            raise WorkspaceError(f"Draft not found: {profile_id}")
+        draft_path.unlink(missing_ok=True)
+        source_path.unlink(missing_ok=True)
+
+    # ------------------------------------------------------------------
+    # Job operations
+    # ------------------------------------------------------------------
+
+    def save_job(self, record: JDRecord) -> Path:
+        return self._save_model(self.jobs_dir, record.jd.job_id, record)
+
+    @staticmethod
+    def _parse_job(raw: str) -> JDRecord:
+        try:
+            payload = json.loads(raw)
+            if isinstance(payload, dict) and "jd" in payload:
+                return JDRecord.model_validate(payload)
+            jd = ParsedJobDescription.model_validate(payload)
+            return JDRecord(jd=jd, raw_text="", warnings=[_LEGACY_JOB_WARNING])
+        except (json.JSONDecodeError, ValidationError, TypeError, ValueError) as exc:
+            raise WorkspaceError("Invalid job record") from exc
+
+    def load_job(self, job_id: str) -> JDRecord:
+        job_path = self._safe_path(self.jobs_dir, f"{job_id}.json")
+        legacy_path = self._safe_path(self.applications_dir, f"{job_id}.json")
+        if job_path.is_file():
+            return self._parse_job(job_path.read_text(encoding="utf-8"))
+        if legacy_path.is_file():
+            return self._parse_job(legacy_path.read_text(encoding="utf-8"))
+        raise WorkspaceError(f"JD not found: {job_id}")
+
+    def list_jobs(self) -> list[str]:
+        ids: set[str] = set()
+        for base in (self.jobs_dir, self.applications_dir):
+            if not base.is_dir():
+                continue
+            for path in base.glob("*.json"):
+                try:
+                    self._parse_job(path.read_text(encoding="utf-8"))
+                except (WorkspaceError, OSError):
+                    continue
+                ids.add(path.stem)
+        return sorted(ids)
+
+    def delete_job(self, job_id: str) -> None:
+        job_path = self._safe_path(self.jobs_dir, f"{job_id}.json")
+        legacy_path = self._safe_path(self.applications_dir, f"{job_id}.json")
+        paths = [job_path]
+        if legacy_path.is_file():
+            try:
+                self._parse_job(legacy_path.read_text(encoding="utf-8"))
+            except WorkspaceError:
+                pass
+            else:
+                paths.append(legacy_path)
+        if not any(path.is_file() for path in paths):
+            raise WorkspaceError(f"JD not found: {job_id}")
+        for path in paths:
+            path.unlink(missing_ok=True)
 
     # ------------------------------------------------------------------
     # Application operations (stores resume plans, bullets, reports)

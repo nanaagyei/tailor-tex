@@ -1,0 +1,211 @@
+{
+  "dossier_id": "d05",
+  "base_resume_path": "resume.txt",
+  "evidence": [
+    {
+      "id": "ev-001",
+      "owner": "exp-1",
+      "kind": "title",
+      "text": "Frontend Engineer"
+    },
+    {
+      "id": "ev-002",
+      "owner": "exp-1",
+      "kind": "organization",
+      "text": "Evitrell Studio"
+    },
+    {
+      "id": "ev-003",
+      "owner": "exp-1",
+      "kind": "date",
+      "text": "Jul 2023 - Present"
+    },
+    {
+      "id": "ev-004",
+      "owner": "exp-1",
+      "kind": "scope",
+      "text": "contributed to the component library"
+    },
+    {
+      "id": "ev-005",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "React"
+    },
+    {
+      "id": "ev-006",
+      "owner": "exp-1",
+      "kind": "metric",
+      "text": "6 product teams"
+    },
+    {
+      "id": "ev-007",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Playwright"
+    },
+    {
+      "id": "ev-008",
+      "owner": "exp-1",
+      "kind": "metric",
+      "text": "24%"
+    },
+    {
+      "id": "ev-009",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "cut visual regressions"
+    },
+    {
+      "id": "ev-010",
+      "owner": "exp-2",
+      "kind": "title",
+      "text": "Part-time UI Developer"
+    },
+    {
+      "id": "ev-011",
+      "owner": "exp-2",
+      "kind": "organization",
+      "text": "Farnivell Tools"
+    },
+    {
+      "id": "ev-012",
+      "owner": "exp-2",
+      "kind": "date",
+      "text": "Jan 2023 - Dec 2023"
+    },
+    {
+      "id": "ev-013",
+      "owner": "exp-2",
+      "kind": "tool",
+      "text": "TypeScript"
+    },
+    {
+      "id": "ev-014",
+      "owner": "exp-2",
+      "kind": "outcome",
+      "text": "made handoff reviews faster"
+    },
+    {
+      "id": "ev-015",
+      "owner": "exp-2",
+      "kind": "tool",
+      "text": "Figma"
+    },
+    {
+      "id": "ev-016",
+      "owner": "exp-2",
+      "kind": "tool",
+      "text": "CSS"
+    },
+    {
+      "id": "ev-017",
+      "owner": "exp-2",
+      "kind": "outcome",
+      "text": "refined responsive states"
+    },
+    {
+      "id": "ev-018",
+      "owner": "project-1",
+      "kind": "outcome",
+      "text": "documented accessible component usage"
+    },
+    {
+      "id": "ev-019",
+      "owner": "education",
+      "kind": "organization",
+      "text": "Example Digital College"
+    },
+    {
+      "id": "ev-020",
+      "owner": "education",
+      "kind": "credential",
+      "text": "B.A. in Interactive Media"
+    },
+    {
+      "id": "ev-021",
+      "owner": "education",
+      "kind": "date",
+      "text": "Aug 2017 - May 2021"
+    },
+    {
+      "id": "ev-022",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "TypeScript"
+    },
+    {
+      "id": "ev-023",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "React"
+    },
+    {
+      "id": "ev-024",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "CSS"
+    },
+    {
+      "id": "ev-025",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Playwright"
+    },
+    {
+      "id": "ev-026",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Figma"
+    },
+    {
+      "id": "ev-027",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Storybook"
+    },
+    {
+      "id": "ev-028",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Node.js"
+    },
+    {
+      "id": "ev-029",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reviewed localization layout"
+    },
+    {
+      "id": "ev-030",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "prepared accessibility test notes"
+    },
+    {
+      "id": "ev-031",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reduced duplicate component variants"
+    },
+    {
+      "id": "ev-032",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "maintained release notes"
+    },
+    {
+      "id": "ev-033",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "paired with content designers"
+    },
+    {
+      "id": "ev-034",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "tested high-zoom layouts"
+    }
+  ],
+  "notes": "Entirely synthetic frontend candidate. Evidence items after the 26 resume facts are verified but omitted from the base resume."
+}

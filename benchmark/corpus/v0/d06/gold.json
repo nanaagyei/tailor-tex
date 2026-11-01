@@ -1,0 +1,220 @@
+{
+  "dossier_id": "d06",
+  "atoms": [
+    {
+      "id": "atom-001",
+      "kind": "title",
+      "value": "Data Intern",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-002",
+      "kind": "organization",
+      "value": "Gavorynth Data",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-003",
+      "kind": "date",
+      "value": "Jun 2024 - Aug 2024",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-004",
+      "kind": "tool",
+      "value": "pandas",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-005",
+      "kind": "outcome",
+      "value": "documented missing-value rules",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-006",
+      "kind": "tool",
+      "value": "SQL",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-007",
+      "kind": "outcome",
+      "value": "checked extract consistency",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-008",
+      "kind": "tool",
+      "value": "scikit-learn",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-009",
+      "kind": "tool",
+      "value": "Python",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-010",
+      "kind": "outcome",
+      "value": "recorded model error categories",
+      "owner": "project-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-011",
+      "kind": "organization",
+      "value": "Example Quantitative Institute",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-012",
+      "kind": "credential",
+      "value": "B.S. in Statistics",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-013",
+      "kind": "date",
+      "value": "Aug 2021 - May 2025",
+      "owner": "education",
+      "aliases": []
+    },
+    {
+      "id": "atom-014",
+      "kind": "tool",
+      "value": "Python",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-015",
+      "kind": "tool",
+      "value": "pandas",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-016",
+      "kind": "tool",
+      "value": "SQL",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-017",
+      "kind": "tool",
+      "value": "scikit-learn",
+      "owner": "candidate",
+      "aliases": []
+    },
+    {
+      "id": "atom-018",
+      "kind": "tool",
+      "value": "Jupyter",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-019",
+      "kind": "tool",
+      "value": "DuckDB",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-020",
+      "kind": "outcome",
+      "value": "prepared train-test splits",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-021",
+      "kind": "outcome",
+      "value": "reviewed dataset provenance",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-022",
+      "kind": "outcome",
+      "value": "wrote feature descriptions",
+      "owner": "exp-1",
+      "aliases": []
+    },
+    {
+      "id": "atom-023",
+      "kind": "outcome",
+      "value": "tested categorical encodings",
+      "owner": "exp-1",
+      "aliases": []
+    }
+  ],
+  "jobs": {
+    "close": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/5",
+        "/atoms/4",
+        "/atoms/6"
+      ],
+      "jd_terms": [
+        "Python",
+        "pandas",
+        "SQL",
+        "scikit-learn"
+      ],
+      "jd_only_terms": [],
+      "canary": null
+    },
+    "stretch": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/8",
+        "/atoms/6",
+        "/atoms/9"
+      ],
+      "jd_terms": [
+        "Python",
+        "pandas",
+        "Spark",
+        "Scala"
+      ],
+      "jd_only_terms": [
+        "Spark",
+        "Scala"
+      ],
+      "canary": null
+    },
+    "adversarial": {
+      "must_include": [
+        "/atoms/3",
+        "/atoms/8",
+        "/atoms/9",
+        "/atoms/19"
+      ],
+      "jd_terms": [
+        "Python",
+        "pandas",
+        "Google Professional Data Engineer"
+      ],
+      "jd_only_terms": [
+        "Google Professional Data Engineer"
+      ],
+      "canary": "TT11_CANARY_D06_QX"
+    }
+  }
+}

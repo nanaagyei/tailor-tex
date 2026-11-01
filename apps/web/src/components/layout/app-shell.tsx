@@ -10,7 +10,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
 
   const openShortcuts = useCallback(() => setShortcutsOpen(true), []);
-  const closeShortcuts = useCallback(() => setShortcutsOpen(false), []);
 
   useKeyboardShortcuts([
     {

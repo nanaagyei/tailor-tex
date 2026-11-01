@@ -1,0 +1,223 @@
+{
+  "dossier_id": "d07",
+  "base_resume_path": "resume.txt",
+  "evidence": [
+    {
+      "id": "ev-001",
+      "owner": "exp-1",
+      "kind": "title",
+      "text": "Data Analyst"
+    },
+    {
+      "id": "ev-002",
+      "owner": "exp-1",
+      "kind": "organization",
+      "text": "Hesparune Analytics"
+    },
+    {
+      "id": "ev-003",
+      "owner": "exp-1",
+      "kind": "date",
+      "text": "Jun 2022 - May 2023"
+    },
+    {
+      "id": "ev-004",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "SQL"
+    },
+    {
+      "id": "ev-005",
+      "owner": "exp-1",
+      "kind": "metric",
+      "text": "11 source feeds"
+    },
+    {
+      "id": "ev-006",
+      "owner": "exp-1",
+      "kind": "metric",
+      "text": "22%"
+    },
+    {
+      "id": "ev-007",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reduced missing records"
+    },
+    {
+      "id": "ev-008",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "dbt"
+    },
+    {
+      "id": "ev-009",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "documented reporting lineage"
+    },
+    {
+      "id": "ev-010",
+      "owner": "exp-2",
+      "kind": "title",
+      "text": "ML Engineer"
+    },
+    {
+      "id": "ev-011",
+      "owner": "exp-2",
+      "kind": "organization",
+      "text": "Irdovexa Labs"
+    },
+    {
+      "id": "ev-012",
+      "owner": "exp-2",
+      "kind": "date",
+      "text": "Jun 2023 - Present"
+    },
+    {
+      "id": "ev-013",
+      "owner": "exp-2",
+      "kind": "tool",
+      "text": "Airflow"
+    },
+    {
+      "id": "ev-014",
+      "owner": "exp-2",
+      "kind": "outcome",
+      "text": "improved feature refresh reliability"
+    },
+    {
+      "id": "ev-015",
+      "owner": "exp-2",
+      "kind": "tool",
+      "text": "PyTorch"
+    },
+    {
+      "id": "ev-016",
+      "owner": "exp-2",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-017",
+      "owner": "exp-2",
+      "kind": "metric",
+      "text": "19%"
+    },
+    {
+      "id": "ev-018",
+      "owner": "exp-2",
+      "kind": "outcome",
+      "text": "cut manual review"
+    },
+    {
+      "id": "ev-019",
+      "owner": "project-1",
+      "kind": "outcome",
+      "text": "explained data drift checks"
+    },
+    {
+      "id": "ev-020",
+      "owner": "education",
+      "kind": "organization",
+      "text": "Example Analytics University"
+    },
+    {
+      "id": "ev-021",
+      "owner": "education",
+      "kind": "credential",
+      "text": "M.S. in Applied Statistics"
+    },
+    {
+      "id": "ev-022",
+      "owner": "education",
+      "kind": "date",
+      "text": "Aug 2020 - May 2022"
+    },
+    {
+      "id": "ev-023",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Python"
+    },
+    {
+      "id": "ev-024",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "SQL"
+    },
+    {
+      "id": "ev-025",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Airflow"
+    },
+    {
+      "id": "ev-026",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "dbt"
+    },
+    {
+      "id": "ev-027",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "PyTorch"
+    },
+    {
+      "id": "ev-028",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Great Expectations"
+    },
+    {
+      "id": "ev-029",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "MLflow"
+    },
+    {
+      "id": "ev-030",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "created model rollback notes"
+    },
+    {
+      "id": "ev-031",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reviewed labeling disagreements"
+    },
+    {
+      "id": "ev-032",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "prepared feature audit samples"
+    },
+    {
+      "id": "ev-033",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "built baseline dashboards"
+    },
+    {
+      "id": "ev-034",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "wrote data retention notes"
+    },
+    {
+      "id": "ev-035",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "compared calibration curves"
+    },
+    {
+      "id": "ev-036",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "paired with product analysts"
+    }
+  ],
+  "notes": "Entirely synthetic ml/data candidate. Evidence items after the 27 resume facts are verified but omitted from the base resume."
+}

@@ -56,7 +56,12 @@ Thumbs.db
 .tailortex/
 
 # Build artifacts
+benchmark/runs/
 *.zip
+apps/cli/*.tex
+/jd-*.tex
+/jd-*.md
+/test-app.tex
 
 tailortex-agent-docs/
 

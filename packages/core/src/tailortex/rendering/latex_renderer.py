@@ -55,13 +55,13 @@ def _discover_templates(template_dir: Path) -> dict[str, Path]:
     return discovered
 
 
-def list_templates(template_dir: Path | None = None) -> dict[str, dict]:
+def list_templates(template_dir: Path | None = None) -> dict[str, dict[str, Any]]:
     """Return available templates with their metadata.
 
     Returns dict mapping template_id -> metadata dict.
     """
     tpl_dir = template_dir or _DEFAULT_TEMPLATE_DIR
-    result: dict[str, dict] = {}
+    result: dict[str, dict[str, Any]] = {}
     for template_id, dir_path in _discover_templates(tpl_dir).items():
         metadata_path = dir_path / "metadata.json"
         try:
@@ -179,10 +179,7 @@ def build_template_context(
         elif exp.is_current:
             end_fmt = "Present"
 
-        if end_fmt:
-            dates = f"{start_fmt} -- {end_fmt}"
-        else:
-            dates = start_fmt
+        dates = f"{start_fmt} -- {end_fmt}" if end_fmt else start_fmt
 
         experience_list.append(
             {
@@ -223,10 +220,7 @@ def build_template_context(
         start_fmt = _format_month_year(edu.start_date or "")
         end_fmt = _format_month_year(edu.end_date) if edu.end_date else ""
 
-        if end_fmt:
-            dates = f"{start_fmt} -- {end_fmt}"
-        else:
-            dates = start_fmt
+        dates = f"{start_fmt} -- {end_fmt}" if end_fmt else start_fmt
 
         education_list.append(
             {
@@ -245,29 +239,6 @@ def build_template_context(
                 "name": esc(cert.name),
                 "issuer": esc(cert.issuer or ""),
                 "date": esc(cert.date or ""),
-            }
-        )
-
-    # Publications
-    publication_list: list[dict[str, Any]] = []
-    for pub in profile.publications:
-        publication_list.append(
-            {
-                "title": esc(pub.title),
-                "venue": esc(pub.venue or ""),
-                "date": esc(pub.date or ""),
-                "url": esc(pub.url or ""),
-            }
-        )
-
-    # Awards
-    award_list: list[dict[str, Any]] = []
-    for award in profile.awards:
-        award_list.append(
-            {
-                "title": esc(award.title),
-                "issuer": esc(award.issuer or ""),
-                "date": esc(award.date or ""),
             }
         )
 

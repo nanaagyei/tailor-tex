@@ -1,0 +1,25 @@
+Leo Fenwick
+leo.fenwick@example.com | (202) 555-0103
+
+Summary
+Technical candidate focused on accessible product interfaces.
+
+Experience
+
+Frontend Intern | Deralune Interface
+Jun 2024 - Aug 2024
+- Built React form states that reduced support clarification requests by 12%.
+- Wrote CSS focus styles and checked keyboard navigation.
+
+Projects
+
+Campus Forms
+- Added TypeScript validation and Vitest tests to a student scheduling form.
+
+Education
+
+Example Design Institute
+B.S. in Human-Computer Interaction | Aug 2021 - May 2025
+
+Skills
+TypeScript, React, CSS, Vitest

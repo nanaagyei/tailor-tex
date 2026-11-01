@@ -101,7 +101,10 @@ def _make_qa_profile() -> CanonicalProfile:
                 bullets=[
                     Bullet(
                         id="b-qa-1",
-                        text="Wrote comprehensive unit tests using Pytest for critical business logic",
+                        text=(
+                            "Wrote comprehensive unit tests using Pytest "
+                            "for critical business logic"
+                        ),
                         skills=["Python", "Pytest", "Testing"],
                         approved=True,
                         metrics=[],

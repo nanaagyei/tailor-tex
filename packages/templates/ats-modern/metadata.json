@@ -1,7 +1,7 @@
 {
   "id": "ats-modern",
   "name": "ATS Modern",
-  "description": "Single-column ATS-friendly resume template.",
+  "description": "Single-column LaTeX resume template with no data tables or content images; layout tables align headings.",
   "supports": ["resume"],
   "max_pages_recommended": 1,
   "engine": ["tectonic", "pdflatex", "xelatex"]

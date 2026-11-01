@@ -1,0 +1,175 @@
+{
+  "dossier_id": "d09",
+  "base_resume_path": "resume.txt",
+  "evidence": [
+    {
+      "id": "ev-001",
+      "owner": "exp-1",
+      "kind": "title",
+      "text": "SDET"
+    },
+    {
+      "id": "ev-002",
+      "owner": "exp-1",
+      "kind": "organization",
+      "text": "Korbivell Systems"
+    },
+    {
+      "id": "ev-003",
+      "owner": "exp-1",
+      "kind": "date",
+      "text": "Jul 2015 - Present"
+    },
+    {
+      "id": "ev-004",
+      "owner": "exp-1",
+      "kind": "scope",
+      "text": "contributed to the test suite"
+    },
+    {
+      "id": "ev-005",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Selenium"
+    },
+    {
+      "id": "ev-006",
+      "owner": "exp-1",
+      "kind": "metric",
+      "text": "16%"
+    },
+    {
+      "id": "ev-007",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reduced escaped defects"
+    },
+    {
+      "id": "ev-008",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "JUnit"
+    },
+    {
+      "id": "ev-009",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Jenkins"
+    },
+    {
+      "id": "ev-010",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "made test failures visible"
+    },
+    {
+      "id": "ev-011",
+      "owner": "project-1",
+      "kind": "tool",
+      "text": "Java"
+    },
+    {
+      "id": "ev-012",
+      "owner": "project-1",
+      "kind": "tool",
+      "text": "SQL"
+    },
+    {
+      "id": "ev-013",
+      "owner": "project-1",
+      "kind": "outcome",
+      "text": "cataloged test fixtures"
+    },
+    {
+      "id": "ev-014",
+      "owner": "education",
+      "kind": "organization",
+      "text": "Example Engineering University"
+    },
+    {
+      "id": "ev-015",
+      "owner": "education",
+      "kind": "credential",
+      "text": "B.S. in Computer Science"
+    },
+    {
+      "id": "ev-016",
+      "owner": "education",
+      "kind": "date",
+      "text": "Aug 2011 - May 2015"
+    },
+    {
+      "id": "ev-017",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Java"
+    },
+    {
+      "id": "ev-018",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Selenium"
+    },
+    {
+      "id": "ev-019",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "JUnit"
+    },
+    {
+      "id": "ev-020",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "Jenkins"
+    },
+    {
+      "id": "ev-021",
+      "owner": "candidate",
+      "kind": "tool",
+      "text": "SQL"
+    },
+    {
+      "id": "ev-022",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Playwright"
+    },
+    {
+      "id": "ev-023",
+      "owner": "exp-1",
+      "kind": "tool",
+      "text": "Gradle"
+    },
+    {
+      "id": "ev-024",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "reviewed flaky-test trends"
+    },
+    {
+      "id": "ev-025",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "documented release risks"
+    },
+    {
+      "id": "ev-026",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "prepared defect taxonomies"
+    },
+    {
+      "id": "ev-027",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "paired on API tests"
+    },
+    {
+      "id": "ev-028",
+      "owner": "exp-1",
+      "kind": "outcome",
+      "text": "tested data migration paths"
+    }
+  ],
+  "notes": "Entirely synthetic qa/sdet candidate. Evidence items after the 21 resume facts are verified but omitted from the base resume."
+}

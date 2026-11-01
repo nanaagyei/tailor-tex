@@ -1,0 +1,18 @@
+{
+  "artifact_path": null,
+  "case": {
+    "dossier_id": "dossier-example",
+    "job_id": "jd-qa-example"
+  },
+  "kind": "untailored",
+  "model": null,
+  "run_metadata": {
+    "max_pages": null,
+    "observed_pages": null,
+    "run_date": "2026-01-01",
+    "run_id": "example-run-1"
+  },
+  "system_id": "example-system",
+  "text": "Jordan Example\nQA Engineer at Example Systems\nAutomated Python tests.",
+  "version": "example-v1"
+}

@@ -1,0 +1,476 @@
+{
+  "calibration": {
+    "by_kind": {
+      "credential": {
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 3
+      },
+      "date": {
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 3
+      },
+      "metric": {
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 5
+      },
+      "organization": {
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 3
+      },
+      "outcome": {
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 4
+      },
+      "scope": {
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 4
+      },
+      "title": {
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 3
+      },
+      "tool": {
+        "fn": 0,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 5
+      }
+    },
+    "confusion": [],
+    "lines": 40,
+    "overall": {
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tp": 30
+    }
+  },
+  "candidates": {
+    "d01__adversarial": [
+      {
+        "kind": "tool?",
+        "line": 18,
+        "value": "B.S"
+      }
+    ],
+    "d01__close": [
+      {
+        "kind": "tool?",
+        "line": 18,
+        "value": "B.S"
+      }
+    ],
+    "d01__stretch": [
+      {
+        "kind": "tool?",
+        "line": 18,
+        "value": "B.S"
+      }
+    ],
+    "d02__adversarial": [
+      {
+        "kind": "tool?",
+        "line": 27,
+        "value": "B.S"
+      }
+    ],
+    "d02__close": [
+      {
+        "kind": "tool?",
+        "line": 27,
+        "value": "B.S"
+      }
+    ],
+    "d02__stretch": [
+      {
+        "kind": "tool?",
+        "line": 27,
+        "value": "B.S"
+      }
+    ],
+    "d03__adversarial": [
+      {
+        "kind": "tool?",
+        "line": 5,
+        "value": "API"
+      },
+      {
+        "kind": "tool?",
+        "line": 19,
+        "value": "II"
+      },
+      {
+        "kind": "tool?",
+        "line": 21,
+        "value": "API"
+      },
+      {
+        "kind": "tool?",
+        "line": 32,
+        "value": "B.S"
+      }
+    ],
+    "d03__close": [
+      {
+        "kind": "tool?",
+        "line": 5,
+        "value": "API"
+      },
+      {
+        "kind": "tool?",
+        "line": 19,
+        "value": "II"
+      },
+      {
+        "kind": "tool?",
+        "line": 21,
+        "value": "API"
+      },
+      {
+        "kind": "tool?",
+        "line": 32,
+        "value": "B.S"
+      }
+    ],
+    "d03__stretch": [
+      {
+        "kind": "tool?",
+        "line": 5,
+        "value": "API"
+      },
+      {
+        "kind": "tool?",
+        "line": 19,
+        "value": "II"
+      },
+      {
+        "kind": "tool?",
+        "line": 21,
+        "value": "API"
+      },
+      {
+        "kind": "tool?",
+        "line": 32,
+        "value": "B.S"
+      }
+    ],
+    "d04__adversarial": [
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "B.S"
+      }
+    ],
+    "d04__close": [
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "B.S"
+      }
+    ],
+    "d04__stretch": [
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "B.S"
+      }
+    ],
+    "d05__adversarial": [
+      {
+        "kind": "tool?",
+        "line": 14,
+        "value": "UI"
+      },
+      {
+        "kind": "tool?",
+        "line": 27,
+        "value": "B.A"
+      }
+    ],
+    "d05__close": [
+      {
+        "kind": "tool?",
+        "line": 14,
+        "value": "UI"
+      },
+      {
+        "kind": "tool?",
+        "line": 27,
+        "value": "B.A"
+      }
+    ],
+    "d05__stretch": [
+      {
+        "kind": "tool?",
+        "line": 14,
+        "value": "UI"
+      },
+      {
+        "kind": "tool?",
+        "line": 27,
+        "value": "B.A"
+      }
+    ],
+    "d06__adversarial": [
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "B.S"
+      }
+    ],
+    "d06__close": [
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "B.S"
+      }
+    ],
+    "d06__stretch": [
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "B.S"
+      }
+    ],
+    "d07__adversarial": [
+      {
+        "kind": "tool?",
+        "line": 14,
+        "value": "ML"
+      },
+      {
+        "kind": "tool?",
+        "line": 27,
+        "value": "M.S"
+      }
+    ],
+    "d07__close": [
+      {
+        "kind": "tool?",
+        "line": 14,
+        "value": "ML"
+      },
+      {
+        "kind": "tool?",
+        "line": 27,
+        "value": "M.S"
+      }
+    ],
+    "d07__stretch": [
+      {
+        "kind": "tool?",
+        "line": 14,
+        "value": "ML"
+      },
+      {
+        "kind": "tool?",
+        "line": 27,
+        "value": "M.S"
+      }
+    ],
+    "d08__adversarial": [
+      {
+        "kind": "tool?",
+        "line": 9,
+        "value": "QA"
+      },
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "B.S"
+      }
+    ],
+    "d08__close": [
+      {
+        "kind": "tool?",
+        "line": 9,
+        "value": "QA"
+      },
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "B.S"
+      }
+    ],
+    "d08__stretch": [
+      {
+        "kind": "tool?",
+        "line": 9,
+        "value": "QA"
+      },
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "B.S"
+      }
+    ],
+    "d09__adversarial": [
+      {
+        "kind": "tool?",
+        "line": 9,
+        "value": "SDET"
+      },
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "B.S"
+      }
+    ],
+    "d09__close": [
+      {
+        "kind": "tool?",
+        "line": 9,
+        "value": "SDET"
+      },
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "B.S"
+      }
+    ],
+    "d09__stretch": [
+      {
+        "kind": "tool?",
+        "line": 9,
+        "value": "SDET"
+      },
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "B.S"
+      }
+    ],
+    "d10__adversarial": [
+      {
+        "kind": "tool?",
+        "line": 27,
+        "value": "B.S"
+      }
+    ],
+    "d10__close": [
+      {
+        "kind": "tool?",
+        "line": 27,
+        "value": "B.S"
+      }
+    ],
+    "d10__stretch": [
+      {
+        "kind": "tool?",
+        "line": 27,
+        "value": "B.S"
+      }
+    ],
+    "d11__adversarial": [
+      {
+        "kind": "tool?",
+        "line": 23,
+        "value": "B.S"
+      }
+    ],
+    "d11__close": [
+      {
+        "kind": "tool?",
+        "line": 23,
+        "value": "B.S"
+      }
+    ],
+    "d11__stretch": [
+      {
+        "kind": "tool?",
+        "line": 23,
+        "value": "B.S"
+      }
+    ],
+    "d12__adversarial": [
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "Ph.D"
+      }
+    ],
+    "d12__close": [
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "Ph.D"
+      }
+    ],
+    "d12__stretch": [
+      {
+        "kind": "tool?",
+        "line": 22,
+        "value": "Ph.D"
+      }
+    ]
+  },
+  "commands": [
+    "PYTHONPATH=/tmp/tailortex-main-baseline/packages/core/src .venv/bin/tailortex-bench run --system untailored --out /tmp/tt-baseline-untailored",
+    "PYTHONPATH=/tmp/tailortex-main-baseline/packages/core/src .venv/bin/tailortex-bench run --system tailortex --repeat 2 --out /tmp/tt-baseline-tailortex",
+    "PYTHONPATH=/tmp/tailortex-main-baseline/packages/core/src .venv/bin/tailortex-bench run --system prompt-baseline --provider mock --out /tmp/tt-baseline-prompt"
+  ],
+  "product_commits": {
+    "tailortex": "a4d6304634cb388e9698cef6d69de5b617b4f50a"
+  },
+  "statuses": {
+    "d01__adversarial": "ok",
+    "d01__close": "ok",
+    "d01__stretch": "ok",
+    "d02__adversarial": "ok",
+    "d02__close": "ok",
+    "d02__stretch": "ok",
+    "d03__adversarial": "ok",
+    "d03__close": "ok",
+    "d03__stretch": "ok",
+    "d04__adversarial": "ok",
+    "d04__close": "ok",
+    "d04__stretch": "ok",
+    "d05__adversarial": "ok",
+    "d05__close": "ok",
+    "d05__stretch": "ok",
+    "d06__adversarial": "ok",
+    "d06__close": "ok",
+    "d06__stretch": "ok",
+    "d07__adversarial": "ok",
+    "d07__close": "ok",
+    "d07__stretch": "ok",
+    "d08__adversarial": "ok",
+    "d08__close": "ok",
+    "d08__stretch": "ok",
+    "d09__adversarial": "ok",
+    "d09__close": "ok",
+    "d09__stretch": "ok",
+    "d10__adversarial": "ok",
+    "d10__close": "ok",
+    "d10__stretch": "ok",
+    "d11__adversarial": "ok",
+    "d11__close": "ok",
+    "d11__stretch": "ok",
+    "d12__adversarial": "ok",
+    "d12__close": "ok",
+    "d12__stretch": "ok"
+  }
+}
